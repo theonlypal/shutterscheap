@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You | Shutters Cheap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .thank-you-page {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .thank-you-content {
+      max-width: 600px;
+    }
+    .thank-you-content h1 {
+      color: var(--color-blue);
+      margin-bottom: 1rem;
+    }
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--color-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      animation: scaleIn 0.5s ease;
+    }
+    .checkmark svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: draw 0.5s ease 0.3s forwards;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" data-component="header">
+    <div class="container header-grid">
+      <a class="logo" href="index.html" aria-label="Shutters Cheap home">
+        <div class="logo-type">
+          <span class="logo-name">ShuttersCheap</span>
+          <span class="logo-tagline">Las Vegas • Since 1983</span>
+        </div>
+      </a>
+      <nav id="primary-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="thank-you-page">
+      <div class="thank-you-content">
+        <div class="checkmark">
+          <svg viewBox="0 0 52 52">
+            <polyline points="14 27 22 35 38 17"/>
+          </svg>
+        </div>
+        <h1>Thank You!</h1>
+        <p class="lead">We've received your request and will contact you within one business day.</p>
+        <p>Check your email for a confirmation. We'll be in touch soon to schedule your free in-home consultation.</p>
+        <div style="margin-top: 2rem;">
+          <a href="index.html" class="btn primary">Return to Home</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p style="text-align: center; margin: 1rem 0;">&copy; <span id="year"></span> Shutters Cheap. Las Vegas, NV.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
