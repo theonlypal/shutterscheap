@@ -1275,11 +1275,17 @@ figcaption {
   min-height: 1.2rem;
   font-weight: 600;
   opacity: 0;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  transition: opacity 0.4s ease, background 0.3s ease, transform 0.3s ease;
   text-align: center;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.625rem;
   background: rgba(16, 185, 129, 0.1);
+  font-size: 1.05rem;
+  margin-top: 0.5rem;
+}
+
+.form-status:not(:empty) {
+  transform: translateY(0);
 }
 
 .site-footer {

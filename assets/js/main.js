@@ -118,30 +118,66 @@ ready(() => {
     }, 6000);
   }
 
-  // Form submission with success confirmation
+  // Form submission with AJAX to prevent redirect
   forms.forEach((form) => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Prevent default form submission
+
       const statusEl = form.querySelector('.form-status');
       const submitBtn = form.querySelector('button[type="submit"]');
+      const formData = new FormData(form);
 
-      if (statusEl) {
+      if (statusEl && submitBtn) {
         // Show submitting state
         statusEl.textContent = 'Sending...';
         statusEl.style.color = '#3b82f6';
         statusEl.style.opacity = '1';
+        statusEl.style.background = 'rgba(59, 130, 246, 0.1)';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
 
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending...';
+        try {
+          // Submit form via AJAX to FormSubmit
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Show success message
+            statusEl.textContent = '✓ Thank you! We'll be in touch shortly!';
+            statusEl.style.color = '#10b981';
+            statusEl.style.background = 'rgba(16, 185, 129, 0.15)';
+            statusEl.style.fontWeight = '600';
+
+            // Reset form after short delay
+            setTimeout(() => {
+              form.reset();
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Request my free estimate';
+
+              // Fade out success message after 5 seconds
+              setTimeout(() => {
+                statusEl.style.opacity = '0';
+                setTimeout(() => {
+                  statusEl.textContent = '';
+                }, 300);
+              }, 5000);
+            }, 1000);
+          } else {
+            throw new Error('Submission failed');
+          }
+        } catch (error) {
+          // Show error message
+          statusEl.textContent = 'Something went wrong. Please call us at 702-528-1926';
+          statusEl.style.color = '#ef4444';
+          statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request my free estimate';
         }
-
-        // After form submits (FormSubmit will handle the redirect)
-        // Show success message briefly before redirect
-        setTimeout(() => {
-          statusEl.textContent = '✓ Request submitted successfully! Redirecting...';
-          statusEl.style.color = '#10b981';
-          statusEl.style.fontWeight = '600';
-        }, 300);
       }
     });
   });
