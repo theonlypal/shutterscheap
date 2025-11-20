@@ -118,7 +118,34 @@ ready(() => {
     }, 6000);
   }
 
-  // FormSubmit handles submission automatically via native form POST
+  // Form submission with success confirmation
+  forms.forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      const statusEl = form.querySelector('.form-status');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      if (statusEl) {
+        // Show submitting state
+        statusEl.textContent = 'Sending...';
+        statusEl.style.color = '#3b82f6';
+        statusEl.style.opacity = '1';
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+        }
+
+        // After form submits (FormSubmit will handle the redirect)
+        // Show success message briefly before redirect
+        setTimeout(() => {
+          statusEl.textContent = '✓ Request submitted successfully! Redirecting...';
+          statusEl.style.color = '#10b981';
+          statusEl.style.fontWeight = '600';
+        }, 300);
+      }
+    });
+  });
+
   // Set minimum date for estimate date picker (can't book in the past)
   const dateInput = document.getElementById('estimate-date');
   if (dateInput) {
