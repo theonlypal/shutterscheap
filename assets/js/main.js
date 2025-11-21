@@ -189,21 +189,36 @@ ready(() => {
     dateInput.setAttribute('min', today);
   }
 
-  // Hero image slideshow
+  // Hero image slideshow with dots
   const slideshow = document.querySelector('[data-slideshow]');
   if (slideshow) {
     const images = slideshow.querySelectorAll('.hero-slideshow-image');
+    const dots = slideshow.querySelectorAll('.dot');
     let currentIndex = 0;
 
-    setInterval(() => {
-      // Remove active class from current image
+    const showSlide = (index) => {
+      // Remove active class from current image and dot
       images[currentIndex].classList.remove('active');
+      if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
 
-      // Move to next image
-      currentIndex = (currentIndex + 1) % images.length;
+      // Update index
+      currentIndex = index;
 
-      // Add active class to new image
+      // Add active class to new image and dot
       images[currentIndex].classList.add('active');
+      if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+    };
+
+    // Auto-advance slideshow
+    setInterval(() => {
+      showSlide((currentIndex + 1) % images.length);
     }, 5000); // Change image every 5 seconds
+
+    // Click handler for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
   }
 });
