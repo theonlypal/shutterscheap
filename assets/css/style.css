@@ -1402,14 +1402,16 @@ figcaption {
     top: 100%;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: #fcd34d;
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
     flex-direction: column;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     transform: translateY(-200%);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    z-index: 999;
   }
 
   .site-nav.is-open {
@@ -1422,6 +1424,8 @@ figcaption {
     display: inline-flex;
     flex-direction: column;
     white-space: normal;
+    z-index: 1000;
+    position: relative;
   }
 
   .product-grid,

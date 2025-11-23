@@ -20,9 +20,13 @@ ready(() => {
 
   const smoothScroll = (target) => {
     const el = document.querySelector(target);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.pageYOffset - 70;
+    if (!el) {
+      console.log('Scroll target not found:', target);
+      return;
+    }
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
     window.scrollTo({ top, behavior: 'smooth' });
+    console.log('Scrolling to:', target);
   };
 
   if (yearEl) {
@@ -30,9 +34,12 @@ ready(() => {
   }
 
   if (navToggle && nav) {
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       const open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open.toString());
+      console.log('Nav toggle clicked, is-open:', open);
     });
 
     nav.querySelectorAll('a').forEach((link) =>
