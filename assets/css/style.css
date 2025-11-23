@@ -1830,16 +1830,28 @@ figcaption {
     border-radius: 0.625rem;
   }
 
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
   .contact-info {
-    order: 2;
+    order: 3;
   }
 
   .contact-form {
-    order: 1;
+    order: 2;
     gap: 0.4rem !important;
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: 1fr !important;
+  }
+
+  /* Ed Cox card appears ABOVE form on mobile */
+  .team-card {
+    order: 1;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
   }
 
   .contact-form * {
@@ -1921,16 +1933,36 @@ figcaption {
 
   /* Gallery mobile optimization */
   .gallery-grid {
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .gallery figure {
-    padding: 0.75rem;
+    padding: 0.875rem;
+    margin: 0 auto;
+    max-width: 100%;
   }
 
   .gallery figure img {
-    height: 200px;
-    border-radius: 0.5rem;
+    height: 240px;
+    border-radius: 0.75rem;
+    object-fit: cover;
+  }
+
+  .gallery figcaption {
+    font-size: 0.875rem;
+    margin-top: 0.625rem;
+  }
+
+  /* Gallery button mobile */
+  .gallery .btn {
+    display: block;
+    width: 100%;
+    max-width: 90%;
+    margin: 2.5rem auto 0;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
   }
 
   /* Utility buttons mobile */
