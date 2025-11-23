@@ -206,22 +206,44 @@ ready(() => {
 
     console.log('Slideshow initialized with', images.length, 'images');
 
+    // Ensure first image is visible on load
+    if (images.length > 0) {
+      images[0].classList.add('active');
+      if (dots[0]) dots[0].classList.add('active');
+      console.log('First image set to active');
+    }
+
     const showSlide = (index) => {
-      // Remove active class from all images and dots first
+      console.log('showSlide called with index:', index);
+
+      // Update index with wrapping first
+      const newIndex = (index + images.length) % images.length;
+
+      // Don't do anything if we're already showing this slide
+      if (newIndex === currentIndex && images[currentIndex].classList.contains('active')) {
+        console.log('Already showing slide', newIndex);
+        return;
+      }
+
+      console.log('Transitioning from slide', currentIndex, 'to slide', newIndex);
+
+      // Remove active class from all images and dots
       images.forEach((img, i) => {
         img.classList.remove('active');
-        console.log('Image', i, 'opacity:', window.getComputedStyle(img).opacity);
       });
       dots.forEach(dot => dot.classList.remove('active'));
 
-      // Update index with wrapping
-      currentIndex = (index + images.length) % images.length;
+      // Update current index
+      currentIndex = newIndex;
+
+      // Force a reflow to ensure CSS transition triggers
+      void images[currentIndex].offsetWidth;
 
       // Add active class to new image and dot
       images[currentIndex].classList.add('active');
       if (dots[currentIndex]) dots[currentIndex].classList.add('active');
 
-      console.log('Showing slide:', currentIndex, 'Active class added:', images[currentIndex].classList.contains('active'));
+      console.log('Now showing slide:', currentIndex);
     };
 
     const stopAutoplay = () => {
