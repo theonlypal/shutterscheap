@@ -214,7 +214,7 @@ ready(() => {
       stopAutoplay();
       autoplayInterval = setInterval(() => {
         showSlide(currentIndex + 1);
-      }, 5000);
+      }, 4000); // 4 seconds per slide for 14 photos
     };
 
     const stopAutoplay = () => {

@@ -632,11 +632,21 @@ textarea:focus-visible {
   border-radius: 1.5rem;
   box-shadow: var(--shadow-soft);
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
+  will-change: opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .hero-slideshow-image.active {
   opacity: 1;
+  z-index: 2;
+}
+
+.hero-slideshow-image:not(.active) {
+  z-index: 1;
 }
 
 .slideshow-dots {
@@ -1530,11 +1540,15 @@ figcaption {
   .hero-panel {
     gap: 1.5rem;
     order: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .hero-media {
-    height: 350px;
+    height: 450px;
     border-radius: 1rem;
+    order: 1;
+    margin-bottom: 1.5rem;
   }
 
   .hero-slideshow-image {
@@ -1543,12 +1557,17 @@ figcaption {
 
   .slideshow-dots {
     bottom: 1rem;
+    flex-wrap: wrap;
+    max-width: 90%;
+    justify-content: center;
+    gap: 0.4rem;
   }
 
   .slideshow-dots .dot {
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-width: 1.5px;
+    flex-shrink: 0;
   }
 
   .hero-media__card {
@@ -1590,17 +1609,13 @@ figcaption {
     font-size: 0.8rem;
   }
 
-  /* Hero form mobile - appears first, then slideshow */
+  /* Hero form mobile - appears after slideshow */
   .hero-form-card {
     padding: 1rem;
     border-radius: 1rem;
     max-width: 100%;
-    order: 1;
-    margin: 0 0 1rem 0;
-  }
-
-  .hero-media {
     order: 2;
+    margin: 0;
   }
 
   .hero-form-card .eyebrow {
