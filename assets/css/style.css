@@ -1474,17 +1474,45 @@ figcaption {
 
   /* Mobile typography adjustments */
   h1 {
-    font-size: 2rem;
-    line-height: 1.2;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    margin-bottom: 1rem;
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     line-height: 1.3;
   }
 
   h3 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+  }
+
+  /* Hero specific mobile adjustments */
+  .hero h1 {
+    font-size: 1.65rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero .lead {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .hero-pillars {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .hero-pillars li {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
   }
 
   /* Header mobile optimization */
@@ -1534,7 +1562,7 @@ figcaption {
   }
 
   .hero-copy {
-    order: 2;
+    order: 3;
   }
 
   .hero-panel {
@@ -1542,6 +1570,28 @@ figcaption {
     order: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Hide less critical hero copy elements on mobile for conversion focus */
+  .hero-copy .hero-badge,
+  .hero-copy .eyebrow,
+  .hero-copy .lead,
+  .hero-copy .hero-pillars {
+    display: none;
+  }
+
+  .hero-copy h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    display: none;
   }
 
   .hero-media {
@@ -1586,27 +1636,21 @@ figcaption {
 
   .hero-ctas {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.875rem;
     width: 100%;
+    margin-bottom: 1.5rem;
   }
 
   .hero-ctas .btn {
     width: 100%;
     text-align: center;
-    padding: 1rem 1.5rem;
+    padding: 1.125rem 1.5rem;
     font-size: 1.05rem;
+    font-weight: 700;
   }
 
-  .hero-stats {
-    margin-top: 1.5rem;
-  }
-
-  .hero-stats .stat {
-    font-size: 1.5rem;
-  }
-
-  .hero-stats .label {
-    font-size: 0.8rem;
+  .hero-ctas .btn.text {
+    display: none;
   }
 
   /* Hero form mobile - appears after slideshow */

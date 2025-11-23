@@ -196,6 +196,7 @@ ready(() => {
     const dots = slideshow.querySelectorAll('.dot');
     let currentIndex = 0;
     let autoplayInterval = null;
+    let isFirstTransition = true;
 
     const showSlide = (index) => {
       // Remove active class from current image and dot
@@ -212,14 +213,31 @@ ready(() => {
 
     const startAutoplay = () => {
       stopAutoplay();
+
+      // First transition happens in 2 seconds to show it's working
+      if (isFirstTransition) {
+        autoplayInterval = setTimeout(() => {
+          showSlide(currentIndex + 1);
+          isFirstTransition = false;
+          // Then start regular interval at 3.5 seconds
+          startRegularAutoplay();
+        }, 2000);
+      } else {
+        startRegularAutoplay();
+      }
+    };
+
+    const startRegularAutoplay = () => {
+      stopAutoplay();
       autoplayInterval = setInterval(() => {
         showSlide(currentIndex + 1);
-      }, 4000); // 4 seconds per slide for 14 photos
+      }, 3500);
     };
 
     const stopAutoplay = () => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval);
+        clearTimeout(autoplayInterval);
         autoplayInterval = null;
       }
     };
