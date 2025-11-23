@@ -680,22 +680,23 @@ textarea:focus-visible {
 }
 
 .hero-media__card {
-  position: absolute;
-  right: 2rem;
-  bottom: -1rem;
   background: var(--color-card);
   padding: 1.25rem;
   border-radius: 1rem;
   box-shadow: var(--shadow-soft);
-  max-width: 260px;
   font-size: 0.95rem;
-  z-index: 15;
+  margin-top: 1rem;
 }
 
 .hero-media__card span {
   display: block;
   margin-top: 0.5rem;
   color: var(--color-muted);
+}
+
+.hero-media__card p {
+  margin: 0;
+  font-style: italic;
 }
 
 .proof {
@@ -1593,9 +1594,19 @@ figcaption {
 
   /* Hide less critical hero copy elements on mobile for conversion focus */
   .hero-copy .hero-badge,
-  .hero-copy .lead,
   .hero-copy .hero-pillars {
     display: none;
+  }
+
+  /* Show lead text below form on mobile */
+  .hero-copy .lead {
+    order: 4;
+    display: block !important;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: center;
+    margin: 1.5rem 0 1rem;
+    color: var(--color-muted);
   }
 
   .hero-ctas {
@@ -1635,17 +1646,17 @@ figcaption {
   }
 
   .hero-media__card {
-    position: relative;
-    right: 0;
-    bottom: 0;
-    margin-top: 1rem;
-    max-width: 100%;
+    order: 1.5;
+    margin: 1rem 0;
     padding: 1rem;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    text-align: center;
+    background: rgba(252, 211, 77, 0.1);
+    border-left: 3px solid var(--color-accent-soft);
   }
 
   .hero-media__card span {
-    font-size: 0.825rem;
+    font-size: 0.8rem;
   }
 
   .hero-ctas {

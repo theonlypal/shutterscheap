@@ -196,12 +196,11 @@ ready(() => {
     const dots = slideshow.querySelectorAll('.dot');
     let currentIndex = 0;
     let autoplayInterval = null;
-    let isFirstTransition = true;
 
     const showSlide = (index) => {
-      // Remove active class from current image and dot
-      images[currentIndex].classList.remove('active');
-      if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+      // Remove active class from all images and dots first
+      images.forEach(img => img.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
 
       // Update index with wrapping
       currentIndex = (index + images.length) % images.length;
@@ -209,37 +208,24 @@ ready(() => {
       // Add active class to new image and dot
       images[currentIndex].classList.add('active');
       if (dots[currentIndex]) dots[currentIndex].classList.add('active');
-    };
 
-    const startAutoplay = () => {
-      stopAutoplay();
-
-      // First transition happens in 2 seconds to show it's working
-      if (isFirstTransition) {
-        autoplayInterval = setTimeout(() => {
-          showSlide(currentIndex + 1);
-          isFirstTransition = false;
-          // Then start regular interval at 3.5 seconds
-          startRegularAutoplay();
-        }, 2000);
-      } else {
-        startRegularAutoplay();
-      }
-    };
-
-    const startRegularAutoplay = () => {
-      stopAutoplay();
-      autoplayInterval = setInterval(() => {
-        showSlide(currentIndex + 1);
-      }, 3500);
+      console.log('Showing slide:', currentIndex);
     };
 
     const stopAutoplay = () => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval);
-        clearTimeout(autoplayInterval);
         autoplayInterval = null;
       }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      // Auto-advance every 3 seconds
+      autoplayInterval = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 3000);
+      console.log('Autoplay started');
     };
 
     // Click handler for dots
