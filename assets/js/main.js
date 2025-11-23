@@ -189,36 +189,90 @@ ready(() => {
     dateInput.setAttribute('min', today);
   }
 
-  // Hero image slideshow with dots
+  // Hero image slideshow with dots and swipe support
   const slideshow = document.querySelector('[data-slideshow]');
   if (slideshow) {
     const images = slideshow.querySelectorAll('.hero-slideshow-image');
     const dots = slideshow.querySelectorAll('.dot');
     let currentIndex = 0;
+    let autoplayInterval = null;
 
     const showSlide = (index) => {
       // Remove active class from current image and dot
       images[currentIndex].classList.remove('active');
       if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
 
-      // Update index
-      currentIndex = index;
+      // Update index with wrapping
+      currentIndex = (index + images.length) % images.length;
 
       // Add active class to new image and dot
       images[currentIndex].classList.add('active');
       if (dots[currentIndex]) dots[currentIndex].classList.add('active');
     };
 
-    // Auto-advance slideshow
-    setInterval(() => {
-      showSlide((currentIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayInterval = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 5000);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    };
 
     // Click handler for dots
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         showSlide(index);
+        stopAutoplay();
+        startAutoplay(); // Restart autoplay after manual interaction
       });
+    });
+
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slideshow.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slideshow.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    const handleSwipe = () => {
+      const swipeThreshold = 50; // Minimum swipe distance
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swiped left - next slide
+          showSlide(currentIndex + 1);
+        } else {
+          // Swiped right - previous slide
+          showSlide(currentIndex - 1);
+        }
+        stopAutoplay();
+        startAutoplay(); // Restart autoplay after swipe
+      }
+    };
+
+    // Start autoplay
+    startAutoplay();
+
+    // Pause autoplay when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
     });
   }
 });
