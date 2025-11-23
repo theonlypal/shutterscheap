@@ -204,9 +204,14 @@ ready(() => {
     let currentIndex = 0;
     let autoplayInterval = null;
 
+    console.log('Slideshow initialized with', images.length, 'images');
+
     const showSlide = (index) => {
       // Remove active class from all images and dots first
-      images.forEach(img => img.classList.remove('active'));
+      images.forEach((img, i) => {
+        img.classList.remove('active');
+        console.log('Image', i, 'opacity:', window.getComputedStyle(img).opacity);
+      });
       dots.forEach(dot => dot.classList.remove('active'));
 
       // Update index with wrapping
@@ -216,7 +221,7 @@ ready(() => {
       images[currentIndex].classList.add('active');
       if (dots[currentIndex]) dots[currentIndex].classList.add('active');
 
-      console.log('Showing slide:', currentIndex);
+      console.log('Showing slide:', currentIndex, 'Active class added:', images[currentIndex].classList.contains('active'));
     };
 
     const stopAutoplay = () => {

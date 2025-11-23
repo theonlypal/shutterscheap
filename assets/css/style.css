@@ -632,17 +632,22 @@ textarea:focus-visible {
   border-radius: 1.5rem;
   box-shadow: var(--shadow-soft);
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0s 0.8s;
   will-change: opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  pointer-events: none;
 }
 
 .hero-slideshow-image.active {
   opacity: 1;
+  visibility: visible;
   z-index: 2;
+  transition: opacity 0.8s ease-in-out, visibility 0s 0s;
+  pointer-events: auto;
 }
 
 .hero-slideshow-image:not(.active) {
@@ -680,12 +685,14 @@ textarea:focus-visible {
 }
 
 .hero-media__card {
+  position: relative;
   background: var(--color-card);
   padding: 1.25rem;
   border-radius: 1rem;
   box-shadow: var(--shadow-soft);
   font-size: 0.95rem;
   margin-top: 1rem;
+  z-index: 1;
 }
 
 .hero-media__card span {
@@ -1650,6 +1657,7 @@ figcaption {
   }
 
   .hero-media__card {
+    position: relative;
     order: 1.5;
     margin: 1rem 0;
     padding: 1rem;
@@ -1657,6 +1665,7 @@ figcaption {
     text-align: center;
     background: rgba(252, 211, 77, 0.1);
     border-left: 3px solid var(--color-accent-soft);
+    z-index: 1;
   }
 
   .hero-media__card span {
