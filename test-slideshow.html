@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow Test</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .slide:nth-child(1) { background: #e74c3c; }
+    .slide:nth-child(2) { background: #3498db; }
+    .slide:nth-child(3) { background: #2ecc71; }
+    .slide:nth-child(4) { background: #f39c12; }
+    .slide:nth-child(5) { background: #9b59b6; }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    #log {
+      margin-top: 20px;
+      padding: 15px;
+      background: #ecf0f1;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .log-entry {
+      padding: 2px 0;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>Slideshow Test - Minimal Implementation</h1>
+    <p>If this works, the problem is somewhere else in the site CSS/JS</p>
+
+    <div class="slideshow-container" id="slideshow">
+      <div class="slide active">SLIDE 1</div>
+      <div class="slide">SLIDE 2</div>
+      <div class="slide">SLIDE 3</div>
+      <div class="slide">SLIDE 4</div>
+      <div class="slide">SLIDE 5</div>
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSlide()">Previous</button>
+      <button onclick="nextSlide()">Next</button>
+      <button onclick="toggleAutoplay()">Toggle Autoplay</button>
+    </div>
+
+    <div id="log">
+      <div class="log-entry"><strong>Console Log:</strong></div>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+    let autoplayInterval = null;
+    const logEl = document.getElementById('log');
+
+    function log(message) {
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+      entry.textContent = new Date().toLocaleTimeString() + ' - ' + message;
+      logEl.appendChild(entry);
+      logEl.scrollTop = logEl.scrollHeight;
+      console.log(message);
+    }
+
+    function showSlide(index) {
+      log(`showSlide called with index: ${index}`);
+
+      const newIndex = ((index % slides.length) + slides.length) % slides.length;
+      log(`Transitioning from ${currentIndex} to ${newIndex}`);
+
+      // Remove active from all
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+      });
+
+      // Update index
+      currentIndex = newIndex;
+
+      // Add active to current
+      slides[currentIndex].classList.add('active');
+
+      log(`✓ Slide ${currentIndex} is now active`);
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    function toggleAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+        log('⏸ Autoplay STOPPED');
+      } else {
+        autoplayInterval = setInterval(() => {
+          log('⏩ Auto-advancing...');
+          nextSlide();
+        }, 2000);
+        log('▶ Autoplay STARTED (2s interval)');
+      }
+    }
+
+    // Initialize
+    log('=== SLIDESHOW INITIALIZED ===');
+    log(`Total slides: ${slides.length}`);
+    log('First slide set to active');
+
+    // Start autoplay automatically
+    toggleAutoplay();
+  </script>
+</body>
+</html>

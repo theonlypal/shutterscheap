@@ -537,4 +537,90 @@ ready(() => {
       });
     }, 100);
   }
+
+  // ============================================
+  // BOTTOM NAVIGATION BAR - Active State Management
+  // ============================================
+  const bottomNav = document.querySelector('.bottom-nav');
+  if (bottomNav) {
+    const bottomNavItems = bottomNav.querySelectorAll('.bottom-nav__item');
+
+    // Set active state based on current page
+    const currentPage = window.location.pathname;
+    const currentHash = window.location.hash;
+
+    bottomNavItems.forEach(item => {
+      const href = item.getAttribute('href');
+
+      // Check if this is the current page
+      if (href) {
+        // For hash links (like #contact)
+        if (href.startsWith('#') && currentHash === href) {
+          item.classList.add('active');
+        }
+        // For page links (like shutters.html)
+        else if (href.includes('.html') && currentPage.includes(href.split('?')[0].split('#')[0])) {
+          item.classList.add('active');
+        }
+        // For home page
+        else if (href.includes('#home') && (currentPage === '/' || currentPage.includes('index.html'))) {
+          item.classList.add('active');
+        }
+      }
+    });
+
+    // Handle smooth scrolling for hash links
+    bottomNavItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        const href = item.getAttribute('href');
+
+        // Only handle hash links on the same page
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+
+          // Remove active from all items
+          bottomNavItems.forEach(i => i.classList.remove('active'));
+
+          // Add active to clicked item
+          item.classList.add('active');
+
+          // Smooth scroll to target
+          smoothScroll(href);
+
+          // Update URL hash without jumping
+          history.pushState(null, null, href);
+        }
+
+        // For external links (like tel:), let them work normally
+        // For page navigation, let the browser handle it
+      });
+    });
+
+    // Update active state on scroll (for hash sections)
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollPosition = window.pageYOffset + 100;
+
+        // Check which section is in view
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            // Find matching bottom nav item
+            bottomNavItems.forEach(item => {
+              const href = item.getAttribute('href');
+              if (href && href.includes('#' + sectionId)) {
+                bottomNavItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+              }
+            });
+          }
+        });
+      }, 100);
+    });
+  }
 });
