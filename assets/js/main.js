@@ -220,6 +220,9 @@ ready(() => {
       // Remove active from all
       images.forEach((img, i) => {
         img.classList.remove('active');
+        // Force style check
+        const computedStyle = window.getComputedStyle(img);
+        console.log(`Image ${i} after remove - opacity: ${computedStyle.opacity}, zIndex: ${computedStyle.zIndex}, display: ${computedStyle.display}`);
       });
       dots.forEach((dot, i) => {
         dot.classList.remove('active');
@@ -234,8 +237,11 @@ ready(() => {
         dots[currentIndex].classList.add('active');
       }
 
+      // Check computed style after adding active
+      const activeStyle = window.getComputedStyle(images[currentIndex]);
       console.log('Active image index:', currentIndex);
       console.log('Image has active class:', images[currentIndex].classList.contains('active'));
+      console.log(`Active image computed - opacity: ${activeStyle.opacity}, zIndex: ${activeStyle.zIndex}, display: ${activeStyle.display}, transition: ${activeStyle.transition}`);
       console.log('===================');
     };
 
