@@ -204,70 +204,69 @@ ready(() => {
     let currentIndex = 0;
     let autoplayInterval = null;
 
-    console.log('Slideshow initialized with', images.length, 'images');
+    console.log('=== SLIDESHOW INIT ===');
+    console.log('Total images:', images.length);
+    console.log('Total dots:', dots.length);
 
-    // Ensure first image is visible on load
-    if (images.length > 0) {
-      images[0].classList.add('active');
-      if (dots[0]) dots[0].classList.add('active');
-      console.log('First image set to active');
-    }
+    const showSlide = (targetIndex) => {
+      console.log('=== SHOW SLIDE ===');
+      console.log('Target index:', targetIndex);
+      console.log('Current index before:', currentIndex);
 
-    const showSlide = (index) => {
-      console.log('showSlide called with index:', index);
+      // Calculate new index with wrapping
+      const newIndex = ((targetIndex % images.length) + images.length) % images.length;
+      console.log('New index after wrapping:', newIndex);
 
-      // Update index with wrapping first
-      const newIndex = (index + images.length) % images.length;
-
-      // Don't do anything if we're already showing this slide
-      if (newIndex === currentIndex && images[currentIndex].classList.contains('active')) {
-        console.log('Already showing slide', newIndex);
-        return;
-      }
-
-      console.log('Transitioning from slide', currentIndex, 'to slide', newIndex);
-
-      // Remove active class from all images and dots
+      // Remove active from all
       images.forEach((img, i) => {
         img.classList.remove('active');
       });
-      dots.forEach(dot => dot.classList.remove('active'));
+      dots.forEach((dot, i) => {
+        dot.classList.remove('active');
+      });
 
       // Update current index
       currentIndex = newIndex;
 
-      // Force a reflow to ensure CSS transition triggers
-      void images[currentIndex].offsetWidth;
-
-      // Add active class to new image and dot
+      // Add active to current
       images[currentIndex].classList.add('active');
-      if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+      if (dots[currentIndex]) {
+        dots[currentIndex].classList.add('active');
+      }
 
-      console.log('Now showing slide:', currentIndex);
+      console.log('Active image index:', currentIndex);
+      console.log('Image has active class:', images[currentIndex].classList.contains('active'));
+      console.log('===================');
     };
 
     const stopAutoplay = () => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval);
         autoplayInterval = null;
+        console.log('Autoplay STOPPED');
       }
     };
 
     const startAutoplay = () => {
       stopAutoplay();
-      // Auto-advance every 3 seconds
       autoplayInterval = setInterval(() => {
+        console.log('Auto-advancing to next slide...');
         showSlide(currentIndex + 1);
       }, 3000);
-      console.log('Autoplay started');
+      console.log('Autoplay STARTED (3s interval)');
     };
+
+    // Initialize first slide
+    showSlide(0);
 
     // Click handler for dots
     dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
+      dot.addEventListener('click', (e) => {
+        console.log('Dot clicked:', index);
+        e.preventDefault();
         showSlide(index);
         stopAutoplay();
-        startAutoplay(); // Restart autoplay after manual interaction
+        startAutoplay();
       });
     });
 
@@ -285,19 +284,19 @@ ready(() => {
     }, { passive: true });
 
     const handleSwipe = () => {
-      const swipeThreshold = 50; // Minimum swipe distance
+      const swipeThreshold = 50;
       const diff = touchStartX - touchEndX;
 
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
-          // Swiped left - next slide
+          console.log('Swiped left - next slide');
           showSlide(currentIndex + 1);
         } else {
-          // Swiped right - previous slide
+          console.log('Swiped right - previous slide');
           showSlide(currentIndex - 1);
         }
         stopAutoplay();
-        startAutoplay(); // Restart autoplay after swipe
+        startAutoplay();
       }
     };
 
