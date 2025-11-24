@@ -1416,12 +1416,15 @@ figcaption {
     right: -100%;
     bottom: 0;
     width: 280px;
+    max-width: 85vw;
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
     display: flex;
     flex-direction: column;
     padding: 0;
+    padding-top: 70px;
+    padding-bottom: 20px;
     transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 9999;
+    z-index: 9998;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -1434,19 +1437,27 @@ figcaption {
     right: 0;
   }
 
-  /* Compact header - Yellow brand */
+  /* Compact header - Yellow brand - Fixed at top */
   .site-nav::before {
     content: 'MORE';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 85vw;
     display: block;
     padding: 1.25rem 1.5rem 1rem;
-    background: rgba(15, 23, 42, 0.1);
+    background: rgba(15, 23, 42, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     font-weight: 700;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #0f172a;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.15);
-    flex-shrink: 0;
+    border-bottom: 2px solid rgba(15, 23, 42, 0.2);
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   /* Buttery smooth navigation links */
@@ -1495,32 +1506,38 @@ figcaption {
     transform: translateY(-50%) scaleY(1);
   }
 
-  /* Dashboard admin link - special styling */
+  /* Dashboard admin link - special styling at bottom */
   .site-nav a[href*="dashboard"] {
-    background: rgba(15, 23, 42, 0.08);
-    border-top: 2px solid rgba(15, 23, 42, 0.2);
+    background: rgba(15, 23, 42, 0.12);
+    border-top: 2px solid rgba(15, 23, 42, 0.25);
     margin-top: auto;
+    margin-bottom: env(safe-area-inset-bottom, 0);
+    padding: 1rem 1.5rem;
     font-weight: 700;
     font-size: 0.875rem;
     letter-spacing: 0.05em;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   }
 
   .site-nav a[href*="dashboard"]::before {
     background: #0f172a;
     width: 3px;
+    height: 80%;
   }
 
-  /* Premium hamburger button */
+  /* Premium hamburger button - Always on top */
   .nav-toggle {
     display: inline-flex;
     flex-direction: column;
     gap: 5px;
     padding: 10px;
     background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 10001;
     position: relative;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
