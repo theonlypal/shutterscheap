@@ -528,10 +528,17 @@ ready(() => {
     selects.forEach((select, idx) => {
       console.log(`Setting up select #${idx}`);
 
+      // Remove required attribute to prevent iOS validation picker
+      const wasRequired = select.hasAttribute('required');
+      if (wasRequired) {
+        select.removeAttribute('required');
+        console.log(`Removed required from select #${idx}`);
+      }
+
       // Get current select value for display
       const getDisplayText = () => {
         const selected = select.options[select.selectedIndex];
-        return selected ? selected.text : 'Select one';
+        return selected && selected.value ? selected.text : 'Select one';
       };
 
       // HIDE the actual select completely
@@ -548,6 +555,7 @@ ready(() => {
 
       // Create a fake select button that looks identical
       const fakeSelect = document.createElement('div');
+      fakeSelect.className = 'mobile-fake-select';
       fakeSelect.style.cssText = `
         font-size: 16px;
         padding: 0.75rem;
@@ -569,34 +577,60 @@ ready(() => {
         align-items: center;
         user-select: none;
         -webkit-user-select: none;
+        -webkit-touch-callout: none;
         font-family: inherit;
         color: #0f172a;
+        touch-action: manipulation;
       `;
       fakeSelect.textContent = getDisplayText();
+
+      // Store reference to select for validation
+      fakeSelect.dataset.selectId = idx;
+      fakeSelect.dataset.required = wasRequired;
 
       // Insert fake select after the real select
       select.parentNode.insertBefore(fakeSelect, select.nextSibling);
 
       // Update fake select text when real select changes
       const updateFakeSelect = () => {
-        fakeSelect.textContent = getDisplayText();
+        const text = getDisplayText();
+        fakeSelect.textContent = text;
+
+        // Update visual state for required fields
+        if (wasRequired) {
+          if (select.value) {
+            fakeSelect.style.borderColor = '#cbd5e1';
+          } else {
+            fakeSelect.style.borderColor = '#cbd5e1';
+          }
+        }
       };
       select.addEventListener('change', updateFakeSelect);
 
-      // Add events to the FAKE SELECT
-      fakeSelect.addEventListener('touchstart', (e) => {
-        console.log(`FAKE SELECT #${idx} TOUCH START`);
+      // Validate on form submit
+      const form = select.closest('form');
+      if (form && wasRequired) {
+        form.addEventListener('submit', (e) => {
+          if (!select.value) {
+            e.preventDefault();
+            fakeSelect.style.borderColor = '#ef4444';
+            fakeSelect.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.15)';
+            console.log(`Select #${idx} validation failed`);
+
+            // Show error message
+            alert('Please select ' + (label.textContent.split('\n')[0].trim().replace(/\*$/, '')));
+            return false;
+          }
+        });
+      }
+
+      // Add events to the FAKE SELECT - using touchend instead of touchstart
+      fakeSelect.addEventListener('touchend', (e) => {
+        console.log(`FAKE SELECT #${idx} TOUCH END`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       }, { passive: false });
-
-      fakeSelect.addEventListener('mousedown', (e) => {
-        console.log(`FAKE SELECT #${idx} MOUSE DOWN`);
-        e.preventDefault();
-        e.stopPropagation();
-        openDrawer(select);
-      });
 
       fakeSelect.addEventListener('click', (e) => {
         console.log(`FAKE SELECT #${idx} CLICK`);
