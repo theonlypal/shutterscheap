@@ -1409,120 +1409,81 @@ figcaption {
     display: none;
   }
 
-  /* Premium slide-in navigation - YELLOW BRAND STYLE */
+  /* Compact slide-in navigation - YELLOW BRAND */
   .site-nav {
     position: fixed;
     top: 0;
     right: -100%;
     bottom: 0;
-    width: 280px;
-    max-width: 85vw;
+    width: 200px;
+    max-width: 70vw;
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
     display: flex;
     flex-direction: column;
     padding: 0;
-    padding-top: 70px;
-    padding-bottom: 20px;
-    transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding-top: 45px;
+    padding-bottom: 10px;
+    transition: right 0.25s ease-out;
     z-index: 9998;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
   }
 
   .site-nav.is-open {
     right: 0;
   }
 
-  /* Compact header - Yellow brand - Fixed at top */
+  /* Compact header - Fixed at top */
   .site-nav::before {
-    content: 'MORE';
+    content: 'MENU';
     position: fixed;
     top: 0;
     right: 0;
-    width: 280px;
-    max-width: 85vw;
+    width: 200px;
+    max-width: 70vw;
     display: block;
-    padding: 1.25rem 1.5rem 1rem;
-    background: rgba(15, 23, 42, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    padding: 0.75rem 1rem 0.5rem;
+    background: rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #0f172a;
-    border-bottom: 2px solid rgba(15, 23, 42, 0.2);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.15);
     z-index: 9999;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
-  /* Buttery smooth navigation links */
+  /* Compact navigation links */
   .site-nav a {
     display: flex;
     align-items: center;
-    padding: 0.85rem 1.5rem;
-    font-size: 0.9375rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
     color: #0f172a;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    transition: all 0.2s ease;
     position: relative;
     flex-shrink: 0;
-    will-change: transform, background;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    text-overflow: ellipsis;
-  }
-
-  .site-nav a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleY(0);
-    width: 4px;
-    height: 70%;
-    background: #0f172a;
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    border-radius: 0 2px 2px 0;
   }
 
   .site-nav a:active {
-    background: rgba(15, 23, 42, 0.15);
-    transform: translate3d(4px, 0, 0);
-    color: #0f172a;
-    transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: rgba(15, 23, 42, 0.1);
   }
 
-  .site-nav a:active::before {
-    transform: translateY(-50%) scaleY(1);
-  }
-
-  /* Dashboard admin link - special styling at bottom */
+  /* Dashboard admin link - compact at bottom */
   .site-nav a[href*="dashboard"] {
-    background: rgba(15, 23, 42, 0.12);
-    border-top: 2px solid rgba(15, 23, 42, 0.25);
+    background: rgba(15, 23, 42, 0.1);
+    border-top: 1px solid rgba(15, 23, 42, 0.2);
     margin-top: auto;
-    margin-bottom: env(safe-area-inset-bottom, 0);
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem;
     font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .site-nav a[href*="dashboard"]::before {
-    background: #0f172a;
-    width: 3px;
-    height: 80%;
+    font-size: 0.8125rem;
   }
 
   /* Premium hamburger button - Always on top */
