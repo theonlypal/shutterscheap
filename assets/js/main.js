@@ -398,29 +398,19 @@ ready(() => {
     debugLog.innerHTML = '';
   });
 
-  // Mobile select drawer - SIMPLIFIED APPROACH
-  console.log('=== MOBILE SELECT DRAWER DEBUG ===');
-  console.log('Window width:', window.innerWidth);
-  console.log('Screen width:', window.screen.width);
-  console.log('User agent:', navigator.userAgent);
+  // COMPLETE REPLACEMENT APPROACH - Remove selects entirely on mobile
+  console.log('=== MOBILE SELECT REPLACEMENT ===');
 
-  // Check if we're on mobile more reliably
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
-  console.log('Is mobile device:', isMobile);
+  console.log('Is mobile:', isMobile);
 
   if (isMobile) {
-    console.log('Mobile device detected - setting up drawer');
-
     const selects = document.querySelectorAll('select');
-    console.log('Found select elements:', selects.length);
+    console.log('Found selects:', selects.length);
 
-    if (selects.length === 0) {
-      console.warn('NO SELECT ELEMENTS FOUND!');
-      return;
-    }
-
-    // Create drawer overlay
+    // Create overlay
     const overlay = document.createElement('div');
+    overlay.id = 'select-overlay';
     overlay.style.cssText = `
       position: fixed;
       top: 0;
@@ -435,6 +425,7 @@ ready(() => {
 
     // Create drawer
     const drawer = document.createElement('div');
+    drawer.id = 'select-drawer';
     drawer.style.cssText = `
       position: fixed;
       top: 0;
@@ -450,62 +441,71 @@ ready(() => {
       box-shadow: -4px 0 20px rgba(0,0,0,0.3);
     `;
 
-    drawer.innerHTML = `
-      <div style="padding: 1.25rem; background: #fcd34d; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
-        <h3 style="margin: 0; font-size: 1.125rem; font-weight: 700;" id="drawer-title">Select an option</h3>
-        <button type="button" style="background: transparent; border: none; font-size: 2rem; cursor: pointer; padding: 0; width: 36px; height: 36px;" id="close-drawer">&times;</button>
-      </div>
-      <div id="drawer-options" style="flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;"></div>
+    const drawerHeader = document.createElement('div');
+    drawerHeader.style.cssText = `
+      padding: 1.25rem;
+      background: #fcd34d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
     `;
+    drawerHeader.innerHTML = `
+      <h3 id="drawer-title" style="margin: 0; font-size: 1.125rem; font-weight: 700;">Select</h3>
+      <button type="button" id="close-drawer" style="background: transparent; border: none; font-size: 2rem; cursor: pointer; padding: 0; width: 36px; height: 36px;">&times;</button>
+    `;
+
+    const drawerContent = document.createElement('div');
+    drawerContent.id = 'drawer-options';
+    drawerContent.style.cssText = `
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    `;
+
+    drawer.appendChild(drawerHeader);
+    drawer.appendChild(drawerContent);
     document.body.appendChild(drawer);
 
-    const drawerTitle = drawer.querySelector('#drawer-title');
-    const drawerOptions = drawer.querySelector('#drawer-options');
-    const closeBtn = drawer.querySelector('#close-drawer');
+    let currentHiddenInput = null;
+    let currentButton = null;
 
-    let currentSelect = null;
+    const openDrawer = (button, hiddenInput, options, label) => {
+      console.log('OPEN DRAWER');
+      currentHiddenInput = hiddenInput;
+      currentButton = button;
 
-    const openDrawer = (select) => {
-      console.log('>>> OPENING DRAWER <<<');
-      currentSelect = select;
+      document.getElementById('drawer-title').textContent = label;
 
-      // Set title
-      const label = select.closest('label');
-      const labelText = label ? label.textContent.split('\n')[0].trim() : 'Select an option';
-      drawerTitle.textContent = labelText;
-
-      // Populate options
-      drawerOptions.innerHTML = '';
-      Array.from(select.options).forEach((option, index) => {
-        if (!option.value) return;
-
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.textContent = option.text;
-        btn.style.cssText = `
+      drawerContent.innerHTML = '';
+      options.forEach(opt => {
+        const optBtn = document.createElement('button');
+        optBtn.type = 'button';
+        optBtn.textContent = opt.text;
+        optBtn.style.cssText = `
           display: block;
           width: 100%;
           padding: 1rem 1.25rem;
           text-align: left;
-          background: ${option.selected ? 'rgba(252, 211, 77, 0.2)' : 'transparent'};
+          background: ${opt.value === hiddenInput.value ? 'rgba(252, 211, 77, 0.2)' : 'transparent'};
           border: none;
           border-bottom: 1px solid #e2e8f0;
           font-size: 1rem;
-          font-weight: ${option.selected ? '600' : '500'};
+          font-weight: ${opt.value === hiddenInput.value ? '600' : '500'};
           cursor: pointer;
         `;
 
-        btn.addEventListener('click', () => {
-          console.log('Option clicked:', option.text);
-          select.selectedIndex = index;
-          select.dispatchEvent(new Event('change', { bubbles: true }));
+        optBtn.addEventListener('click', () => {
+          console.log('Selected:', opt.text);
+          hiddenInput.value = opt.value;
+          button.textContent = opt.text;
+          button.style.color = '#0f172a';
           closeDrawer();
         });
 
-        drawerOptions.appendChild(btn);
+        drawerContent.appendChild(optBtn);
       });
 
-      // Show drawer
       overlay.style.display = 'block';
       setTimeout(() => {
         drawer.style.right = '0';
@@ -514,56 +514,50 @@ ready(() => {
     };
 
     const closeDrawer = () => {
-      console.log('>>> CLOSING DRAWER <<<');
+      console.log('CLOSE DRAWER');
       drawer.style.right = '-100%';
       overlay.style.display = 'none';
       document.body.style.overflow = '';
-      currentSelect = null;
     };
 
-    closeBtn.addEventListener('click', closeDrawer);
+    document.getElementById('close-drawer').addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
 
-    // Process each select
+    // Replace each select with button + hidden input
     selects.forEach((select, idx) => {
-      console.log(`Setting up select #${idx}`);
+      console.log(`Replacing select ${idx}`);
 
-      // Remove required attribute to prevent iOS validation picker
-      const wasRequired = select.hasAttribute('required');
-      if (wasRequired) {
-        select.removeAttribute('required');
-        console.log(`Removed required from select #${idx}`);
-      }
+      const isRequired = select.hasAttribute('required');
+      const name = select.getAttribute('name');
 
-      // Get current select value for display
-      const getDisplayText = () => {
-        const selected = select.options[select.selectedIndex];
-        return selected && selected.value ? selected.text : 'Select one';
-      };
+      // Extract options
+      const options = Array.from(select.options)
+        .filter(opt => opt.value)
+        .map(opt => ({ value: opt.value, text: opt.text }));
 
-      // HIDE the actual select completely
-      select.style.cssText = `
-        display: none !important;
-      `;
-
-      // Get the label that contains the select
+      // Get label text
       const label = select.closest('label');
-      if (!label) {
-        console.warn(`Select #${idx} has no label parent, skipping`);
-        return;
+      const labelText = label ? label.textContent.split('\n')[0].trim().replace(/\*$/, '') : 'Select';
+
+      // Create hidden input to store value
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = name;
+      hiddenInput.value = '';
+      if (isRequired) {
+        hiddenInput.setAttribute('data-required', 'true');
       }
 
-      // Create a fake select button that looks identical
-      const fakeSelect = document.createElement('div');
-      fakeSelect.className = 'mobile-fake-select';
-      fakeSelect.style.cssText = `
+      // Create visible button
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = 'Select one';
+      button.style.cssText = `
+        width: 100%;
         font-size: 16px;
         padding: 0.75rem;
         border-radius: 0.5rem;
         min-height: 48px;
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
         background-color: #ffffff;
         border: 2px solid #cbd5e1;
         cursor: pointer;
@@ -573,77 +567,42 @@ ready(() => {
         background-position: right 0.75rem center;
         background-size: 16px;
         padding-right: 2.5rem;
-        display: flex;
-        align-items: center;
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
+        text-align: left;
         font-family: inherit;
-        color: #0f172a;
+        color: #94a3b8;
         touch-action: manipulation;
       `;
-      fakeSelect.textContent = getDisplayText();
 
-      // Store reference to select for validation
-      fakeSelect.dataset.selectId = idx;
-      fakeSelect.dataset.required = wasRequired;
-
-      // Insert fake select after the real select
-      select.parentNode.insertBefore(fakeSelect, select.nextSibling);
-
-      // Update fake select text when real select changes
-      const updateFakeSelect = () => {
-        const text = getDisplayText();
-        fakeSelect.textContent = text;
-
-        // Update visual state for required fields
-        if (wasRequired) {
-          if (select.value) {
-            fakeSelect.style.borderColor = '#cbd5e1';
-          } else {
-            fakeSelect.style.borderColor = '#cbd5e1';
-          }
-        }
-      };
-      select.addEventListener('change', updateFakeSelect);
-
-      // Validate on form submit
-      const form = select.closest('form');
-      if (form && wasRequired) {
-        form.addEventListener('submit', (e) => {
-          if (!select.value) {
-            e.preventDefault();
-            fakeSelect.style.borderColor = '#ef4444';
-            fakeSelect.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.15)';
-            console.log(`Select #${idx} validation failed`);
-
-            // Show error message
-            alert('Please select ' + (label.textContent.split('\n')[0].trim().replace(/\*$/, '')));
-            return false;
-          }
-        });
-      }
-
-      // Add events to the FAKE SELECT - using touchend instead of touchstart
-      fakeSelect.addEventListener('touchend', (e) => {
-        console.log(`FAKE SELECT #${idx} TOUCH END`);
+      button.addEventListener('click', (e) => {
         e.preventDefault();
-        e.stopPropagation();
-        openDrawer(select);
-      }, { passive: false });
-
-      fakeSelect.addEventListener('click', (e) => {
-        console.log(`FAKE SELECT #${idx} CLICK`);
-        e.preventDefault();
-        e.stopPropagation();
-        openDrawer(select);
+        console.log(`Button ${idx} clicked`);
+        openDrawer(button, hiddenInput, options, labelText);
       });
 
-      console.log(`Select #${idx} replaced with fake select`);
+      // Handle form submission validation
+      const form = select.closest('form');
+      if (form && isRequired) {
+        form.addEventListener('submit', (e) => {
+          if (!hiddenInput.value) {
+            e.preventDefault();
+            e.stopPropagation();
+            button.style.borderColor = '#ef4444';
+            button.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.15)';
+            alert(`Please select ${labelText}`);
+            console.log('Validation failed for', labelText);
+            return false;
+          }
+        }, true);
+      }
+
+      // Replace select with button and hidden input
+      select.parentNode.insertBefore(button, select);
+      select.parentNode.insertBefore(hiddenInput, select);
+      select.remove();
+
+      console.log(`Select ${idx} replaced`);
     });
 
-    console.log('=== DRAWER SETUP COMPLETE ===');
-  } else {
-    console.log('Not a mobile device, skipping');
+    console.log('=== REPLACEMENT COMPLETE ===');
   }
 });
