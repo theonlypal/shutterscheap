@@ -319,290 +319,202 @@ ready(() => {
     });
   }
 
-  // ON-SCREEN DEBUG CONSOLE FOR MOBILE
-  const debugConsole = document.createElement('div');
-  debugConsole.id = 'mobile-debug-console';
-  debugConsole.style.cssText = `
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-height: 250px;
-    background: rgba(0, 0, 0, 0.95);
-    color: #0f0;
-    font-family: monospace;
-    font-size: 11px;
-    padding: 10px;
-    overflow-y: auto;
-    z-index: 999999;
-    border-top: 2px solid #0f0;
-  `;
-
-  const debugHeader = document.createElement('div');
-  debugHeader.style.cssText = `
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #0f0;
-    position: sticky;
-    top: 0;
-    background: rgba(0, 0, 0, 0.95);
-  `;
-  debugHeader.innerHTML = `
-    <strong>DEBUG CONSOLE</strong>
-    <button id="clear-debug" style="background: #0f0; color: #000; border: none; padding: 2px 8px; font-size: 10px; cursor: pointer;">Clear</button>
-  `;
-  debugConsole.appendChild(debugHeader);
-
-  const debugLog = document.createElement('div');
-  debugLog.id = 'debug-log';
-  debugConsole.appendChild(debugLog);
-  document.body.appendChild(debugConsole);
-
-  // Override console.log to show in our debug console
-  const originalLog = console.log;
-  const originalWarn = console.warn;
-  const originalError = console.error;
-
-  const addDebugEntry = (msg, type = 'log') => {
-    const entry = document.createElement('div');
-    const timestamp = new Date().toLocaleTimeString();
-    const color = type === 'warn' ? '#ff0' : type === 'error' ? '#f00' : '#0f0';
-    entry.style.cssText = `
-      padding: 2px 0;
-      border-bottom: 1px solid #333;
-      color: ${color};
-    `;
-    entry.textContent = `[${timestamp}] ${msg}`;
-    debugLog.appendChild(entry);
-    debugLog.scrollTop = debugLog.scrollHeight;
-  };
-
-  console.log = (...args) => {
-    originalLog(...args);
-    addDebugEntry(args.join(' '), 'log');
-  };
-
-  console.warn = (...args) => {
-    originalWarn(...args);
-    addDebugEntry(args.join(' '), 'warn');
-  };
-
-  console.error = (...args) => {
-    originalError(...args);
-    addDebugEntry(args.join(' '), 'error');
-  };
-
-  document.getElementById('clear-debug').addEventListener('click', () => {
-    debugLog.innerHTML = '';
-  });
-
-  // COMPLETE REPLACEMENT APPROACH - Remove selects entirely on mobile
-  console.log('=== MOBILE SELECT REPLACEMENT ===');
-
+  // MOBILE SELECT REPLACEMENT - Wait for everything to load then replace
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
-  console.log('Is mobile:', isMobile);
 
   if (isMobile) {
-    const selects = document.querySelectorAll('select');
-    console.log('Found selects:', selects.length);
+    // Use setTimeout to ensure this runs AFTER any other scripts
+    setTimeout(() => {
+      const selects = document.querySelectorAll('select');
 
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.id = 'select-overlay';
-    overlay.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 99999;
-      display: none;
-    `;
-    document.body.appendChild(overlay);
+      if (selects.length === 0) return;
 
-    // Create drawer
-    const drawer = document.createElement('div');
-    drawer.id = 'select-drawer';
-    drawer.style.cssText = `
-      position: fixed;
-      top: 0;
-      right: -100%;
-      bottom: 0;
-      width: 85%;
-      max-width: 400px;
-      background: white;
-      z-index: 100000;
-      transition: right 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -4px 0 20px rgba(0,0,0,0.3);
-    `;
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 99999;
+        display: none;
+      `;
+      document.body.appendChild(overlay);
 
-    const drawerHeader = document.createElement('div');
-    drawerHeader.style.cssText = `
-      padding: 1.25rem;
-      background: #fcd34d;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-    `;
-    drawerHeader.innerHTML = `
-      <h3 id="drawer-title" style="margin: 0; font-size: 1.125rem; font-weight: 700;">Select</h3>
-      <button type="button" id="close-drawer" style="background: transparent; border: none; font-size: 2rem; cursor: pointer; padding: 0; width: 36px; height: 36px;">&times;</button>
-    `;
-
-    const drawerContent = document.createElement('div');
-    drawerContent.id = 'drawer-options';
-    drawerContent.style.cssText = `
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    `;
-
-    drawer.appendChild(drawerHeader);
-    drawer.appendChild(drawerContent);
-    document.body.appendChild(drawer);
-
-    let currentHiddenInput = null;
-    let currentButton = null;
-
-    const openDrawer = (button, hiddenInput, options, label) => {
-      console.log('OPEN DRAWER');
-      currentHiddenInput = hiddenInput;
-      currentButton = button;
-
-      document.getElementById('drawer-title').textContent = label;
-
-      drawerContent.innerHTML = '';
-      options.forEach(opt => {
-        const optBtn = document.createElement('button');
-        optBtn.type = 'button';
-        optBtn.textContent = opt.text;
-        optBtn.style.cssText = `
-          display: block;
-          width: 100%;
-          padding: 1rem 1.25rem;
-          text-align: left;
-          background: ${opt.value === hiddenInput.value ? 'rgba(252, 211, 77, 0.2)' : 'transparent'};
-          border: none;
-          border-bottom: 1px solid #e2e8f0;
-          font-size: 1rem;
-          font-weight: ${opt.value === hiddenInput.value ? '600' : '500'};
-          cursor: pointer;
-        `;
-
-        optBtn.addEventListener('click', () => {
-          console.log('Selected:', opt.text);
-          hiddenInput.value = opt.value;
-          button.textContent = opt.text;
-          button.style.color = '#0f172a';
-          closeDrawer();
-        });
-
-        drawerContent.appendChild(optBtn);
-      });
-
-      overlay.style.display = 'block';
-      setTimeout(() => {
-        drawer.style.right = '0';
-      }, 10);
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeDrawer = () => {
-      console.log('CLOSE DRAWER');
-      drawer.style.right = '-100%';
-      overlay.style.display = 'none';
-      document.body.style.overflow = '';
-    };
-
-    document.getElementById('close-drawer').addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
-
-    // Replace each select with button + hidden input
-    selects.forEach((select, idx) => {
-      console.log(`Replacing select ${idx}`);
-
-      const isRequired = select.hasAttribute('required');
-      const name = select.getAttribute('name');
-
-      // Extract options
-      const options = Array.from(select.options)
-        .filter(opt => opt.value)
-        .map(opt => ({ value: opt.value, text: opt.text }));
-
-      // Get label text
-      const label = select.closest('label');
-      const labelText = label ? label.textContent.split('\n')[0].trim().replace(/\*$/, '') : 'Select';
-
-      // Create hidden input to store value
-      const hiddenInput = document.createElement('input');
-      hiddenInput.type = 'hidden';
-      hiddenInput.name = name;
-      hiddenInput.value = '';
-      if (isRequired) {
-        hiddenInput.setAttribute('data-required', 'true');
-      }
-
-      // Create visible button
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.textContent = 'Select one';
-      button.style.cssText = `
-        width: 100%;
-        font-size: 16px;
-        padding: 0.75rem;
-        border-radius: 0.5rem;
-        min-height: 48px;
-        background-color: #ffffff;
-        border: 2px solid #cbd5e1;
-        cursor: pointer;
-        font-weight: 500;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%230f172a' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 0.75rem center;
-        background-size: 16px;
-        padding-right: 2.5rem;
-        text-align: left;
-        font-family: inherit;
-        color: #94a3b8;
-        touch-action: manipulation;
+      // Create drawer
+      const drawer = document.createElement('div');
+      drawer.style.cssText = `
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        width: 85%;
+        max-width: 400px;
+        background: white;
+        z-index: 100000;
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        box-shadow: -4px 0 20px rgba(0,0,0,0.3);
       `;
 
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log(`Button ${idx} clicked`);
-        openDrawer(button, hiddenInput, options, labelText);
+      const drawerHeader = document.createElement('div');
+      drawerHeader.style.cssText = `
+        padding: 1.25rem;
+        background: #fcd34d;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+      `;
+      drawerHeader.innerHTML = `
+        <h3 id="drawer-title" style="margin: 0; font-size: 1.125rem; font-weight: 700;">Select</h3>
+        <button type="button" id="close-drawer" style="background: transparent; border: none; font-size: 2rem; cursor: pointer; padding: 0; width: 36px; height: 36px;">&times;</button>
+      `;
+
+      const drawerContent = document.createElement('div');
+      drawerContent.id = 'drawer-options';
+      drawerContent.style.cssText = `
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      `;
+
+      drawer.appendChild(drawerHeader);
+      drawer.appendChild(drawerContent);
+      document.body.appendChild(drawer);
+
+      const openDrawer = (button, hiddenInput, options, label) => {
+        document.getElementById('drawer-title').textContent = label;
+
+        drawerContent.innerHTML = '';
+        options.forEach(opt => {
+          const optBtn = document.createElement('button');
+          optBtn.type = 'button';
+          optBtn.textContent = opt.text;
+          optBtn.style.cssText = `
+            display: block;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            text-align: left;
+            background: ${opt.value === hiddenInput.value ? 'rgba(252, 211, 77, 0.2)' : 'transparent'};
+            border: none;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1rem;
+            font-weight: ${opt.value === hiddenInput.value ? '600' : '500'};
+            cursor: pointer;
+          `;
+
+          optBtn.addEventListener('click', () => {
+            hiddenInput.value = opt.value;
+            button.textContent = opt.text;
+            button.style.color = '#0f172a';
+            closeDrawer();
+          });
+
+          drawerContent.appendChild(optBtn);
+        });
+
+        overlay.style.display = 'block';
+        setTimeout(() => {
+          drawer.style.right = '0';
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeDrawer = () => {
+        drawer.style.right = '-100%';
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+      };
+
+      document.getElementById('close-drawer').addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+
+      // Replace each select
+      selects.forEach((select) => {
+        const isRequired = select.hasAttribute('required');
+        const name = select.getAttribute('name');
+
+        // Extract options
+        const options = Array.from(select.options)
+          .filter(opt => opt.value)
+          .map(opt => ({ value: opt.value, text: opt.text }));
+
+        // Get label text
+        const label = select.closest('label');
+        const labelText = label ? label.textContent.split('\n')[0].trim().replace(/\*$/, '') : 'Select';
+
+        // Create hidden input
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = name;
+        hiddenInput.value = '';
+        if (isRequired) {
+          hiddenInput.setAttribute('data-required', 'true');
+        }
+
+        // Create visible button
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = 'Select one';
+        button.style.cssText = `
+          width: 100%;
+          font-size: 16px;
+          padding: 0.75rem;
+          border-radius: 0.5rem;
+          min-height: 48px;
+          background-color: #ffffff;
+          border: 2px solid #cbd5e1;
+          cursor: pointer;
+          font-weight: 500;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%230f172a' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 0.75rem center;
+          background-size: 16px;
+          padding-right: 2.5rem;
+          text-align: left;
+          font-family: inherit;
+          color: #94a3b8;
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
+        `;
+
+        button.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openDrawer(button, hiddenInput, options, labelText);
+        }, { passive: false });
+
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openDrawer(button, hiddenInput, options, labelText);
+        });
+
+        // Handle form validation
+        const form = select.closest('form');
+        if (form && isRequired) {
+          form.addEventListener('submit', (e) => {
+            if (!hiddenInput.value) {
+              e.preventDefault();
+              e.stopPropagation();
+              button.style.borderColor = '#ef4444';
+              button.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.15)';
+              alert(`Please select ${labelText}`);
+              return false;
+            }
+          }, true);
+        }
+
+        // CRITICAL: Remove select from DOM completely
+        const parent = select.parentNode;
+        parent.insertBefore(button, select);
+        parent.insertBefore(hiddenInput, select);
+        parent.removeChild(select);
       });
-
-      // Handle form submission validation
-      const form = select.closest('form');
-      if (form && isRequired) {
-        form.addEventListener('submit', (e) => {
-          if (!hiddenInput.value) {
-            e.preventDefault();
-            e.stopPropagation();
-            button.style.borderColor = '#ef4444';
-            button.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.15)';
-            alert(`Please select ${labelText}`);
-            console.log('Validation failed for', labelText);
-            return false;
-          }
-        }, true);
-      }
-
-      // Replace select with button and hidden input
-      select.parentNode.insertBefore(button, select);
-      select.parentNode.insertBefore(hiddenInput, select);
-      select.remove();
-
-      console.log(`Select ${idx} replaced`);
-    });
-
-    console.log('=== REPLACEMENT COMPLETE ===');
+    }, 100);
   }
 });
