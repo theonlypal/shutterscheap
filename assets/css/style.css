@@ -1401,32 +1401,64 @@ figcaption {
 
 @media (max-width: 1024px) {
   .header-grid {
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
   }
 
+  /* Hide header CTA on tablet/mobile */
+  .header-cta {
+    display: none;
+  }
+
+  /* Full-screen slide-in navigation for mobile */
   .site-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fcd34d;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    width: 85%;
+    max-width: 400px;
+    background: #ffffff;
     flex-direction: column;
-    padding: 1.5rem 2rem;
-    transform: translateY(-200%);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 999;
+    padding: 0;
+    transition: right 0.3s ease;
+    z-index: 9999;
+    overflow-y: auto;
+    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.2);
   }
 
   .site-nav.is-open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    right: 0;
   }
 
+  /* Navigation header with close button */
+  .site-nav::before {
+    content: '';
+    display: block;
+    padding: 1.5rem;
+    background: #fcd34d;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-bottom: 2px solid rgba(15, 23, 42, 0.1);
+  }
+
+  /* Navigation links styling */
+  .site-nav a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.15s ease;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:active {
+    background: rgba(252, 211, 77, 0.2);
+    color: #0f172a;
+  }
+
+  /* Hamburger button styling */
   .nav-toggle {
     display: inline-flex;
     flex-direction: column;
@@ -1436,7 +1468,7 @@ figcaption {
     border: 2px solid #0f172a;
     border-radius: 8px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10000;
     position: relative;
     transition: all 0.3s ease;
   }
@@ -1454,6 +1486,15 @@ figcaption {
     transition: all 0.3s ease;
   }
 
+  /* X animation when open */
+  .nav-toggle[aria-expanded="true"] {
+    background: #0f172a;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle__line {
+    background: #fcd34d;
+  }
+
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }
@@ -1464,6 +1505,18 @@ figcaption {
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(3) {
     transform: translateY(-9px) rotate(-45deg);
+  }
+
+  /* Dark overlay when menu is open */
+  .site-nav.is-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 85%;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
   }
 
   .product-grid,

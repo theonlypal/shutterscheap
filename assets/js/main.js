@@ -34,14 +34,22 @@ ready(() => {
   }
 
   if (navToggle && nav) {
+    // Toggle menu on button click
     navToggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       const open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open.toString());
-      console.log('Nav toggle clicked, is-open:', open);
+
+      // Prevent body scroll when menu is open
+      if (open) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
 
+    // Close menu when clicking a link
     nav.querySelectorAll('a').forEach((link) =>
       link.addEventListener('click', (event) => {
         const href = link.getAttribute('href');
@@ -52,9 +60,21 @@ ready(() => {
         if (nav.classList.contains('is-open')) {
           nav.classList.remove('is-open');
           navToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
         }
       })
     );
+
+    // Close menu when clicking overlay (outside the nav)
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('is-open') &&
+          !nav.contains(e.target) &&
+          !navToggle.contains(e.target)) {
+        nav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
   scrollButtons.forEach((btn) => {
