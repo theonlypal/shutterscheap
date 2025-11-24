@@ -320,13 +320,19 @@ ready(() => {
   }
 
   // Mobile select drawer enhancement (only on small screens)
+  console.log('=== MOBILE SELECT DRAWER DEBUG ===');
+  console.log('Window width:', window.innerWidth);
+  console.log('Will initialize drawer:', window.innerWidth <= 640);
+
   if (window.innerWidth <= 640) {
     const selects = document.querySelectorAll('select');
+    console.log('Found selects:', selects.length);
 
     // Create drawer HTML (only once)
     const overlay = document.createElement('div');
     overlay.className = 'mobile-select-drawer__overlay';
     document.body.appendChild(overlay);
+    console.log('Overlay created and appended');
 
     const drawer = document.createElement('div');
     drawer.className = 'mobile-select-drawer';
@@ -338,6 +344,7 @@ ready(() => {
       <div class="mobile-select-drawer__options"></div>
     `;
     document.body.appendChild(drawer);
+    console.log('Drawer created and appended');
 
     const closeBtn = drawer.querySelector('.mobile-select-drawer__close');
     const optionsContainer = drawer.querySelector('.mobile-select-drawer__options');
@@ -352,12 +359,14 @@ ready(() => {
     };
 
     const openDrawer = (select) => {
+      console.log('*** openDrawer called ***');
       currentSelect = select;
 
       // Update drawer title from label
       const label = select.closest('label');
       const labelText = label ? label.childNodes[0].textContent.trim() : 'Select an option';
       drawerTitle.textContent = labelText;
+      console.log('Drawer title set to:', labelText);
 
       // Clear and populate options
       optionsContainer.innerHTML = '';
@@ -393,11 +402,14 @@ ready(() => {
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
 
-    selects.forEach(select => {
+    selects.forEach((select, idx) => {
+      console.log(`Processing select #${idx}:`, select);
+
       // Completely disable the native select
       select.style.pointerEvents = 'none';
       select.style.opacity = '0';
       select.style.position = 'absolute';
+      console.log(`Select #${idx} hidden`);
 
       // Create wrapper overlay to catch clicks
       const wrapper = document.createElement('div');
@@ -426,6 +438,7 @@ ready(() => {
         fakeSelect.textContent = selectedOption ? selectedOption.text : 'Select an option';
       };
       updateFakeSelect();
+      console.log(`Fake select #${idx} created with text:`, fakeSelect.textContent);
 
       // Add arrow icon
       const arrow = document.createElement('span');
@@ -437,9 +450,11 @@ ready(() => {
       select.parentNode.insertBefore(wrapper, select);
       wrapper.appendChild(fakeSelect);
       wrapper.appendChild(select);
+      console.log(`Select #${idx} wrapped and replaced`);
 
       // Handle clicks on the fake select
       fakeSelect.addEventListener('click', (e) => {
+        console.log(`*** Fake select #${idx} CLICKED ***`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
@@ -448,5 +463,9 @@ ready(() => {
       // Update fake select when real select changes
       select.addEventListener('change', updateFakeSelect);
     });
+
+    console.log('=== MOBILE SELECT DRAWER SETUP COMPLETE ===');
+  } else {
+    console.log('Window too wide, skipping mobile drawer');
   }
 });
