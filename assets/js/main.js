@@ -319,6 +319,85 @@ ready(() => {
     });
   }
 
+  // ON-SCREEN DEBUG CONSOLE FOR MOBILE
+  const debugConsole = document.createElement('div');
+  debugConsole.id = 'mobile-debug-console';
+  debugConsole.style.cssText = `
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    background: rgba(0, 0, 0, 0.95);
+    color: #0f0;
+    font-family: monospace;
+    font-size: 11px;
+    padding: 10px;
+    overflow-y: auto;
+    z-index: 999999;
+    border-top: 2px solid #0f0;
+  `;
+
+  const debugHeader = document.createElement('div');
+  debugHeader.style.cssText = `
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #0f0;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.95);
+  `;
+  debugHeader.innerHTML = `
+    <strong>DEBUG CONSOLE</strong>
+    <button id="clear-debug" style="background: #0f0; color: #000; border: none; padding: 2px 8px; font-size: 10px; cursor: pointer;">Clear</button>
+  `;
+  debugConsole.appendChild(debugHeader);
+
+  const debugLog = document.createElement('div');
+  debugLog.id = 'debug-log';
+  debugConsole.appendChild(debugLog);
+  document.body.appendChild(debugConsole);
+
+  // Override console.log to show in our debug console
+  const originalLog = console.log;
+  const originalWarn = console.warn;
+  const originalError = console.error;
+
+  const addDebugEntry = (msg, type = 'log') => {
+    const entry = document.createElement('div');
+    const timestamp = new Date().toLocaleTimeString();
+    const color = type === 'warn' ? '#ff0' : type === 'error' ? '#f00' : '#0f0';
+    entry.style.cssText = `
+      padding: 2px 0;
+      border-bottom: 1px solid #333;
+      color: ${color};
+    `;
+    entry.textContent = `[${timestamp}] ${msg}`;
+    debugLog.appendChild(entry);
+    debugLog.scrollTop = debugLog.scrollHeight;
+  };
+
+  console.log = (...args) => {
+    originalLog(...args);
+    addDebugEntry(args.join(' '), 'log');
+  };
+
+  console.warn = (...args) => {
+    originalWarn(...args);
+    addDebugEntry(args.join(' '), 'warn');
+  };
+
+  console.error = (...args) => {
+    originalError(...args);
+    addDebugEntry(args.join(' '), 'error');
+  };
+
+  document.getElementById('clear-debug').addEventListener('click', () => {
+    debugLog.innerHTML = '';
+  });
+
   // Mobile select drawer - SIMPLIFIED APPROACH
   console.log('=== MOBILE SELECT DRAWER DEBUG ===');
   console.log('Window width:', window.innerWidth);
