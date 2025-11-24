@@ -528,48 +528,63 @@ ready(() => {
     selects.forEach((select, idx) => {
       console.log(`Setting up select #${idx}`);
 
-      // Make select invisible but keep in layout
+      // COMPLETELY DISABLE the select element
       select.style.cssText = `
+        pointer-events: none !important;
         position: absolute !important;
         opacity: 0 !important;
         width: 100% !important;
         height: 100% !important;
         top: 0 !important;
         left: 0 !important;
-        z-index: 10 !important;
+        z-index: -1 !important;
       `;
 
-      // Wrap it
+      // Wrap it and create a clickable overlay
       const parent = select.parentNode;
       const wrapper = document.createElement('div');
-      wrapper.style.cssText = 'position: relative;';
+      wrapper.style.cssText = 'position: relative; cursor: pointer;';
+
+      // Create invisible overlay that sits on TOP
+      const overlay = document.createElement('div');
+      overlay.style.cssText = `
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 100 !important;
+        background: transparent !important;
+        cursor: pointer !important;
+      `;
 
       parent.insertBefore(wrapper, select);
       wrapper.appendChild(select);
+      wrapper.appendChild(overlay);
 
-      // Add touch blocker
-      select.addEventListener('touchstart', (e) => {
-        console.log(`SELECT #${idx} TOUCH START`);
+      // Add events to the OVERLAY, not the select
+      overlay.addEventListener('touchstart', (e) => {
+        console.log(`OVERLAY #${idx} TOUCH START`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       }, { passive: false });
 
-      select.addEventListener('mousedown', (e) => {
-        console.log(`SELECT #${idx} MOUSE DOWN`);
+      overlay.addEventListener('mousedown', (e) => {
+        console.log(`OVERLAY #${idx} MOUSE DOWN`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       });
 
-      select.addEventListener('click', (e) => {
-        console.log(`SELECT #${idx} CLICK`);
+      overlay.addEventListener('click', (e) => {
+        console.log(`OVERLAY #${idx} CLICK`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       });
 
-      console.log(`Select #${idx} setup complete`);
+      console.log(`Select #${idx} setup complete with overlay`);
     });
 
     console.log('=== DRAWER SETUP COMPLETE ===');
