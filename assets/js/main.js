@@ -7,6 +7,34 @@ const ready = (fn) => {
 };
 
 ready(() => {
+  // ============================================
+  // ANALYTICS TRACKING - Track page views
+  // ============================================
+  const trackPageView = () => {
+    try {
+      const pageName = document.title.split('|')[0].trim() || window.location.pathname;
+      const analytics = JSON.parse(localStorage.getItem('shutterscheap-analytics') || '{}');
+
+      if (!analytics[pageName]) {
+        analytics[pageName] = {
+          views: 0,
+          firstVisit: new Date().toISOString(),
+          lastVisit: new Date().toISOString()
+        };
+      }
+
+      analytics[pageName].views++;
+      analytics[pageName].lastVisit = new Date().toISOString();
+
+      localStorage.setItem('shutterscheap-analytics', JSON.stringify(analytics));
+    } catch (e) {
+      console.log('Analytics tracking disabled (localStorage not available)');
+    }
+  };
+
+  // Track page view on load
+  trackPageView();
+
   const header = document.querySelector('[data-component="header"]');
   const nav = document.getElementById('primary-nav');
   const navToggle = document.querySelector('.nav-toggle');

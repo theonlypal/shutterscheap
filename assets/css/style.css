@@ -1422,7 +1422,9 @@ figcaption {
     padding: 0;
     transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: 9999;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
     will-change: transform;
     transform: translate3d(0, 0, 0);
@@ -1463,6 +1465,10 @@ figcaption {
     will-change: transform, background;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
   }
 
   .site-nav a::before {
@@ -1487,6 +1493,21 @@ figcaption {
 
   .site-nav a:active::before {
     transform: translateY(-50%) scaleY(1);
+  }
+
+  /* Dashboard admin link - special styling */
+  .site-nav a[href*="dashboard"] {
+    background: rgba(15, 23, 42, 0.08);
+    border-top: 2px solid rgba(15, 23, 42, 0.2);
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+
+  .site-nav a[href*="dashboard"]::before {
+    background: #0f172a;
+    width: 3px;
   }
 
   /* Premium hamburger button */
