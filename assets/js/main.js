@@ -319,153 +319,182 @@ ready(() => {
     });
   }
 
-  // Mobile select drawer enhancement (only on small screens)
+  // Mobile select drawer - SIMPLIFIED APPROACH
   console.log('=== MOBILE SELECT DRAWER DEBUG ===');
   console.log('Window width:', window.innerWidth);
-  console.log('Will initialize drawer:', window.innerWidth <= 640);
+  console.log('Screen width:', window.screen.width);
+  console.log('User agent:', navigator.userAgent);
 
-  if (window.innerWidth <= 640) {
+  // Check if we're on mobile more reliably
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  console.log('Is mobile device:', isMobile);
+
+  if (isMobile) {
+    console.log('Mobile device detected - setting up drawer');
+
     const selects = document.querySelectorAll('select');
-    console.log('Found selects:', selects.length);
+    console.log('Found select elements:', selects.length);
 
-    // Create drawer HTML (only once)
+    if (selects.length === 0) {
+      console.warn('NO SELECT ELEMENTS FOUND!');
+      return;
+    }
+
+    // Create drawer overlay
     const overlay = document.createElement('div');
-    overlay.className = 'mobile-select-drawer__overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99999;
+      display: none;
+    `;
     document.body.appendChild(overlay);
-    console.log('Overlay created and appended');
 
+    // Create drawer
     const drawer = document.createElement('div');
-    drawer.className = 'mobile-select-drawer';
+    drawer.style.cssText = `
+      position: fixed;
+      top: 0;
+      right: -100%;
+      bottom: 0;
+      width: 85%;
+      max-width: 400px;
+      background: white;
+      z-index: 100000;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    `;
+
     drawer.innerHTML = `
-      <div class="mobile-select-drawer__header">
-        <h3 class="mobile-select-drawer__title">Select an option</h3>
-        <button class="mobile-select-drawer__close" type="button" aria-label="Close">&times;</button>
+      <div style="padding: 1.25rem; background: #fcd34d; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+        <h3 style="margin: 0; font-size: 1.125rem; font-weight: 700;" id="drawer-title">Select an option</h3>
+        <button type="button" style="background: transparent; border: none; font-size: 2rem; cursor: pointer; padding: 0; width: 36px; height: 36px;" id="close-drawer">&times;</button>
       </div>
-      <div class="mobile-select-drawer__options"></div>
+      <div id="drawer-options" style="flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;"></div>
     `;
     document.body.appendChild(drawer);
-    console.log('Drawer created and appended');
 
-    const closeBtn = drawer.querySelector('.mobile-select-drawer__close');
-    const optionsContainer = drawer.querySelector('.mobile-select-drawer__options');
-    const drawerTitle = drawer.querySelector('.mobile-select-drawer__title');
+    const drawerTitle = drawer.querySelector('#drawer-title');
+    const drawerOptions = drawer.querySelector('#drawer-options');
+    const closeBtn = drawer.querySelector('#close-drawer');
+
     let currentSelect = null;
 
-    const closeDrawer = () => {
-      drawer.classList.remove('is-open');
-      overlay.classList.remove('is-open');
-      currentSelect = null;
-      document.body.style.overflow = '';
-    };
-
     const openDrawer = (select) => {
-      console.log('*** openDrawer called ***');
+      console.log('>>> OPENING DRAWER <<<');
       currentSelect = select;
 
-      // Update drawer title from label
+      // Set title
       const label = select.closest('label');
-      const labelText = label ? label.childNodes[0].textContent.trim() : 'Select an option';
+      const labelText = label ? label.textContent.split('\n')[0].trim() : 'Select an option';
       drawerTitle.textContent = labelText;
-      console.log('Drawer title set to:', labelText);
 
-      // Clear and populate options
-      optionsContainer.innerHTML = '';
+      // Populate options
+      drawerOptions.innerHTML = '';
       Array.from(select.options).forEach((option, index) => {
-        if (option.value === '') return; // Skip placeholder options
+        if (!option.value) return;
 
         const btn = document.createElement('button');
-        btn.className = 'mobile-select-drawer__option';
-        btn.textContent = option.text;
         btn.type = 'button';
-
-        if (option.selected) {
-          btn.classList.add('is-selected');
-        }
+        btn.textContent = option.text;
+        btn.style.cssText = `
+          display: block;
+          width: 100%;
+          padding: 1rem 1.25rem;
+          text-align: left;
+          background: ${option.selected ? 'rgba(252, 211, 77, 0.2)' : 'transparent'};
+          border: none;
+          border-bottom: 1px solid #e2e8f0;
+          font-size: 1rem;
+          font-weight: ${option.selected ? '600' : '500'};
+          cursor: pointer;
+        `;
 
         btn.addEventListener('click', () => {
+          console.log('Option clicked:', option.text);
           select.selectedIndex = index;
           select.dispatchEvent(new Event('change', { bubbles: true }));
           closeDrawer();
         });
 
-        optionsContainer.appendChild(btn);
+        drawerOptions.appendChild(btn);
       });
 
-      // Prevent body scroll when drawer is open
+      // Show drawer
+      overlay.style.display = 'block';
+      setTimeout(() => {
+        drawer.style.right = '0';
+      }, 10);
       document.body.style.overflow = 'hidden';
+    };
 
-      // Open drawer
-      drawer.classList.add('is-open');
-      overlay.classList.add('is-open');
+    const closeDrawer = () => {
+      console.log('>>> CLOSING DRAWER <<<');
+      drawer.style.right = '-100%';
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+      currentSelect = null;
     };
 
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
 
+    // Process each select
     selects.forEach((select, idx) => {
-      console.log(`Processing select #${idx}:`, select);
+      console.log(`Setting up select #${idx}`);
 
-      // Completely disable the native select
-      select.style.pointerEvents = 'none';
-      select.style.opacity = '0';
-      select.style.position = 'absolute';
-      console.log(`Select #${idx} hidden`);
-
-      // Create wrapper overlay to catch clicks
-      const wrapper = document.createElement('div');
-      wrapper.style.position = 'relative';
-      wrapper.style.cursor = 'pointer';
-
-      // Create visual representation
-      const fakeSelect = document.createElement('div');
-      fakeSelect.className = 'mobile-select-fake';
-      fakeSelect.style.cssText = `
-        width: 100%;
-        padding: 0.75rem;
-        border: 2px solid #cbd5e1;
-        border-radius: 0.5rem;
-        background: #ffffff;
-        font-size: 16px;
-        min-height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-weight: 500;
+      // Make select invisible but keep in layout
+      select.style.cssText = `
+        position: absolute !important;
+        opacity: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 10 !important;
       `;
 
-      const updateFakeSelect = () => {
-        const selectedOption = select.options[select.selectedIndex];
-        fakeSelect.textContent = selectedOption ? selectedOption.text : 'Select an option';
-      };
-      updateFakeSelect();
-      console.log(`Fake select #${idx} created with text:`, fakeSelect.textContent);
+      // Wrap it
+      const parent = select.parentNode;
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'position: relative;';
 
-      // Add arrow icon
-      const arrow = document.createElement('span');
-      arrow.innerHTML = '▼';
-      arrow.style.marginLeft = '0.5rem';
-      fakeSelect.appendChild(arrow);
-
-      // Insert wrapper before select
-      select.parentNode.insertBefore(wrapper, select);
-      wrapper.appendChild(fakeSelect);
+      parent.insertBefore(wrapper, select);
       wrapper.appendChild(select);
-      console.log(`Select #${idx} wrapped and replaced`);
 
-      // Handle clicks on the fake select
-      fakeSelect.addEventListener('click', (e) => {
-        console.log(`*** Fake select #${idx} CLICKED ***`);
+      // Add touch blocker
+      select.addEventListener('touchstart', (e) => {
+        console.log(`SELECT #${idx} TOUCH START`);
+        e.preventDefault();
+        e.stopPropagation();
+        openDrawer(select);
+      }, { passive: false });
+
+      select.addEventListener('mousedown', (e) => {
+        console.log(`SELECT #${idx} MOUSE DOWN`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       });
 
-      // Update fake select when real select changes
-      select.addEventListener('change', updateFakeSelect);
+      select.addEventListener('click', (e) => {
+        console.log(`SELECT #${idx} CLICK`);
+        e.preventDefault();
+        e.stopPropagation();
+        openDrawer(select);
+      });
+
+      console.log(`Select #${idx} setup complete`);
     });
 
-    console.log('=== MOBILE SELECT DRAWER SETUP COMPLETE ===');
+    console.log('=== DRAWER SETUP COMPLETE ===');
   } else {
-    console.log('Window too wide, skipping mobile drawer');
+    console.log('Not a mobile device, skipping');
   }
 });
