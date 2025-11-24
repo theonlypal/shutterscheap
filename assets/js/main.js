@@ -528,63 +528,84 @@ ready(() => {
     selects.forEach((select, idx) => {
       console.log(`Setting up select #${idx}`);
 
-      // COMPLETELY DISABLE the select element
+      // Get current select value for display
+      const getDisplayText = () => {
+        const selected = select.options[select.selectedIndex];
+        return selected ? selected.text : 'Select one';
+      };
+
+      // HIDE the actual select completely
       select.style.cssText = `
-        pointer-events: none !important;
-        position: absolute !important;
-        opacity: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        top: 0 !important;
-        left: 0 !important;
-        z-index: -1 !important;
+        display: none !important;
       `;
 
-      // Wrap it and create a clickable overlay
-      const parent = select.parentNode;
-      const wrapper = document.createElement('div');
-      wrapper.style.cssText = 'position: relative; cursor: pointer;';
+      // Get the label that contains the select
+      const label = select.closest('label');
+      if (!label) {
+        console.warn(`Select #${idx} has no label parent, skipping`);
+        return;
+      }
 
-      // Create invisible overlay that sits on TOP
-      const overlay = document.createElement('div');
-      overlay.style.cssText = `
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 100 !important;
-        background: transparent !important;
-        cursor: pointer !important;
+      // Create a fake select button that looks identical
+      const fakeSelect = document.createElement('div');
+      fakeSelect.style.cssText = `
+        font-size: 16px;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        min-height: 48px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #ffffff;
+        border: 2px solid #cbd5e1;
+        cursor: pointer;
+        font-weight: 500;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%230f172a' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px;
+        padding-right: 2.5rem;
+        display: flex;
+        align-items: center;
+        user-select: none;
+        -webkit-user-select: none;
+        font-family: inherit;
+        color: #0f172a;
       `;
+      fakeSelect.textContent = getDisplayText();
 
-      parent.insertBefore(wrapper, select);
-      wrapper.appendChild(select);
-      wrapper.appendChild(overlay);
+      // Insert fake select after the real select
+      select.parentNode.insertBefore(fakeSelect, select.nextSibling);
 
-      // Add events to the OVERLAY, not the select
-      overlay.addEventListener('touchstart', (e) => {
-        console.log(`OVERLAY #${idx} TOUCH START`);
+      // Update fake select text when real select changes
+      const updateFakeSelect = () => {
+        fakeSelect.textContent = getDisplayText();
+      };
+      select.addEventListener('change', updateFakeSelect);
+
+      // Add events to the FAKE SELECT
+      fakeSelect.addEventListener('touchstart', (e) => {
+        console.log(`FAKE SELECT #${idx} TOUCH START`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       }, { passive: false });
 
-      overlay.addEventListener('mousedown', (e) => {
-        console.log(`OVERLAY #${idx} MOUSE DOWN`);
+      fakeSelect.addEventListener('mousedown', (e) => {
+        console.log(`FAKE SELECT #${idx} MOUSE DOWN`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       });
 
-      overlay.addEventListener('click', (e) => {
-        console.log(`OVERLAY #${idx} CLICK`);
+      fakeSelect.addEventListener('click', (e) => {
+        console.log(`FAKE SELECT #${idx} CLICK`);
         e.preventDefault();
         e.stopPropagation();
         openDrawer(select);
       });
 
-      console.log(`Select #${idx} setup complete with overlay`);
+      console.log(`Select #${idx} replaced with fake select`);
     });
 
     console.log('=== DRAWER SETUP COMPLETE ===');
