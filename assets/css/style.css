@@ -1501,13 +1501,13 @@ figcaption {
     font-size: 0.6875rem;
   }
 
-  /* Compact hamburger button - Clean positioning */
+  /* Compact hamburger button - Blue like Call button */
   .nav-toggle {
     display: inline-flex;
     flex-direction: column;
     gap: 3.5px;
     padding: 8px;
-    background: rgba(255, 255, 255, 0.95);
+    background: #1d4ed8;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: none;
@@ -1516,38 +1516,38 @@ figcaption {
     z-index: 10002;
     position: relative;
     transition: all 0.25s ease;
-    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 2px 6px rgba(29, 78, 216, 0.3);
   }
 
   .nav-toggle:hover {
-    background: #ffffff;
+    background: #1e40af;
     transform: scale(1.03);
-    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.18);
+    box-shadow: 0 3px 10px rgba(29, 78, 216, 0.4);
   }
 
   .nav-toggle__line {
     display: block;
     width: 18px;
     height: 2px;
-    background: #0f172a;
+    background: #ffffff;
     border-radius: 1px;
     transition: all 0.25s ease;
   }
 
-  /* Clean X when open - positioned in drawer */
+  /* Clean X when open - positioned in drawer, stays blue */
   .nav-toggle[aria-expanded="true"] {
     position: fixed;
     top: 12px;
     right: 12px;
-    background: rgba(15, 23, 42, 0.15);
+    background: rgba(29, 78, 216, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transform: scale(1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(29, 78, 216, 0.4);
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line {
-    background: #0f172a;
+    background: #ffffff;
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(1) {
