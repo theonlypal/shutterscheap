@@ -1436,7 +1436,7 @@ figcaption {
     display: flex;
     flex-direction: column;
     padding: 0;
-    padding-top: 78px;
+    padding-top: 50px;
     padding-bottom: 6px;
     transition: right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 10000;
@@ -1459,6 +1459,11 @@ figcaption {
 
   .site-nav.is-open {
     right: 0;
+  }
+
+  /* Special shift for home/index pages only - "Shutters" becomes first visible */
+  body[data-page="home"] .site-nav {
+    padding-top: 78px;
   }
 
   /* Remove MENU header - it was causing overlap */

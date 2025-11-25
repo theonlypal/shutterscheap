@@ -68,13 +68,6 @@ ready(() => {
       e.stopPropagation();
       const open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open.toString());
-
-      // Prevent body scroll when menu is open
-      if (open) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
     });
 
     // Close menu when clicking a link
@@ -88,7 +81,6 @@ ready(() => {
         if (nav.classList.contains('is-open')) {
           nav.classList.remove('is-open');
           navToggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
         }
       })
     );
@@ -100,7 +92,6 @@ ready(() => {
           !navToggle.contains(e.target)) {
         nav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
       }
     });
   }
