@@ -1363,6 +1363,21 @@ figcaption {
   font-size: 0.9rem;
 }
 
+/* Discreet admin dashboard link */
+.footer-meta a[href*="dashboard"] {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  margin-left: 1rem;
+}
+
+.footer-meta a[href*="dashboard"]:hover {
+  opacity: 1;
+  color: #fbbf24;
+}
+
 .utility-buttons {
   position: fixed;
   bottom: 1.5rem;
