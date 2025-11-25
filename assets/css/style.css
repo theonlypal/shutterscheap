@@ -1486,12 +1486,12 @@ figcaption {
     font-size: 0.8125rem;
   }
 
-  /* Premium hamburger button - Always on top */
+  /* Compact hamburger button - Uniform and small */
   .nav-toggle {
     display: inline-flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 10px;
+    gap: 3.5px;
+    padding: 8px;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1500,30 +1500,30 @@ figcaption {
     cursor: pointer;
     z-index: 10001;
     position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
   }
 
   .nav-toggle:hover {
     background: #ffffff;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    transform: scale(1.03);
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.18);
   }
 
   .nav-toggle__line {
     display: block;
-    width: 22px;
-    height: 2.5px;
+    width: 18px;
+    height: 2px;
     background: #0f172a;
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1px;
+    transition: all 0.25s ease;
   }
 
-  /* Premium X animation when open */
+  /* Compact X animation when open */
   .nav-toggle[aria-expanded="true"] {
     background: #0f172a;
     transform: scale(1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line {
@@ -1531,7 +1531,7 @@ figcaption {
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(1) {
-    transform: translateY(7.5px) rotate(45deg);
+    transform: translateY(5.5px) rotate(45deg);
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(2) {
@@ -1540,7 +1540,7 @@ figcaption {
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(3) {
-    transform: translateY(-7.5px) rotate(-45deg);
+    transform: translateY(-5.5px) rotate(-45deg);
   }
 
   /* Removed dark overlay - Clean slide-out menu without blocking content */
