@@ -265,10 +265,10 @@ textarea:focus-visible {
 
 .logo-subtitle {
   display: block !important;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-style: italic;
   color: var(--color-muted);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.2;
   margin-top: 0.15rem;
   transition: color 0.2s ease;
@@ -1443,10 +1443,10 @@ figcaption {
   .site-nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -200px;
     bottom: 0;
-    width: 145px;
-    max-width: 50vw;
+    width: 200px;
+    max-width: 75vw;
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
     display: flex;
     flex-direction: column;
@@ -1454,7 +1454,7 @@ figcaption {
     padding-top: 50px;
     padding-bottom: 6px;
     transition: right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10001;
+    z-index: 99999;
     /* CRITICAL: Force scrolling to work on iOS and Android */
     overflow-y: scroll !important;
     overflow-x: hidden;
@@ -1486,12 +1486,12 @@ figcaption {
     display: none;
   }
 
-  /* Ultra-compact navigation links - 50% total size reduction */
+  /* Navigation links - more readable size */
   .site-nav a {
     display: flex;
     align-items: center;
-    padding: 0.375rem 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: -0.015em;
     color: #0f172a;
@@ -1506,14 +1506,14 @@ figcaption {
     background: rgba(15, 23, 42, 0.08);
   }
 
-  /* Dashboard admin link - ultra-compact at bottom */
+  /* Dashboard admin link at bottom */
   .site-nav a[href*="dashboard"] {
     background: rgba(15, 23, 42, 0.08);
     border-top: 1px solid rgba(15, 23, 42, 0.15);
     margin-top: auto;
-    padding: 0.4rem 0.5rem;
+    padding: 0.625rem 1rem;
     font-weight: 700;
-    font-size: 0.6875rem;
+    font-size: 0.8125rem;
   }
 
   /* Compact hamburger button - Brand yellow with centered lines */
@@ -1530,7 +1530,7 @@ figcaption {
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    z-index: 10002;
+    z-index: 100000;
     position: relative;
     transition: all 0.25s ease;
     box-shadow: 0 2px 6px rgba(252, 211, 77, 0.3);
