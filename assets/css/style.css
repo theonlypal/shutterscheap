@@ -263,6 +263,21 @@ textarea:focus-visible {
   color: var(--color-blue);
 }
 
+.logo-subtitle {
+  display: block !important;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-muted);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 0.15rem;
+  transition: color 0.2s ease;
+}
+
+.logo:hover .logo-subtitle {
+  color: var(--color-blue);
+}
+
 .site-nav {
   display: flex;
   gap: 2rem;
