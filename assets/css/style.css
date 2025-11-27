@@ -270,7 +270,7 @@ textarea:focus-visible {
   color: var(--color-muted);
   font-weight: 700;
   line-height: 1.2;
-  margin-top: 0.15rem;
+  margin-top: 0.35rem;
   transition: color 0.2s ease;
 }
 
