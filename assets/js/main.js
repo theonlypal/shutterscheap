@@ -68,6 +68,18 @@ ready(() => {
       e.stopPropagation();
       const open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open.toString());
+
+      // Hide/show bottom nav when hamburger menu toggles
+      const bottomNav = document.querySelector('.bottom-nav');
+      if (bottomNav) {
+        if (open) {
+          bottomNav.style.display = 'none';
+          document.body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+        } else {
+          bottomNav.style.display = 'flex';
+          document.body.style.overflow = ''; // Restore body scroll
+        }
+      }
     });
 
     // Close menu when clicking a link
@@ -81,6 +93,13 @@ ready(() => {
         if (nav.classList.contains('is-open')) {
           nav.classList.remove('is-open');
           navToggle.setAttribute('aria-expanded', 'false');
+
+          // Show bottom nav when closing menu
+          const bottomNav = document.querySelector('.bottom-nav');
+          if (bottomNav) {
+            bottomNav.style.display = 'flex';
+            document.body.style.overflow = '';
+          }
         }
       })
     );
@@ -92,6 +111,13 @@ ready(() => {
           !navToggle.contains(e.target)) {
         nav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
+
+        // Show bottom nav when closing menu
+        const bottomNav = document.querySelector('.bottom-nav');
+        if (bottomNav) {
+          bottomNav.style.display = 'flex';
+          document.body.style.overflow = '';
+        }
       }
     });
   }
