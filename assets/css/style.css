@@ -1454,7 +1454,7 @@ figcaption {
     padding-top: 50px;
     padding-bottom: 6px;
     transition: right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10000;
+    z-index: 10001;
     /* CRITICAL: Force scrolling to work on iOS and Android */
     overflow-y: scroll !important;
     overflow-x: hidden;
