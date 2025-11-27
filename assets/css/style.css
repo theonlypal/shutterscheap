@@ -1760,6 +1760,7 @@ figcaption {
     letter-spacing: -0.015em;
     color: #0f172a;
     background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #0f172a;
     border-radius: 12px;
     transition: all 0.2s ease;
     position: relative;
@@ -1784,7 +1785,7 @@ figcaption {
   .site-nav a[href*="dashboard"] {
     background: rgba(15, 23, 42, 0.9);
     color: white;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid #0f172a;
     margin-top: 1rem;
     padding: 0.65rem 1.5rem;
     font-weight: 700;
@@ -1816,11 +1817,12 @@ figcaption {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: #0f172a;
+    background: white;
     width: auto;
     height: auto;
     padding: 12px 20px 12px 45px;
     border-radius: 25px;
+    border: 2px solid #0f172a;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
     display: flex;
     align-items: center;
@@ -1829,7 +1831,7 @@ figcaption {
 
   .nav-toggle[aria-expanded="true"]::after {
     content: "Close";
-    color: white;
+    color: #0f172a;
     font-weight: 600;
     font-size: 1rem;
     letter-spacing: -0.01em;
@@ -1838,7 +1840,7 @@ figcaption {
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line {
     position: absolute;
-    background: white;
+    background: #0f172a;
   }
 
   .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(1) {
