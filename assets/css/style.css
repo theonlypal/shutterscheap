@@ -2896,18 +2896,22 @@ figcaption {
                 background 0.1s ease-out;
   }
 
-  /* Hide on desktop */
-  @media (min-width: 1025px) {
-    .bottom-nav {
-      display: none;
-    }
+}
+
+/* ============================================
+   BOTTOM NAV - DESKTOP HIDE (OUTSIDE MEDIA QUERY)
+   ============================================ */
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .bottom-nav {
+    display: flex;
   }
 
-  /* Add padding to body to prevent content from being hidden */
-  @media (max-width: 1024px) {
-    body {
-      padding-bottom: calc(70px + env(safe-area-inset-bottom));
-    }
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
   }
 }
 
