@@ -169,6 +169,17 @@ textarea:focus-visible {
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -100vh;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: #fcd34d;
+  z-index: -1;
+}
+
 .site-header.is-scrolled {
   box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12);
 }
