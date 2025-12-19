@@ -301,8 +301,8 @@ textarea:focus-visible {
   line-height: 1.2;
   margin-top: 0.1rem;
   text-align: center;
-  -webkit-text-stroke: 2.5px #ffffff;
-  text-stroke: 2.5px #ffffff;
+  -webkit-text-stroke: 2.5px #000000;
+  text-stroke: 2.5px #000000;
   paint-order: stroke fill;
   transition: color 0.2s ease;
 }
