@@ -547,9 +547,9 @@ textarea:focus-visible {
   color: var(--color-text);
 }
 
-.hero .eyebrow {
+.hero-copy > .eyebrow {
   color: var(--color-blue);
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -557,6 +557,14 @@ textarea:focus-visible {
   margin-bottom: 1rem;
   text-align: left;
   font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Keep form card eyebrow small on desktop */
+.hero-form-card .eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
 }
 
 /* Inline slideshow positioned after h1 */
@@ -2031,7 +2039,7 @@ figcaption {
 
   /* Hero section mobile */
   .hero {
-    padding: 1rem 0 2rem;
+    padding: 0.5rem 0 2rem;
   }
 
   .hero-grid {
@@ -2055,7 +2063,7 @@ figcaption {
 
   /* Mobile headline optimization - show eyebrow and h1 ABOVE slideshow */
   .hero-copy .eyebrow {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 900;
     text-transform: uppercase;
     text-align: left;
