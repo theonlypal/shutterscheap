@@ -2007,13 +2007,13 @@ figcaption {
     box-sizing: border-box;
   }
 
-  /* Prevent horizontal scroll */
+  /* Prevent horizontal scroll - use clip instead of hidden to preserve sticky positioning */
   html {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -2069,7 +2069,7 @@ figcaption {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0 0.25rem;
+    padding: 0.75rem 0 0.5rem;
     position: relative;
     min-height: auto;
   }
