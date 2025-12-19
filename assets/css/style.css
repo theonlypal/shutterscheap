@@ -253,16 +253,16 @@ textarea:focus-visible {
   font-family: 'Open Sans', sans-serif;
   font-size: var(--font-size-xl);
   font-weight: 700;
-  color: var(--color-blue);
+  color: #ffffff;
   line-height: 1;
-  -webkit-text-stroke: 0.5px #000000;
-  text-stroke: 0.5px #000000;
+  -webkit-text-stroke: 1.5px #000000;
+  text-stroke: 1.5px #000000;
   paint-order: stroke fill;
   transition: color 0.2s ease;
 }
 
 .logo:hover .logo-name {
-  color: var(--color-blue);
+  color: #ffffff;
 }
 
 .logo-tagline {
