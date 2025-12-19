@@ -253,7 +253,7 @@ textarea:focus-visible {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-muted);
+  color: var(--color-text);
   font-weight: 600;
   line-height: 1.2;
   margin-top: 0.25rem;
@@ -271,7 +271,7 @@ textarea:focus-visible {
   color: var(--color-text);
   font-weight: 700;
   line-height: 1.2;
-  margin-top: 0.1rem;
+  margin-top: -0.1rem;
   transition: color 0.2s ease;
 }
 
