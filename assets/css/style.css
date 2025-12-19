@@ -255,8 +255,8 @@ textarea:focus-visible {
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
-  -webkit-text-stroke: 2.5px #000000;
-  text-stroke: 2.5px #000000;
+  -webkit-text-stroke: 3px #000000;
+  text-stroke: 3px #000000;
   paint-order: stroke fill;
   transition: color 0.2s ease;
 }
@@ -285,18 +285,19 @@ textarea:focus-visible {
   display: block !important;
   font-size: 1.1rem;
   font-style: italic;
-  color: var(--color-blue);
+  color: #3b82f6;
   font-weight: 700;
   line-height: 1.2;
-  margin-top: -0.1rem;
-  -webkit-text-stroke: 1.5px #000000;
-  text-stroke: 1.5px #000000;
+  margin-top: 0.1rem;
+  text-align: center;
+  -webkit-text-stroke: 1.5px #ffffff;
+  text-stroke: 1.5px #ffffff;
   paint-order: stroke fill;
   transition: color 0.2s ease;
 }
 
 .logo:hover .logo-subtitle {
-  color: var(--color-blue);
+  color: #3b82f6;
 }
 
 .site-nav {
