@@ -386,6 +386,16 @@ textarea:focus-visible {
 .ghost--bold {
   border: 2px solid #0f172a;
   font-weight: 700;
+  color: #fff;
+  text-shadow:
+    -3px -3px 0 #0f172a,
+     3px -3px 0 #0f172a,
+    -3px  3px 0 #0f172a,
+     3px  3px 0 #0f172a,
+     0   -3px 0 #0f172a,
+     0    3px 0 #0f172a,
+    -3px  0   0 #0f172a,
+     3px  0   0 #0f172a;
 }
 
 .nav-toggle {
