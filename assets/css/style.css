@@ -1609,6 +1609,12 @@ figcaption {
   margin: 0 auto;
 }
 
+.contact-info .eyebrow {
+  font-size: 1.5rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
 .contact-info ul {
   display: flex;
   flex-wrap: wrap;
@@ -2542,8 +2548,8 @@ figcaption {
   }
 
   .contact-info .eyebrow {
-    font-size: 0.65rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .contact-info h2 {
