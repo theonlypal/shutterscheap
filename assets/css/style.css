@@ -549,7 +549,12 @@ textarea:focus-visible {
 
 .hero .eyebrow {
   color: var(--color-blue);
-  font-size: var(--font-size-sm);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 .lead {
@@ -2036,9 +2041,11 @@ figcaption {
 
   /* Mobile headline optimization - show eyebrow and h1 ABOVE slideshow */
   .hero-copy .eyebrow {
-    font-size: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
     text-align: center;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
     display: block !important;
   }
 
