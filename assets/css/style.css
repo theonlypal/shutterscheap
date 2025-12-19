@@ -2063,7 +2063,7 @@ figcaption {
 
   /* Mobile headline optimization - show eyebrow and h1 ABOVE slideshow */
   .hero-copy .eyebrow {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
     font-weight: 900;
     text-transform: uppercase;
     text-align: left;
