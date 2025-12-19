@@ -1593,9 +1593,9 @@ figcaption {
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   background: #ffffff;
   border-radius: 1.5rem;
   padding: 2.5rem;
@@ -1603,9 +1603,36 @@ figcaption {
   box-shadow: var(--shadow-soft);
 }
 
-.contact-info ul li {
-  margin-bottom: 0.6rem;
+.contact-info {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
+.contact-info ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info ul li {
+  margin-bottom: 0;
+}
+
+.team-card {
+  justify-content: center;
+  max-width: 500px;
+  margin: 2rem auto 0;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 
 .team-card {
   margin-top: 2rem;
@@ -1999,9 +2026,12 @@ figcaption {
   .advantage-grid,
   .promise-grid,
   .split-grid,
-  .pricing-grid,
-  .contact-grid {
+  .pricing-grid {
     grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    flex-direction: column;
   }
 
   .product-copy {
@@ -2486,7 +2516,8 @@ figcaption {
   }
 
   .contact-info {
-    order: 3;
+    order: 1;
+    text-align: center;
   }
 
   .contact-form {
@@ -2497,9 +2528,9 @@ figcaption {
     grid-template-columns: 1fr !important;
   }
 
-  /* Ed Cox card appears ABOVE form on mobile */
+  /* Team card stays with contact info */
   .team-card {
-    order: 1;
+    order: unset;
     margin-bottom: 1.5rem;
     margin-top: 0;
   }
