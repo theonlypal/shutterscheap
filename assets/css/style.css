@@ -2031,7 +2031,7 @@ figcaption {
 
   /* Hero section mobile */
   .hero {
-    padding: 3rem 0 2rem;
+    padding: 1rem 0 2rem;
   }
 
   .hero-grid {
@@ -2055,13 +2055,14 @@ figcaption {
 
   /* Mobile headline optimization - show eyebrow and h1 ABOVE slideshow */
   .hero-copy .eyebrow {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 900;
     text-transform: uppercase;
     text-align: left;
     margin-bottom: 0.5rem;
     display: block !important;
-    line-height: 1.1;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
   /* Mobile inline slideshow */
@@ -2075,7 +2076,7 @@ figcaption {
     font-size: 1.25rem;
     line-height: 1.35;
     margin-bottom: 0.5rem;
-    text-align: center;
+    text-align: left;
     display: block !important;
   }
 
