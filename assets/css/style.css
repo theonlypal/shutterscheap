@@ -422,6 +422,9 @@ textarea:focus-visible {
   margin-bottom: 0.75rem;
   font-family: 'Space Grotesk', sans-serif;
   white-space: nowrap;
+  -webkit-text-stroke: 1px #000000;
+  text-stroke: 1px #000000;
+  paint-order: stroke fill;
 }
 
 .hero-header h1 {
