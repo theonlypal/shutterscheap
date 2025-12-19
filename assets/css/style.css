@@ -160,9 +160,10 @@ textarea:focus-visible {
 }
 
 .site-header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: 9998;
   background: #fcd34d;
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
