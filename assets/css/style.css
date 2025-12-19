@@ -2914,16 +2914,27 @@ figcaption {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 1) 100%);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
     z-index: 9999;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
     /* GPU acceleration for smooth animations */
     will-change: transform;
     transform: translate3d(0, 0, 0);
+  }
+
+  /* Make the area under the nav bar black on devices with home indicator */
+  .bottom-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-bottom);
+    background: #000000;
+    transform: translateY(100%);
   }
 
   .bottom-nav__item {
