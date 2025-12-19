@@ -2932,7 +2932,7 @@ figcaption {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #ffffff;
+    background: #fcd34d;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
@@ -2943,7 +2943,7 @@ figcaption {
     transform: translate3d(0, 0, 0);
   }
 
-  /* Make the area under the nav bar white on devices with home indicator */
+  /* Make the area under the nav bar yellow on devices with home indicator */
   .bottom-nav::after {
     content: '';
     position: absolute;
@@ -2951,7 +2951,7 @@ figcaption {
     left: 0;
     right: 0;
     height: env(safe-area-inset-bottom);
-    background: #ffffff;
+    background: #fcd34d;
     transform: translateY(100%);
   }
 
