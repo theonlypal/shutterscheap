@@ -253,8 +253,11 @@ textarea:focus-visible {
   font-family: 'Open Sans', sans-serif;
   font-size: var(--font-size-xl);
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-blue);
   line-height: 1;
+  -webkit-text-stroke: 0.5px #000000;
+  text-stroke: 0.5px #000000;
+  paint-order: stroke fill;
   transition: color 0.2s ease;
 }
 
