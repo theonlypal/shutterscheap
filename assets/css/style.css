@@ -254,8 +254,9 @@ textarea:focus-visible {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-muted);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
+  margin-top: 0.25rem;
   transition: color 0.2s ease;
 }
 
@@ -265,12 +266,12 @@ textarea:focus-visible {
 
 .logo-subtitle {
   display: block !important;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   font-style: italic;
-  color: var(--color-muted);
+  color: var(--color-text);
   font-weight: 700;
   line-height: 1.2;
-  margin-top: 0.35rem;
+  margin-top: 0.1rem;
   transition: color 0.2s ease;
 }
 
