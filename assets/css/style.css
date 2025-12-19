@@ -296,7 +296,7 @@ textarea:focus-visible {
   display: block !important;
   font-size: 1.1rem;
   font-style: italic;
-  color: #3b82f6;
+  color: #1d4ed8;
   font-weight: 700;
   line-height: 1.2;
   margin-top: 0.1rem;
@@ -308,7 +308,7 @@ textarea:focus-visible {
 }
 
 .logo:hover .logo-subtitle {
-  color: #3b82f6;
+  color: #1d4ed8;
 }
 
 .site-nav {
