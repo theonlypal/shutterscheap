@@ -2932,18 +2932,18 @@ figcaption {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: #000000;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
     padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
     z-index: 9999;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
     /* GPU acceleration for smooth animations */
     will-change: transform;
     transform: translate3d(0, 0, 0);
   }
 
-  /* Make the area under the nav bar black on devices with home indicator */
+  /* Make the area under the nav bar white on devices with home indicator */
   .bottom-nav::after {
     content: '';
     position: absolute;
@@ -2951,7 +2951,7 @@ figcaption {
     left: 0;
     right: 0;
     height: env(safe-area-inset-bottom);
-    background: #000000;
+    background: #ffffff;
     transform: translateY(100%);
   }
 
@@ -2964,7 +2964,7 @@ figcaption {
     padding: 0.5rem 0.75rem;
     min-width: 64px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(29, 78, 216, 0.7);
     position: relative;
     /* Buttery smooth spring physics easing */
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -3008,14 +3008,14 @@ figcaption {
   /* Smooth tap feedback with spring bounce */
   .bottom-nav__item:active {
     transform: translate3d(0, -3px, 0) scale(0.95);
-    color: #ffffff;
+    color: #1d4ed8;
     transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
                 color 0.1s ease-out;
   }
 
   .bottom-nav__item:active .bottom-nav__icon {
     transform: translate3d(0, -1px, 0) scale(1.15);
-    stroke: #ffffff;
+    stroke: #1d4ed8;
     transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
                 stroke 0.1s ease-out;
   }
@@ -3027,11 +3027,11 @@ figcaption {
 
   /* Active page indicator */
   .bottom-nav__item.active {
-    color: #fcd34d;
+    color: #1d4ed8;
   }
 
   .bottom-nav__item.active .bottom-nav__icon {
-    stroke: #fcd34d;
+    stroke: #1d4ed8;
   }
 
   .bottom-nav__item.active::before {
@@ -3042,18 +3042,18 @@ figcaption {
     transform: translate3d(-50%, 0, 0);
     width: 32px;
     height: 3px;
-    background: #fcd34d;
+    background: #1d4ed8;
     border-radius: 0 0 3px 3px;
   }
 
   /* CTA item (Call button) - premium emphasis */
   .bottom-nav__item--cta {
-    color: #fcd34d;
+    color: #1d4ed8;
     position: relative;
   }
 
   .bottom-nav__item--cta .bottom-nav__icon {
-    stroke: #fcd34d;
+    stroke: #1d4ed8;
   }
 
   .bottom-nav__item--cta::after {
@@ -3064,7 +3064,7 @@ figcaption {
     transform: translate3d(-50%, -50%, 0);
     width: 48px;
     height: 48px;
-    background: rgba(252, 211, 77, 0.15);
+    background: rgba(29, 78, 216, 0.1);
     border-radius: 50%;
     z-index: -1;
     /* Smooth elastic bounce for CTA emphasis */
@@ -3077,7 +3077,7 @@ figcaption {
 
   .bottom-nav__item--cta:active::after {
     transform: translate3d(-50%, -50%, 0) scale(1.25);
-    background: rgba(252, 211, 77, 0.3);
+    background: rgba(29, 78, 216, 0.2);
     transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
                 background 0.1s ease-out;
   }
