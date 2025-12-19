@@ -384,14 +384,10 @@ textarea:focus-visible {
 }
 
 .ghost--bold {
-  border: 2px solid #0f172a;
+  border: 2px solid #fff;
   font-weight: 700;
   color: #fff;
-  text-shadow:
-    -1px -1px 0 #0f172a,
-     1px -1px 0 #0f172a,
-    -1px  1px 0 #0f172a,
-     1px  1px 0 #0f172a;
+  text-shadow: none;
 }
 
 .nav-toggle {
@@ -1922,11 +1918,11 @@ figcaption {
   }
 
   .site-nav a:hover {
-    background: #fcd34d;
-    color: #0f172a;
+    background: #1d4ed8;
+    color: #fff;
     transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(252, 211, 77, 0.4);
-    border-color: #0f172a;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
+    border-color: #1d4ed8;
     -webkit-text-stroke: 0;
     text-stroke: 0;
   }
