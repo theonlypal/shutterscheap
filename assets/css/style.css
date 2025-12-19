@@ -742,7 +742,7 @@ textarea:focus-visible {
   border-radius: 1.5rem !important;
   box-shadow: var(--shadow-soft) !important;
   opacity: 0 !important;
-  transition: opacity 0.5s ease-in-out !important;
+  transition: opacity 1.2s ease-in-out !important;
   z-index: 1 !important;
   display: block !important;
 }

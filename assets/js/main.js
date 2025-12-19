@@ -323,8 +323,8 @@ ready(() => {
       autoplayInterval = setInterval(() => {
         console.log('Auto-advancing to next slide...');
         showSlide(currentIndex + 1);
-      }, 2000);
-      console.log('Autoplay STARTED (2s interval)');
+      }, 5000);
+      console.log('Autoplay STARTED (5s interval)');
     };
 
     // Initialize first slide
