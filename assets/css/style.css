@@ -2648,27 +2648,28 @@ figcaption {
     margin-top: 0.4rem !important;
   }
 
-  /* Gallery mobile optimization */
+  /* Gallery mobile optimization - 3 columns */
   .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
   }
 
   .gallery figure {
-    padding: 0.875rem;
-    margin: 0 auto;
+    padding: 0.25rem;
+    margin: 0;
     max-width: 100%;
   }
 
   .gallery figure img {
-    height: 240px;
-    border-radius: 0.75rem;
+    height: 100px;
+    border-radius: 0.5rem;
     object-fit: cover;
   }
 
   .gallery figcaption {
-    font-size: 0.875rem;
-    margin-top: 0.625rem;
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+    display: none;
   }
 
   /* Gallery button mobile */
