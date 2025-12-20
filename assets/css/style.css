@@ -2248,10 +2248,18 @@ figcaption {
   /* Mobile hero header styling */
   .hero-header {
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-header .hero-badge {
-    display: none;
+    display: flex;
+    order: 2;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    justify-content: center;
   }
 
   .hero-header .eyebrow {
@@ -2263,6 +2271,7 @@ figcaption {
     display: block !important;
     line-height: 1.05;
     letter-spacing: -0.04em;
+    order: 1;
   }
 
   .hero-header h1 {
