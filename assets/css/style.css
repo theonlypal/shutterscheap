@@ -2217,6 +2217,12 @@ figcaption {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-copy .hero-media--inline {
+    order: 1;
   }
 
   .hero-panel {
@@ -2242,8 +2248,9 @@ figcaption {
 
   /* Mobile hero header styling */
   .hero-header {
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+    padding-top: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
