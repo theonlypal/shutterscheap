@@ -2279,6 +2279,7 @@ figcaption {
     line-height: 1.35;
     margin-bottom: 0.5rem;
     text-align: center;
+    order: 3;
   }
 
   /* Mobile inline slideshow */
