@@ -1146,8 +1146,8 @@ textarea:focus-visible {
 }
 
 .pill-list span {
-  background: rgba(249, 115, 22, 0.08);
-  color: var(--color-text);
+  background: #1d4ed8;
+  color: #ffffff;
   border-radius: 999px;
   padding: 0.4rem 0.9rem;
   font-weight: 600;
