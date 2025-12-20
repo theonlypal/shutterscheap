@@ -2261,6 +2261,7 @@ figcaption {
     margin-bottom: 0;
     justify-content: center;
     font-weight: 600;
+    gap: 0.5rem;
   }
 
   .hero-header .eyebrow {
