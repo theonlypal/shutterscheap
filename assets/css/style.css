@@ -2255,7 +2255,7 @@ figcaption {
 
   .hero-header .hero-badge {
     display: flex;
-    order: 2;
+    order: 3;
     font-size: 1.1rem;
     margin-top: 0.5rem;
     margin-bottom: 0;
@@ -2280,7 +2280,7 @@ figcaption {
     line-height: 1.35;
     margin-bottom: 0.5rem;
     text-align: center;
-    order: 3;
+    order: 2;
   }
 
   /* Mobile inline slideshow */
