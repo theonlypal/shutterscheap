@@ -1827,9 +1827,7 @@ figcaption {
 
 @media (max-width: 1024px) {
   .header-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    justify-items: center;
+    grid-template-columns: 1fr auto;
   }
 
   /* Hide header CTA on tablet/mobile */
@@ -1837,74 +1835,193 @@ figcaption {
     display: none;
   }
 
-  /* Hide hamburger menu completely */
-  .nav-toggle {
-    display: none !important;
+  /* Full-screen navigation overlay for mobile */
+  .site-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    display: flex;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(0);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999999;
+    /* CRITICAL: Force scrolling to work on iOS and Android */
+    overflow-y: scroll !important;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain;
+    /* Ensure scrollbar is hidden but scrolling works */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    box-shadow: -3px 0 12px rgba(0, 0, 0, 0.12);
   }
 
-  /* Show nav inline like desktop */
-  .site-nav {
-    position: static;
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.1rem 0.4rem;
-    justify-content: center;
-    align-items: center;
-    padding: 0.25rem 0;
-    background: transparent;
+  .site-nav::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .site-nav.is-open {
     opacity: 1;
     visibility: visible;
-    width: 100%;
-    max-width: 100%;
-    line-height: 1.2;
   }
 
+  /* Special shift for home/index pages only - "Shutters" becomes first visible */
+  body[data-page="home"] .site-nav {
+    padding-top: 78px;
+  }
+
+  /* Remove MENU header - it was causing overlap */
   .site-nav::before {
     display: none;
   }
 
-  /* Navigation links - inline buttons */
+  /* Navigation links - single column with minimal spacing */
   .site-nav a {
-    display: inline-block;
-    padding: 0.15rem 0.4rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #ffffff;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    text-decoration: none;
-    -webkit-text-stroke: 2px #000000;
-    text-stroke: 2px #000000;
-    paint-order: stroke fill;
+    display: block !important;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 0.65rem 1.5rem;
+    margin: 0.125rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #0f172a;
+    border-radius: 12px;
     transition: all 0.2s ease;
-    box-shadow: none;
-    white-space: nowrap;
+    position: relative;
+    flex-shrink: 0;
+    line-height: 1.3;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
+    text-shadow: none;
   }
 
   .site-nav a:hover {
-    color: #ffffff;
-    -webkit-text-stroke: 2px #fcd34d;
-    text-stroke: 2px #fcd34d;
-    background: transparent;
-    transform: none;
-    box-shadow: none;
-    border-color: transparent;
+    background: #1d4ed8;
+    color: #fff;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.4);
+    border-color: #1d4ed8;
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
   }
 
   .site-nav a:active {
-    background: transparent;
-    transform: none;
+    background: rgba(255, 255, 255, 0.95);
+    transform: scale(0.98);
   }
 
-  /* Hide dashboard link on mobile */
+  /* Dashboard admin link at bottom */
   .site-nav a[href*="dashboard"] {
-    display: none;
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
+    border: 2px solid #0f172a;
+    margin-top: 1rem;
+    padding: 0.65rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  /* Compact hamburger button - Brand yellow with centered lines */
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5px;
+    padding: 8px;
+    background: #fcd34d;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1000000;
+    position: relative;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(252, 211, 77, 0.3);
+  }
+
+  /* Close button style when menu is open */
+  .nav-toggle[aria-expanded="true"] {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    width: auto;
+    height: auto;
+    padding: 12px 20px 12px 45px;
+    border-radius: 25px;
+    border: 2px solid #0f172a;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"]::after {
+    content: "Close";
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    margin-left: 5px;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle__line {
+    position: absolute;
+    background: #0f172a;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+    left: 15px;
+    margin-top: -1px;
+    width: 18px;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 50%;
+    left: 15px;
+    margin-top: -1px;
+    width: 18px;
+  }
+
+  .nav-toggle:hover {
+    background: #fbbf24;
+    transform: scale(1.03);
+    box-shadow: 0 3px 10px rgba(252, 211, 77, 0.4);
   }
 
   .nav-toggle__line {
-    display: none;
+    display: block;
     width: 18px;
     height: 2px;
     background: #0f172a;
@@ -2018,10 +2135,9 @@ figcaption {
   /* Header mobile optimization */
   .header-grid {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0 0.5rem;
     position: relative;
     min-height: auto;
   }
@@ -2054,22 +2170,11 @@ figcaption {
     margin-top: 0;
   }
 
-  /* Nav inline on small mobile */
-  .site-nav {
-    gap: 0.05rem 0.25rem;
-    padding: 0.15rem 0;
-  }
-
-  .site-nav a {
-    padding: 0.1rem 0.3rem;
-    font-size: 0.7rem;
-    -webkit-text-stroke: 1.5px #000000;
-    text-stroke: 1.5px #000000;
-  }
-
-  .site-nav a:hover {
-    -webkit-text-stroke: 1.5px #fcd34d;
-    text-stroke: 1.5px #fcd34d;
+  .nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .header-cta {
@@ -2083,6 +2188,10 @@ figcaption {
   .logo-img {
     max-width: 140px;
     height: auto;
+  }
+
+  .nav-toggle {
+    padding: 0.5rem;
   }
 
   /* Mobile navigation improvements - COMMENTED OUT to preserve single column design
