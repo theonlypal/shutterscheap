@@ -2281,6 +2281,7 @@ figcaption {
     margin-bottom: 0.5rem;
     text-align: center;
     order: 2;
+    color: #000000;
   }
 
   /* Mobile inline slideshow */
