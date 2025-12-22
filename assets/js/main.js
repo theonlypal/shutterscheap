@@ -472,4 +472,29 @@ ready(() => {
       }, 100);
     });
   }
+
+  // ============================================
+  // INTERACTIVE SELECTOR - Expanding panels
+  // ============================================
+  const interactiveSelector = document.querySelector('.interactive-selector');
+  if (interactiveSelector) {
+    const options = interactiveSelector.querySelectorAll('.selector-option');
+
+    options.forEach((option, index) => {
+      option.addEventListener('click', () => {
+        // Remove active from all options
+        options.forEach(opt => opt.classList.remove('active'));
+        // Add active to clicked option
+        option.classList.add('active');
+      });
+
+      // Also handle hover on desktop for better UX
+      option.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 768) {
+          options.forEach(opt => opt.classList.remove('active'));
+          option.classList.add('active');
+        }
+      });
+    });
+  }
 });
