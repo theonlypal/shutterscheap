@@ -73,11 +73,11 @@ ready(() => {
       const bottomNav = document.querySelector('.bottom-nav');
       if (bottomNav) {
         if (open) {
-          bottomNav.style.display = 'none';
-          document.body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+          bottomNav.style.visibility = 'hidden';
+          document.body.style.overflow = 'hidden';
         } else {
-          bottomNav.style.display = 'flex';
-          document.body.style.overflow = ''; // Restore body scroll
+          bottomNav.style.visibility = 'visible';
+          document.body.style.overflow = '';
         }
       }
     });
@@ -97,7 +97,7 @@ ready(() => {
           // Show bottom nav when closing menu
           const bottomNav = document.querySelector('.bottom-nav');
           if (bottomNav) {
-            bottomNav.style.display = 'flex';
+            bottomNav.style.visibility = 'visible';
             document.body.style.overflow = '';
           }
         }
@@ -115,7 +115,7 @@ ready(() => {
         // Show bottom nav when closing menu
         const bottomNav = document.querySelector('.bottom-nav');
         if (bottomNav) {
-          bottomNav.style.display = 'flex';
+          bottomNav.style.visibility = 'visible';
           document.body.style.overflow = '';
         }
       }
@@ -693,7 +693,7 @@ ready(() => {
           // Hide bottom nav when lightbox is open
           const bottomNav = document.querySelector('.bottom-nav');
           if (bottomNav) {
-            bottomNav.style.display = 'none';
+            bottomNav.style.visibility = 'hidden';
           }
         }
       });
@@ -707,7 +707,7 @@ ready(() => {
       // Show bottom nav again
       const bottomNav = document.querySelector('.bottom-nav');
       if (bottomNav) {
-        bottomNav.style.display = 'flex';
+        bottomNav.style.visibility = 'visible';
       }
 
       // Clear image after transition

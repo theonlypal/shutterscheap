@@ -3722,6 +3722,16 @@ figcaption {
      GPU-accelerated 60fps animations
      ============================================ */
 
+}
+
+/* ============================================
+   BOTTOM NAV - iOS-optimized fixed navigation
+   ============================================ */
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
   .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -3730,12 +3740,14 @@ figcaption {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0;
-    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    height: 60px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     z-index: 9999;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+    /* iOS Safari fix - prevent repainting issues */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 
   .bottom-nav__item {
@@ -3743,97 +3755,37 @@ figcaption {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.25rem;
-    padding: 0.5rem 0.75rem;
-    min-width: 64px;
+    gap: 2px;
+    padding: 8px 12px;
+    min-width: 60px;
     text-decoration: none;
-    color: rgba(29, 78, 216, 0.7);
-    position: relative;
-    transition: color 0.2s ease;
+    color: #6b7280;
     -webkit-tap-highlight-color: transparent;
   }
 
   .bottom-nav__icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     stroke-width: 2;
-    transition: transform 0.2s ease;
   }
 
   .bottom-nav__label {
-    font-size: 0.6875rem;
+    font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.01em;
   }
 
-  /* Tap feedback */
-  .bottom-nav__item:active {
-    color: #1e40af;
-  }
-
-  .bottom-nav__item:active .bottom-nav__icon {
-    transform: scale(1.1);
-  }
-
-  /* Active page indicator */
-  .bottom-nav__item.active {
-    color: #1e40af;
-  }
-
-  .bottom-nav__item.active .bottom-nav__icon {
-    stroke: #1d4ed8;
-  }
-
-  .bottom-nav__item.active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 32px;
-    height: 3px;
-    background: #1d4ed8;
-    border-radius: 0 0 3px 3px;
-  }
-
-  /* CTA item (Call button) */
+  .bottom-nav__item.active,
   .bottom-nav__item--cta {
-    color: #1e40af;
+    color: #1d4ed8;
   }
 
+  .bottom-nav__item.active .bottom-nav__icon,
   .bottom-nav__item--cta .bottom-nav__icon {
     stroke: #1d4ed8;
   }
 
-  .bottom-nav__item--cta::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 48px;
-    height: 48px;
-    background: rgba(29, 78, 216, 0.1);
-    border-radius: 50%;
-    z-index: -1;
-  }
-
-}
-
-/* ============================================
-   BOTTOM NAV - DESKTOP HIDE (OUTSIDE MEDIA QUERY)
-   ============================================ */
-.bottom-nav {
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .bottom-nav {
-    display: flex;
-  }
-
   body {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   }
 }
 
