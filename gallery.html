@@ -55,132 +55,114 @@
   </header>
 
   <main id="main">
-    <section class="sub-hero">
-      <div class="container sub-hero__grid">
-        <div class="sub-hero__copy">
-          <p class="eyebrow">Project gallery</p>
-          <h1>Shutters, blinds, and solar screens installed across the valley.</h1>
-          <p>Browse recent installs, then invite our mobile showroom to your home for a personalized quote.</p>
-          <div class="hero-ctas">
-            <a class="btn primary" href="tel:7025281926">Call 702-528-1926</a>
-            <button type="button" class="btn secondary" data-scroll="#contact">Schedule free visit</button>
-          </div>
-        </div>
+    <!-- Gallery Hero - Simplified for Mobile -->
+    <section class="gallery-page-hero">
+      <div class="container">
+        <header class="gallery-page-header">
+          <p class="eyebrow">Project Gallery</p>
+          <h1>Our Recent Installations</h1>
+          <p class="gallery-page-subtitle">Tap any photo to view larger</p>
+        </header>
       </div>
     </section>
 
-    <section class="detail-gallery">
+    <!-- Mobile-Optimized Gallery Grid -->
+    <section class="gallery-page-grid-section">
       <div class="container">
-        <div class="pill-list">
-          <span>Whole-home shutters</span>
-          <span>Designer blinds</span>
-          <span>Solar screens</span>
-          <span>Commercial installs</span>
+        <div class="gallery-page-grid" data-gallery>
+          <!-- Shutters -->
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-06.jpg">
+            <img src="assets/images/shutters/shutter-06.jpg" alt="Premium plantation shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-08.jpg">
+            <img src="assets/images/shutters/shutter-08.jpg" alt="Custom plantation shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-10.jpg">
+            <img src="assets/images/shutters/shutter-10.jpg" alt="White shutters bedroom" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-11.jpg">
+            <img src="assets/images/shutters/shutter-11.jpg" alt="Plantation shutters installation" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-07.jpg">
+            <img src="assets/images/shutters/shutter-07.jpg" alt="Poly vinyl shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-01.jpg">
+            <img src="assets/images/shutters/shutter-01.jpg" alt="Living room shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-02.jpg">
+            <img src="assets/images/shutters/shutter-02.jpg" alt="Arched window shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-03.jpg">
+            <img src="assets/images/shutters/shutter-03.jpg" alt="Family room shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-09.jpg">
+            <img src="assets/images/shutters/shutter-09.jpg" alt="Shutter detail" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-04.jpg">
+            <img src="assets/images/shutters/shutter-04.jpg" alt="Patio door shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/shutters/shutter-05.jpg">
+            <img src="assets/images/shutters/shutter-05.jpg" alt="Premium shutters closeup" loading="lazy" />
+          </div>
+
+          <!-- Blinds -->
+          <div class="gallery-thumb" data-src="assets/images/blinds/blind-03.jpg">
+            <img src="assets/images/blinds/blind-03.jpg" alt="Modern kitchen blinds" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/blinds/blind-04.jpg">
+            <img src="assets/images/blinds/blind-04.jpg" alt="Bathroom blinds" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/blinds/blind-05.jpg">
+            <img src="assets/images/blinds/blind-05.jpg" alt="Light filtering blinds" loading="lazy" />
+          </div>
+
+          <!-- Solar Screens -->
+          <div class="gallery-thumb" data-src="assets/images/solar/solar-01.jpg">
+            <img src="assets/images/solar/solar-01.jpg" alt="Solar screens exterior" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/solar/solar-02.jpg">
+            <img src="assets/images/solar/solar-02.jpg" alt="Solar screen heat blocking" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/solar/solar-03.jpg">
+            <img src="assets/images/solar/solar-03.jpg" alt="Rolling solar shades" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/solar/solar-04.jpg">
+            <img src="assets/images/solar/solar-04.jpg" alt="Solar screen mesh" loading="lazy" />
+          </div>
+
+          <!-- More gallery images -->
+          <div class="gallery-thumb" data-src="assets/images/gallery-modern.jpg">
+            <img src="assets/images/gallery-modern.jpg" alt="Modern living room shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-bedroom.jpg">
+            <img src="assets/images/gallery-bedroom.jpg" alt="Bedroom installation" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-office.jpg">
+            <img src="assets/images/gallery-office.jpg" alt="Home office shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-exterior.jpg">
+            <img src="assets/images/gallery-exterior.jpg" alt="Exterior solar screens" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-dining.jpg">
+            <img src="assets/images/gallery-dining.jpg" alt="Dining room shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-kitchen.jpg">
+            <img src="assets/images/gallery-kitchen.jpg" alt="Kitchen window treatments" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-living.jpg">
+            <img src="assets/images/gallery-living.jpg" alt="Living room with arched shutters" loading="lazy" />
+          </div>
+          <div class="gallery-thumb" data-src="assets/images/gallery-entryway.jpg">
+            <img src="assets/images/gallery-entryway.jpg" alt="Entryway shutters" loading="lazy" />
+          </div>
         </div>
-        <div class="gallery-grid">
-          <!-- Main Gallery Images -->
-          <figure>
-            <img src="assets/images/gallery-modern.jpg" alt="Modern living room with white plantation shutters" loading="lazy" />
-            <figcaption>Summerlin | Whole-home shutter refresh</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-bedroom.jpg" alt="Bedroom with layered shades and shutters" loading="lazy" />
-            <figcaption>Inspirada | Suite-level light control</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-office.jpg" alt="Home office with basswood shutters" loading="lazy" />
-            <figcaption>Anthem | Executive office detailing</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-exterior.jpg" alt="Exterior solar screens on arched windows" loading="lazy" />
-            <figcaption>Solar screen upgrade</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-dining.jpg" alt="Dining room with tall shutters" loading="lazy" />
-            <figcaption>Inspirada | Formal dining light control</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-kitchen.jpg" alt="Kitchen with basswood shutters and roller shades" loading="lazy" />
-            <figcaption>Henderson | Kitchen remodel privacy</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-living.jpg" alt="Living space featuring shutters with arched transoms" loading="lazy" />
-            <figcaption>Arched shutter build</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/gallery-entryway.jpg" alt="Entryway with tall plantation shutters" loading="lazy" />
-            <figcaption>Anthem | Two-story entry statement</figcaption>
-          </figure>
 
-          <!-- Plantation Shutters Gallery -->
-          <figure>
-            <img src="assets/images/shutters/shutter-01.jpg" alt="White plantation shutters in bedroom" loading="lazy" />
-            <figcaption>Henderson | Master bedroom shutters</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/shutters/shutter-02.jpg" alt="Custom basswood shutters dining room" loading="lazy" />
-            <figcaption>Summerlin | Formal dining area</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/shutters/shutter-03.jpg" alt="Plantation shutters with arch detail" loading="lazy" />
-            <figcaption>Arched window treatment</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/shutters/shutter-04.jpg" alt="Living room shutters install" loading="lazy" />
-            <figcaption>North LV | Living room transformation</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/shutters/shutter-05.jpg" alt="Office space with custom shutters" loading="lazy" />
-            <figcaption>Henderson | Home office upgrade</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/shutters/shutter-06.jpg" alt="Full home shutter installation" loading="lazy" />
-            <figcaption>Summerlin | Whole-home project</figcaption>
-          </figure>
-
-          <!-- Blinds & Shades Gallery -->
-          <figure>
-            <img src="assets/images/blinds/blind-03.jpg" alt="Modern roller blinds installation" loading="lazy" />
-            <figcaption>Henderson | Motorized roller shades</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/blinds/blind-02.jpg" alt="Vertical blinds for sliding door" loading="lazy" />
-            <figcaption>Patio door coverage</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/blinds/blind-03.jpg" alt="Faux wood blinds in kitchen" loading="lazy" />
-            <figcaption>Summerlin | Kitchen window blinds</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/blinds/blind-04.jpg" alt="Designer shades living room" loading="lazy" />
-            <figcaption>Anthem | Contemporary shades</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/blinds/blind-05.jpg" alt="Bedroom blackout shades" loading="lazy" />
-            <figcaption>Henderson | Blackout solution</figcaption>
-          </figure>
-
-          <!-- Solar Screens Gallery -->
-          <figure>
-            <img src="assets/images/solar/solar-01.jpg" alt="Exterior solar screens" loading="lazy" />
-            <figcaption>North LV | Patio solar screen</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/solar/solar-02.jpg" alt="Solar screens on large windows" loading="lazy" />
-            <figcaption>Summerlin | West-facing protection</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/solar/solar-03.jpg" alt="Mesh solar screens" loading="lazy" />
-            <figcaption>UV protection upgrade</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/solar/solar-04.jpg" alt="Full home solar screen install" loading="lazy" />
-            <figcaption>Henderson | Complete coverage</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/images/solar/solar-05.png" alt="Solar screen detail" loading="lazy" />
-            <figcaption>North LV | Custom screen solution</figcaption>
-          </figure>
+        <div class="gallery-page-cta">
+          <a class="btn primary" href="tel:7025281926">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call 702-528-1926
+          </a>
+          <button type="button" class="btn secondary" data-scroll="#contact">Get Free Estimate</button>
         </div>
       </div>
     </section>
@@ -251,20 +233,33 @@
     </section>
   </main>
 
+  <!-- Gallery Lightbox Modal -->
+  <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" aria-label="Close image preview">&times; Close</button>
+    <div class="lightbox-content">
+      <img src="" alt="Gallery image preview" class="lightbox-image" />
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div>
-        <p class="logo">Shutters Cheap</p>
-        <p>Premium shutters, blinds, and solar screens with a lowest-price guarantee since 2003.</p>
+      <div class="footer-brand">
+        <a class="footer-logo" href="index.html#home" aria-label="Shutters Cheap home">
+          <div class="footer-logo-type">
+            <span class="footer-logo-name">ShuttersCheap</span>
+            <span class="footer-logo-subtitle">"Not Cheap Shutters"</span>
+          </div>
+        </a>
+        <p class="footer-tagline">Premium shutters, blinds, and solar screens with <strong>LOWEST PRICE GUARANTEED</strong> since 2003.</p>
       </div>
       <div>
         <p class="label">Visit</p>
-        <p>Mobile showroom • Serving the entire valley</p>
+        <p>Mobile showroom &bull; Serving the entire valley</p>
       </div>
       <div>
         <p class="label">Connect</p>
-        <p><a href="tel:7025281926">702-528-1926</a> • <a href="mailto:shuttersinc@outlook.com">shuttersinc@outlook.com</a></p>
-        <p>Facebook • Instagram</p>
+        <p><a href="tel:7025281926">702-528-1926</a> &bull; <a href="mailto:shuttersinc@outlook.com">shuttersinc@outlook.com</a></p>
+        <p>Facebook &bull; Instagram</p>
       </div>
       <div>
         <p class="label">Navigation</p>
@@ -273,7 +268,7 @@
           <li><a href="shutters.html">Shutters</a></li>
           <li><a href="blinds.html">Blinds</a></li>
           <li><a href="solar-screens.html">Solar Screens</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </div>
     </div>

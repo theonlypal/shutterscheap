@@ -615,10 +615,10 @@ ready(() => {
       document.body.style.overflow = '';
     };
 
-    // Show popup every time - delay so page loads first
-    setTimeout(() => {
-      showPopup();
-    }, 1500);
+    // POPUP DISABLED - Uncomment below to re-enable
+    // setTimeout(() => {
+    //   showPopup();
+    // }, 1500);
 
     // Close button handler
     const closeBtn = welcomePopup.querySelector('.popup-close');
@@ -665,5 +665,76 @@ ready(() => {
         slides[currentSlide].classList.add('active');
       }, 3000);
     }
+  }
+
+  // ============================================
+  // GALLERY LIGHTBOX - Mobile-friendly image preview
+  // ============================================
+  const galleryGrid = document.querySelector('[data-gallery]');
+  const lightbox = document.getElementById('galleryLightbox');
+
+  if (galleryGrid && lightbox) {
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    const thumbs = galleryGrid.querySelectorAll('.gallery-thumb');
+
+    // Open lightbox when clicking a thumbnail
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        const imgSrc = thumb.getAttribute('data-src');
+        const imgAlt = thumb.querySelector('img')?.alt || 'Gallery image';
+
+        if (imgSrc && lightboxImage) {
+          lightboxImage.src = imgSrc;
+          lightboxImage.alt = imgAlt;
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+
+          // Hide bottom nav when lightbox is open
+          const bottomNav = document.querySelector('.bottom-nav');
+          if (bottomNav) {
+            bottomNav.style.display = 'none';
+          }
+        }
+      });
+    });
+
+    // Close lightbox function
+    const closeLightbox = () => {
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      // Show bottom nav again
+      const bottomNav = document.querySelector('.bottom-nav');
+      if (bottomNav) {
+        bottomNav.style.display = 'flex';
+      }
+
+      // Clear image after transition
+      setTimeout(() => {
+        if (lightboxImage) {
+          lightboxImage.src = '';
+        }
+      }, 300);
+    };
+
+    // Close on button click
+    if (lightboxClose) {
+      lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    // Close on clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+        closeLightbox();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') {
+        closeLightbox();
+      }
+    });
   }
 });
