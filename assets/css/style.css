@@ -306,6 +306,7 @@ textarea:focus-visible {
   background: #1d4ed8;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
+  border: 3px solid #ffffff;
   -webkit-text-stroke: 0;
   text-stroke: 0;
   transition: background 0.2s ease;
@@ -1840,11 +1841,11 @@ figcaption {
     min-height: auto !important;
     height: auto !important;
     padding: 2px 8px 2px !important;
-    border-bottom: 5px solid #1d4ed8 !important;
+    border-bottom: 8px solid #1d4ed8 !important;
   }
 
   .site-header.is-scrolled {
-    border-bottom: 5px solid #1d4ed8 !important;
+    border-bottom: 8px solid #1d4ed8 !important;
   }
 
   .header-grid {
