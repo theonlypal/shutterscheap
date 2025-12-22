@@ -667,8 +667,8 @@ textarea:focus-visible {
   background: none;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.8rem;
+  font-weight: 700;
   letter-spacing: 0.02em;
   padding: 0;
   border-radius: 0;
@@ -676,8 +676,9 @@ textarea:focus-visible {
   outline: none;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
-  -webkit-text-stroke: 1.5px #000;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000;
+  -webkit-text-stroke: 4px #000;
+  text-stroke: 4px #000;
+  paint-order: stroke fill;
 }
 
 /* Inline slideshow positioned after h1 */
