@@ -1837,11 +1837,11 @@ figcaption {
     min-height: auto !important;
     height: auto !important;
     padding: 2px 8px 2px !important;
-    border-bottom: 5px solid #000 !important;
+    border-bottom: 5px solid #1d4ed8 !important;
   }
 
   .site-header.is-scrolled {
-    border-bottom: 5px solid #000 !important;
+    border-bottom: 5px solid #1d4ed8 !important;
   }
 
   .header-grid {
