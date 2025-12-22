@@ -1949,8 +1949,8 @@ figcaption {
     box-shadow: none !important;
     grid-column: 1 / -1 !important;
     grid-row: 2 !important;
-    margin-bottom: 2px !important;
-    margin-top: 1px !important;
+    margin-bottom: 3px !important;
+    margin-top: 6px !important;
   }
 
   .site-nav a {
