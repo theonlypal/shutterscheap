@@ -298,10 +298,10 @@ textarea:focus-visible {
   font-size: 1.1rem;
   font-style: italic;
   color: #1e40af;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1.2;
-  margin-top: 0.1rem;
+  margin-top: 0.4rem;
   text-align: center;
   -webkit-text-stroke: 4px #ffffff;
   text-stroke: 4px #ffffff;
@@ -2192,7 +2192,7 @@ figcaption {
   .logo-subtitle {
     font-size: 1.05rem;
     line-height: 1;
-    margin-top: 0;
+    margin-top: 0.35rem;
   }
 
   /* All other header styles in final override block at end of file */
