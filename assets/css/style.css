@@ -3730,29 +3730,12 @@ figcaption {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(255, 255, 255, 0.25);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
-    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
     z-index: 9999;
-    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
-    /* GPU acceleration for smooth animations */
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-  }
-
-  /* Make the area under the nav bar transparent on devices with home indicator */
-  .bottom-nav::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: env(safe-area-inset-bottom);
-    background: transparent;
-    transform: translateY(100%);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
   }
 
   .bottom-nav__item {
@@ -3766,63 +3749,30 @@ figcaption {
     text-decoration: none;
     color: rgba(29, 78, 216, 0.7);
     position: relative;
-    /* Buttery smooth spring physics easing */
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    /* GPU acceleration - force hardware layer */
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
+    transition: color 0.2s ease;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    /* Prevent layout shifts */
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
   }
 
   .bottom-nav__icon {
     width: 24px;
     height: 24px;
     stroke-width: 2;
-    /* Smoother, more elastic animation */
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-                stroke 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    /* GPU acceleration */
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    transition: transform 0.2s ease;
   }
 
   .bottom-nav__label {
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.01em;
-    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
   }
 
-  /* Smooth tap feedback with spring bounce */
+  /* Tap feedback */
   .bottom-nav__item:active {
-    transform: translate3d(0, -3px, 0) scale(0.95);
     color: #1e40af;
-    transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
-                color 0.1s ease-out;
   }
 
   .bottom-nav__item:active .bottom-nav__icon {
-    transform: translate3d(0, -1px, 0) scale(1.15);
-    stroke: #1d4ed8;
-    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
-                stroke 0.1s ease-out;
-  }
-
-  .bottom-nav__item:active .bottom-nav__label {
-    transform: translate3d(0, 1px, 0);
-    transition: transform 0.1s ease-out;
+    transform: scale(1.1);
   }
 
   /* Active page indicator */
@@ -3839,17 +3789,16 @@ figcaption {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate3d(-50%, 0, 0);
+    transform: translateX(-50%);
     width: 32px;
     height: 3px;
     background: #1d4ed8;
     border-radius: 0 0 3px 3px;
   }
 
-  /* CTA item (Call button) - premium emphasis */
+  /* CTA item (Call button) */
   .bottom-nav__item--cta {
     color: #1e40af;
-    position: relative;
   }
 
   .bottom-nav__item--cta .bottom-nav__icon {
@@ -3861,25 +3810,12 @@ figcaption {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    transform: translate(-50%, -50%);
     width: 48px;
     height: 48px;
     background: rgba(29, 78, 216, 0.1);
     border-radius: 50%;
     z-index: -1;
-    /* Smooth elastic bounce for CTA emphasis */
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .bottom-nav__item--cta:active::after {
-    transform: translate3d(-50%, -50%, 0) scale(1.25);
-    background: rgba(29, 78, 216, 0.2);
-    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background 0.1s ease-out;
   }
 
 }
