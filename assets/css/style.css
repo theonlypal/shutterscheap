@@ -2101,8 +2101,8 @@ figcaption {
     background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
-    -webkit-text-stroke: 3px #000 !important;
-    text-stroke: 3px #000 !important;
+    -webkit-text-stroke: 5px #000 !important;
+    text-stroke: 5px #000 !important;
     paint-order: stroke fill !important;
     white-space: nowrap !important;
     box-shadow: none !important;
@@ -2115,7 +2115,7 @@ figcaption {
     background: transparent !important;
     transform: none !important;
     box-shadow: none !important;
-    -webkit-text-stroke: 3px #000 !important;
+    -webkit-text-stroke: 5px #000 !important;
   }
 
   .site-nav a:active {
@@ -2367,39 +2367,14 @@ figcaption {
 
   /* Interactive Selector Mobile */
   .interactive-selector {
-    height: 280px;
+    height: 350px;
     margin: 0.5rem 0 1rem;
     width: 100%;
     order: 1;
   }
 
   .selector-option {
-    min-width: 40px;
-  }
-
-  .option-icon {
-    min-width: 36px;
-    max-width: 36px;
-    height: 36px;
-  }
-
-  .option-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .option-title {
-    font-size: 0.95rem;
-  }
-
-  .option-desc {
-    font-size: 0.8rem;
-  }
-
-  .option-label {
-    bottom: 12px;
-    padding: 0 10px;
-    gap: 8px;
+    min-width: 50px;
   }
 
   .hero-panel {
