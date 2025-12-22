@@ -293,24 +293,27 @@ textarea:focus-visible {
 }
 
 .logo-subtitle {
-  display: block !important;
+  display: inline-block !important;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-style: italic;
-  color: #1e40af;
-  font-weight: 400;
+  color: #ffffff;
+  font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1.2;
   margin-top: 0.4rem;
   text-align: center;
-  -webkit-text-stroke: 4px #ffffff;
-  text-stroke: 4px #ffffff;
-  paint-order: stroke fill;
-  transition: color 0.2s ease;
+  background: #1d4ed8;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+  transition: background 0.2s ease;
 }
 
 .logo:hover .logo-subtitle {
-  color: #1e40af;
+  background: #1e40af;
+  color: #ffffff;
 }
 
 .site-nav {
