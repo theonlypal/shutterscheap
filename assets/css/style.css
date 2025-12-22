@@ -671,7 +671,7 @@ textarea:focus-visible {
   letter-spacing: 0.03em;
   padding: 0.65rem 1.5rem;
   border-radius: 999px;
-  border: 4px solid #fbbf24;
+  border: 4px solid #fcd34d;
   outline: 3px solid #000;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
@@ -682,7 +682,7 @@ textarea:focus-visible {
 
 /* Schedule a free visit button in hero */
 .hero-ctas .btn.secondary {
-  background: #fbbf24;
+  background: #fcd34d;
   color: #fff;
   border: 3px solid #000;
   -webkit-text-stroke: 0.75px #000;
@@ -2796,7 +2796,7 @@ figcaption {
     font-size: 0.85rem;
     padding: 0.45rem 1rem;
     margin-bottom: 0.75rem;
-    border: 3px solid #fbbf24;
+    border: 3px solid #fcd34d;
     outline: 2px solid #000;
   }
 
