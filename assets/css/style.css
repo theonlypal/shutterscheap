@@ -1950,7 +1950,7 @@ figcaption {
     grid-column: 1 / -1 !important;
     grid-row: 2 !important;
     margin-bottom: 3px !important;
-    margin-top: 6px !important;
+    margin-top: 12px !important;
   }
 
   .site-nav a {
@@ -1960,7 +1960,7 @@ figcaption {
     text-align: center !important;
     padding: 0 0.08rem !important;
     margin: 0 !important;
-    font-size: 0.82rem !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
     color: #fff !important;
     background: transparent !important;
