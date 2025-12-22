@@ -666,6 +666,7 @@ textarea:focus-visible {
   display: block;
   background: none;
   color: #fff;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 0.02em;
@@ -677,21 +678,6 @@ textarea:focus-visible {
   text-transform: uppercase;
   -webkit-text-stroke: 1.5px #000;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000;
-}
-
-/* Schedule a free visit button in hero */
-.hero-ctas .btn.secondary {
-  background: #fcd34d;
-  color: #fff;
-  border: 3px solid #000;
-  -webkit-text-stroke: 0.75px #000;
-  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
-  font-weight: 700;
-}
-
-.hero-ctas .btn.secondary:hover {
-  background: #f59e0b;
-  color: #fff;
 }
 
 /* Inline slideshow positioned after h1 */
@@ -2861,10 +2847,6 @@ figcaption {
     margin-top: 0.5rem;
     min-height: 48px;
     font-weight: 600;
-  }
-
-  .hero-ctas .btn.secondary {
-    border: 2px solid #000;
   }
 
   .rating-row {
