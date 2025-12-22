@@ -479,12 +479,15 @@ ready(() => {
   const interactiveSelector = document.querySelector('.interactive-selector');
   if (interactiveSelector) {
     const options = interactiveSelector.querySelectorAll('.selector-option');
+    const dots = document.querySelectorAll('.selector-dot');
     let currentIndex = 0;
     let autoplayInterval = null;
 
     const showPanel = (index) => {
       options.forEach(opt => opt.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
       options[index].classList.add('active');
+      if (dots[index]) dots[index].classList.add('active');
       currentIndex = index;
     };
 
@@ -527,6 +530,15 @@ ready(() => {
       });
     });
 
+    // Add click handlers for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showPanel(index);
+        stopAutoplay();
+        startAutoplay();
+      });
+    });
+
     // Start autoplay
     startAutoplay();
 
@@ -538,5 +550,120 @@ ready(() => {
         startAutoplay();
       }
     });
+  }
+
+  // ============================================
+  // VERTICAL PRODUCT SELECTOR (click only, no auto-transition)
+  // ============================================
+  const verticalSelector = document.querySelector('[data-vertical-selector]');
+  if (verticalSelector) {
+    const options = verticalSelector.querySelectorAll('.vertical-option');
+
+    const showPanel = (index) => {
+      options.forEach(opt => opt.classList.remove('active'));
+      options[index].classList.add('active');
+    };
+
+    // Click handlers - expand panel on click, navigate on second click
+    options.forEach((option, index) => {
+      option.addEventListener('click', (e) => {
+        if (!option.classList.contains('active')) {
+          // First click - expand the panel
+          e.preventDefault();
+          showPanel(index);
+        }
+        // Second click (already active) - follow the link
+      });
+    });
+  }
+
+  // ============================================
+  // WELCOME POPUP - Show on 1st and 3rd visit
+  // ============================================
+  const welcomePopup = document.getElementById('welcome-popup');
+
+  if (welcomePopup) {
+    const POPUP_KEY = 'shutterscheap-popup';
+
+    // Get popup data from localStorage
+    const getPopupData = () => {
+      try {
+        return JSON.parse(localStorage.getItem(POPUP_KEY)) || { visitCount: 0, dismissed: false };
+      } catch (e) {
+        return { visitCount: 0, dismissed: false };
+      }
+    };
+
+    // Save popup data to localStorage
+    const savePopupData = (data) => {
+      try {
+        localStorage.setItem(POPUP_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.log('localStorage not available');
+      }
+    };
+
+    // Show the popup
+    const showPopup = () => {
+      welcomePopup.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    };
+
+    // Hide the popup
+    const hidePopup = () => {
+      welcomePopup.style.display = 'none';
+      document.body.style.overflow = '';
+    };
+
+    // Show popup every time - delay so page loads first
+    setTimeout(() => {
+      showPopup();
+    }, 1500);
+
+    // Close button handler
+    const closeBtn = welcomePopup.querySelector('.popup-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        hidePopup();
+      });
+    }
+
+    // Click outside to close
+    welcomePopup.addEventListener('click', (e) => {
+      if (e.target === welcomePopup) {
+        hidePopup();
+      }
+    });
+
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && welcomePopup.style.display === 'flex') {
+        hidePopup();
+      }
+    });
+
+    // Form submission handler
+    const popupForm = welcomePopup.querySelector('.popup-form');
+    if (popupForm) {
+      popupForm.addEventListener('submit', () => {
+        // Mark as submitted so it won't show again
+        const data = getPopupData();
+        data.submitted = true;
+        savePopupData(data);
+      });
+    }
+
+    // Popup slideshow - auto transition images
+    const popupSlideshow = welcomePopup.querySelector('.popup-slideshow');
+    if (popupSlideshow) {
+      const slides = popupSlideshow.querySelectorAll('.popup-slide');
+      let currentSlide = 0;
+
+      setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 3000);
+    }
   }
 });
