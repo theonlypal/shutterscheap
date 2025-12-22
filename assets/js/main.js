@@ -479,22 +479,64 @@ ready(() => {
   const interactiveSelector = document.querySelector('.interactive-selector');
   if (interactiveSelector) {
     const options = interactiveSelector.querySelectorAll('.selector-option');
+    let currentIndex = 0;
+    let autoplayInterval = null;
+
+    const showPanel = (index) => {
+      options.forEach(opt => opt.classList.remove('active'));
+      options[index].classList.add('active');
+      currentIndex = index;
+    };
+
+    const nextPanel = () => {
+      const nextIndex = (currentIndex + 1) % options.length;
+      showPanel(nextIndex);
+    };
+
+    const startAutoplay = () => {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+      autoplayInterval = setInterval(nextPanel, 4000); // 4 seconds per panel
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
+    };
 
     options.forEach((option, index) => {
       option.addEventListener('click', () => {
-        // Remove active from all options
-        options.forEach(opt => opt.classList.remove('active'));
-        // Add active to clicked option
-        option.classList.add('active');
+        showPanel(index);
+        stopAutoplay();
+        startAutoplay(); // Restart autoplay after interaction
       });
 
       // Also handle hover on desktop for better UX
       option.addEventListener('mouseenter', () => {
         if (window.innerWidth > 768) {
-          options.forEach(opt => opt.classList.remove('active'));
-          option.classList.add('active');
+          showPanel(index);
+          stopAutoplay();
         }
       });
+
+      option.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 768) {
+          startAutoplay();
+        }
+      });
+    });
+
+    // Start autoplay
+    startAutoplay();
+
+    // Pause autoplay when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
     });
   }
 });

@@ -2367,14 +2367,14 @@ figcaption {
 
   /* Interactive Selector Mobile */
   .interactive-selector {
-    height: 350px;
+    height: 450px;
     margin: 0.5rem 0 1rem;
     width: 100%;
     order: 1;
   }
 
   .selector-option {
-    min-width: 50px;
+    min-width: 45px;
   }
 
   .hero-panel {
