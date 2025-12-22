@@ -682,7 +682,7 @@ textarea:focus-visible {
 
 /* Schedule a free visit button in hero */
 .hero-ctas .btn.secondary {
-  background: #fcd34d;
+  background: #fbbf24;
   color: #fff;
   border: 3px solid #000;
   -webkit-text-stroke: 0.75px #000;
