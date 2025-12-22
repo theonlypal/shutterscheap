@@ -680,19 +680,17 @@ textarea:focus-visible {
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
-/* Schedule a free visit button in hero form */
-.hero-form-card .btn.secondary {
+/* Schedule a free visit button in hero */
+.hero-ctas .btn.secondary {
   background: #fcd34d;
   color: #fff;
   border: 3px solid #000;
-  outline: 3px solid #000;
-  outline-offset: -3px;
   -webkit-text-stroke: 0.75px #000;
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
   font-weight: 700;
 }
 
-.hero-form-card .btn.secondary:hover {
+.hero-ctas .btn.secondary:hover {
   background: #f59e0b;
   color: #fff;
 }
@@ -2865,10 +2863,8 @@ figcaption {
     font-weight: 600;
   }
 
-  .hero-form-card .btn.secondary {
+  .hero-ctas .btn.secondary {
     border: 2px solid #000;
-    outline: 2px solid #000;
-    outline-offset: -2px;
   }
 
   .rating-row {
