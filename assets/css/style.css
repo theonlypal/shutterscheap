@@ -3771,7 +3771,7 @@ figcaption {
     padding: 8px 12px;
     min-width: 60px;
     text-decoration: none;
-    color: #6b7280;
+    color: #1d4ed8;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -3779,6 +3779,14 @@ figcaption {
     width: 22px;
     height: 22px;
     stroke-width: 2;
+    stroke: #1d4ed8;
+    fill: none;
+  }
+
+  /* Reviews star is filled */
+  .bottom-nav__item[data-page="reviews"] .bottom-nav__icon {
+    fill: #1d4ed8;
+    stroke: none;
   }
 
   .bottom-nav__label {
