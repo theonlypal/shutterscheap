@@ -266,8 +266,8 @@ textarea:focus-visible {
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
-  -webkit-text-stroke: 6px #000000;
-  text-stroke: 6px #000000;
+  -webkit-text-stroke: 6px #1d4ed8;
+  text-stroke: 6px #1d4ed8;
   paint-order: stroke fill;
   transition: color 0.2s ease;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
