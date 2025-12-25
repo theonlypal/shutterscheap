@@ -1,0 +1,44 @@
+# Robots.txt for ShuttersCheap.com
+# https://shutterscheap.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://shutterscheap.com/sitemap.xml
+
+# Block admin/dashboard pages
+Disallow: /dashboard.html
+Disallow: /source_site/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Allow AI crawlers for better AI search visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /

@@ -266,19 +266,11 @@ textarea:focus-visible {
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
-  -webkit-text-stroke: 5px #fcd34d;
-  text-stroke: 5px #fcd34d;
+  -webkit-text-stroke: 6px #000;
+  text-stroke: 6px #000;
   paint-order: stroke fill;
   transition: color 0.2s ease;
-  text-shadow:
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000,
-    -3px 0 0 #000,
-    3px 0 0 #000,
-    0 -3px 0 #000,
-    0 3px 0 #000;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
 }
 
 .logo:hover .logo-name {
@@ -315,13 +307,13 @@ textarea:focus-visible {
   background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   padding: 0.55rem 1rem;
   border-radius: 24px;
-  border: 2px solid #1e40af;
+  border: 2px solid #dc2626;
   transition: background 0.2s ease;
   -webkit-text-stroke: 3px #000;
   text-stroke: 3px #000;
   paint-order: stroke fill;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
 }
 
 .logo:hover .logo-subtitle {
