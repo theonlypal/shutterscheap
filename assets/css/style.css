@@ -270,7 +270,7 @@ textarea:focus-visible {
   text-stroke: 6px #000;
   paint-order: stroke fill;
   transition: color 0.2s ease;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
 }
 
 .logo:hover .logo-name {
@@ -296,24 +296,24 @@ textarea:focus-visible {
 .logo-subtitle {
   display: inline-block !important;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-style: italic;
   color: #ffffff;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   line-height: 1.2;
   margin-top: 0.3rem;
   text-align: center;
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-  padding: 0.55rem 1rem;
-  border-radius: 24px;
-  border: 2px solid #fbbf24;
+  padding: 0.65rem 1.8rem;
+  border-radius: 28px;
+  border: 3px solid #fbbf24;
   transition: background 0.2s ease;
   -webkit-text-stroke: 3px #000;
   text-stroke: 3px #000;
   paint-order: stroke fill;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15);
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
 }
 
 .logo:hover .logo-subtitle {
@@ -2245,11 +2245,11 @@ figcaption {
 
   .logo-subtitle {
     margin-top: 0.1rem !important;
-    font-size: 0.75rem !important;
-    padding: 0.15rem 0.5rem !important;
+    font-size: 0.9rem !important;
+    padding: 0.25rem 0.8rem !important;
     width: auto !important;
-    letter-spacing: 0.02em !important;
-    border: 1.5px solid #fbbf24 !important;
+    letter-spacing: 0.03em !important;
+    border: 2px solid #fbbf24 !important;
     -webkit-text-stroke: 1.5px #000 !important;
     text-stroke: 1.5px #000 !important;
     paint-order: stroke fill !important;
@@ -2593,10 +2593,10 @@ figcaption {
   }
 
   .logo-subtitle {
-    font-size: 0.85rem;
+    font-size: 1rem;
     line-height: 1;
     margin-top: 0.2rem;
-    padding: 0.15rem 0.4rem !important;
+    padding: 0.2rem 0.7rem !important;
     border: 2px solid #fbbf24 !important;
     -webkit-text-stroke: 1.5px #000 !important;
     text-stroke: 1.5px #000 !important;
