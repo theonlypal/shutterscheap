@@ -5508,4 +5508,62 @@ figcaption {
     color: var(--color-muted);
     margin: 0.2rem 0 0;
   }
+
+  /* Desktop Hero Product Cards */
+  .desktop-product-cards-hero {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .desktop-products-grid-hero {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .desktop-product-card-hero {
+    position: relative;
+    display: block;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .desktop-product-card-hero:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .desktop-product-shadow-hero {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+  }
+
+  .desktop-product-label-hero {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+/* Hide desktop hero product cards on mobile/tablet */
+@media (max-width: 1024px) {
+  .desktop-product-cards-hero {
+    display: none;
+  }
 }
