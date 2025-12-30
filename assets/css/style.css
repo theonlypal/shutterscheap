@@ -3972,6 +3972,7 @@ figcaption {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .desktop-product-cards .eyebrow {
@@ -3982,12 +3983,14 @@ figcaption {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex: 1;
 }
 
 .desktop-product-card {
   position: relative;
   display: block;
-  height: 180px;
+  flex: 1;
+  min-height: 120px;
   border-radius: 12px;
   overflow: hidden;
   background-size: cover;
@@ -4025,6 +4028,14 @@ figcaption {
 
 .desktop-only {
   display: block;
+}
+
+/* Desktop hero-copy flex layout for product cards */
+@media (min-width: 1025px) {
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 1024px) {
