@@ -5318,4 +5318,42 @@ figcaption {
   .hero-slideshow-desktop .selector-dot:hover {
     background: rgba(29, 78, 216, 0.5);
   }
+
+  /* Hero header below slideshow */
+  .hero-header-below {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .hero-header-below .eyebrow {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    border: 3px solid #1e40af;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+
+  .hero-header-below h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--color-muted);
+    max-width: 650px;
+    margin: 0 auto;
+  }
 }
