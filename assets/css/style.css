@@ -5287,6 +5287,16 @@ figcaption {
     overflow: hidden;
   }
 
+  .hero-slideshow-desktop .selector-option {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-slideshow-desktop .selector-option.active {
+    background-size: cover;
+    background-position: center;
+  }
+
   .hero-slideshow-desktop .selector-dots {
     display: flex;
     justify-content: center;
