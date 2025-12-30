@@ -324,7 +324,7 @@ textarea:focus-visible {
 .site-nav {
   display: flex;
   gap: 2rem;
-  justify-content: flex-start;
+  justify-content: center;
   font-size: var(--font-size-base);
   flex-wrap: wrap;
   white-space: nowrap;
@@ -5240,4 +5240,12 @@ figcaption {
 
 .resource-list-cta .btn {
   width: 100%;
+}
+
+/* Desktop Header Styles */
+@media (min-width: 769px) {
+  .site-nav {
+    justify-self: start;
+    justify-content: flex-start;
+  }
 }
