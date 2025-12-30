@@ -5527,7 +5527,7 @@ figcaption {
   .desktop-product-card-hero {
     position: relative;
     display: block;
-    height: 200px;
+    height: 350px;
     border-radius: 12px;
     overflow: hidden;
     background-size: cover;
@@ -5549,13 +5549,13 @@ figcaption {
 
   .desktop-product-label-hero {
     position: absolute;
-    bottom: 1rem;
+    bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
     font-weight: 700;
-    font-size: 1.1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     text-align: center;
     white-space: nowrap;
   }
