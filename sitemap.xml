@@ -103,6 +103,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Blog Index -->
+  <url>
+    <loc>https://shutterscheap.com/blog/</loc>
+    <lastmod>2025-12-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <!-- Blog Articles -->
   <url>
     <loc>https://shutterscheap.com/blog/shutter-cost-las-vegas-2025.html</loc>
