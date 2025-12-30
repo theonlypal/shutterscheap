@@ -5269,4 +5269,43 @@ figcaption {
     font-size: 1.1rem;
     padding: 0.5rem 0.75rem;
   }
+
+  /* Desktop full-width hero slideshow */
+  .hero-slideshow-desktop {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+  }
+
+  .hero-slideshow-desktop .interactive-selector {
+    width: 100%;
+    max-width: 100%;
+    height: 450px;
+    margin: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .hero-slideshow-desktop .selector-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 1rem;
+  }
+
+  .hero-slideshow-desktop .selector-dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #1d4ed8;
+    background: transparent;
+  }
+
+  .hero-slideshow-desktop .selector-dot.active {
+    background: #1d4ed8;
+  }
+
+  .hero-slideshow-desktop .selector-dot:hover {
+    background: rgba(29, 78, 216, 0.5);
+  }
 }

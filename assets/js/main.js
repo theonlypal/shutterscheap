@@ -476,10 +476,13 @@ ready(() => {
   // ============================================
   // INTERACTIVE SELECTOR - Expanding panels
   // ============================================
-  const interactiveSelector = document.querySelector('.interactive-selector');
-  if (interactiveSelector) {
-    const options = interactiveSelector.querySelectorAll('.selector-option');
-    const dots = document.querySelectorAll('.selector-dot');
+  // Handle multiple slideshow instances (desktop and mobile)
+  const initSlideshow = (container) => {
+    const selector = container.querySelector('.interactive-selector');
+    if (!selector) return null;
+
+    const options = selector.querySelectorAll('.selector-option');
+    const dots = container.querySelectorAll('.selector-dot');
     let currentIndex = 0;
     let autoplayInterval = null;
 
@@ -498,7 +501,7 @@ ready(() => {
 
     const startAutoplay = () => {
       if (autoplayInterval) clearInterval(autoplayInterval);
-      autoplayInterval = setInterval(nextPanel, 4000); // 4 seconds per panel
+      autoplayInterval = setInterval(nextPanel, 4000);
     };
 
     const stopAutoplay = () => {
@@ -512,10 +515,9 @@ ready(() => {
       option.addEventListener('click', () => {
         showPanel(index);
         stopAutoplay();
-        startAutoplay(); // Restart autoplay after interaction
+        startAutoplay();
       });
 
-      // Also handle hover on desktop for better UX
       option.addEventListener('mouseenter', () => {
         if (window.innerWidth > 768) {
           showPanel(index);
@@ -530,7 +532,6 @@ ready(() => {
       });
     });
 
-    // Add click handlers for dots
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
         showPanel(index);
@@ -539,18 +540,29 @@ ready(() => {
       });
     });
 
-    // Start autoplay
     startAutoplay();
 
-    // Pause autoplay when page is not visible
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopAutoplay();
-      } else {
-        startAutoplay();
-      }
-    });
-  }
+    return { startAutoplay, stopAutoplay };
+  };
+
+  // Initialize desktop slideshow
+  const desktopSlideshow = document.querySelector('.hero-slideshow-desktop');
+  const desktopControls = desktopSlideshow ? initSlideshow(desktopSlideshow) : null;
+
+  // Initialize mobile slideshow
+  const mobileSlideshow = document.querySelector('.interactive-selector-wrapper');
+  const mobileControls = mobileSlideshow ? initSlideshow(mobileSlideshow) : null;
+
+  // Pause autoplay when page is not visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (desktopControls) desktopControls.stopAutoplay();
+      if (mobileControls) mobileControls.stopAutoplay();
+    } else {
+      if (desktopControls) desktopControls.startAutoplay();
+      if (mobileControls) mobileControls.startAutoplay();
+    }
+  });
 
   // ============================================
   // VERTICAL PRODUCT SELECTOR (click only, no auto-transition)
