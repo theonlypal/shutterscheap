@@ -1,242 +1,261 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
   <url>
     <loc>https://shutterscheap.com/</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/shutters.html</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/blinds.html</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/roller-shades.html</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/solar-screens.html</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://shutterscheap.com/zebra-shades.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://shutterscheap.com/gallery.html</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/faq.html</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Location Pages -->
   <url>
-    <loc>https://shutterscheap.com/shutters-henderson-nv.html</loc>
-    <lastmod>2025-12-24</lastmod>
+    <loc>https://shutterscheap.com/reviews.html</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shutterscheap.com/shutters-summerlin.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-north-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-spring-valley.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-enterprise.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-green-valley.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-boulder-city.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-anthem.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-inspirada.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-paradise.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/shutters-lake-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- Blog Index -->
-  <url>
-    <loc>https://shutterscheap.com/blog/</loc>
-    <lastmod>2025-12-30</lastmod>
+    <loc>https://shutterscheap.com/order-tracking.html</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- Blog Articles -->
-  <url>
-    <loc>https://shutterscheap.com/blog/shutter-cost-las-vegas-2025.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/energy-tax-credit-shutters-2025.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/polywood-vs-wood-shutters.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/hoa-approved-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/shutters-vs-blinds-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/solar-screens-vs-window-tint-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/shutters-large-windows-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/motorized-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/shutter-installation-process.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/window-treatment-trends-2025.html</loc>
-    <lastmod>2025-12-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/best-shutters-desert-heat-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/plantation-shutters-vs-cellular-shades.html</loc>
-    <lastmod>2025-12-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/shutter-financing-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/custom-shutters-arched-windows.html</loc>
-    <lastmod>2025-12-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://shutterscheap.com/blog/why-poly-vinyl-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <!-- Room-Specific Landing Pages -->
   <url>
     <loc>https://shutterscheap.com/kitchen-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/bathroom-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/bedroom-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://shutterscheap.com/living-room-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <!-- Product Pages -->
   <url>
     <loc>https://shutterscheap.com/polywood-shutters-las-vegas.html</loc>
-    <lastmod>2025-12-30</lastmod>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <!-- Location Pages -->
+  <url>
+    <loc>https://shutterscheap.com/shutters-henderson-nv.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-summerlin.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-north-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-spring-valley.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-enterprise.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-green-valley.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-boulder-city.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-anthem.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-inspirada.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-paradise.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/shutters-lake-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Blog Index -->
+  <url>
+    <loc>https://shutterscheap.com/blog/</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://shutterscheap.com/blog/shutter-cost-las-vegas-2025.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/energy-tax-credit-shutters-2025.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/polywood-vs-wood-shutters.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/hoa-approved-shutters-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/shutters-vs-blinds-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/solar-screens-vs-window-tint-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/shutters-large-windows-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/motorized-shutters-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/shutter-installation-process.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/window-treatment-trends-2025.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/best-shutters-desert-heat-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/plantation-shutters-vs-cellular-shades.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/shutter-financing-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/custom-shutters-arched-windows.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://shutterscheap.com/blog/why-poly-vinyl-shutters-las-vegas.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
