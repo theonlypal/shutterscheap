@@ -7,6 +7,11 @@ Allow: /
 # Sitemap location
 Sitemap: https://shutterscheap.com/sitemap.xml
 
+# LLM-readable content for AI search engines
+# See https://llmstxt.org for specification
+LLMs-Txt: https://shutterscheap.com/llms.txt
+LLMs-Full-Txt: https://shutterscheap.com/llms-full.txt
+
 # Block admin/dashboard pages
 Disallow: /dashboard.html
 Disallow: /source_site/
