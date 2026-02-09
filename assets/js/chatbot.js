@@ -157,8 +157,8 @@
     win.innerHTML =
       '<div class="chatbot-header">' +
         '<div class="chatbot-header__info">' +
-          '<div class="chatbot-header__avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg></div>' +
-          '<div><div class="chatbot-header__name">ShuttersCheap</div><div class="chatbot-header__status">Online now</div></div>' +
+          '<div class="chatbot-header__avatar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>' +
+          '<div><div class="chatbot-header__name">ShuttersCheap</div><div class="chatbot-header__status"><span class="chatbot-live-dot"></span> Online now</div></div>' +
         '</div>' +
         '<button class="chatbot-close" aria-label="Close chat">\u00d7</button>' +
       '</div>' +
