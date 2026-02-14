@@ -191,9 +191,21 @@ ready(() => {
   }
 
   // Form submission with AJAX to prevent redirect
+  // Track when each form first receives input (bot detection)
+  forms.forEach((form) => {
+    form._loadTime = Date.now();
+    form.addEventListener('input', () => {
+      if (!form._firstInput) form._firstInput = Date.now();
+    }, { once: true });
+  });
+
   forms.forEach((form) => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault(); // Prevent default form submission
+
+      // Bot detection: reject if submitted faster than 3 seconds after page load
+      const elapsed = Date.now() - form._loadTime;
+      if (elapsed < 3000) return;
 
       const statusEl = form.querySelector('.form-status');
       const submitBtn = form.querySelector('button[type="submit"]');
