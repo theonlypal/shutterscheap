@@ -28,7 +28,6 @@ ready(() => {
 
       localStorage.setItem('shutterscheap-analytics', JSON.stringify(analytics));
     } catch (e) {
-      console.log('Analytics tracking disabled (localStorage not available)');
     }
   };
 
@@ -49,12 +48,10 @@ ready(() => {
   const smoothScroll = (target) => {
     const el = document.querySelector(target);
     if (!el) {
-      console.log('Scroll target not found:', target);
       return;
     }
     const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
     window.scrollTo({ top, behavior: 'smooth' });
-    console.log('Scrolling to:', target);
   };
 
   if (yearEl) {
@@ -288,25 +285,17 @@ ready(() => {
     let currentIndex = 0;
     let autoplayInterval = null;
 
-    console.log('=== SLIDESHOW INIT ===');
-    console.log('Total images:', images.length);
-    console.log('Total dots:', dots.length);
 
     const showSlide = (targetIndex) => {
-      console.log('=== SHOW SLIDE ===');
-      console.log('Target index:', targetIndex);
-      console.log('Current index before:', currentIndex);
 
       // Calculate new index with wrapping
       const newIndex = ((targetIndex % images.length) + images.length) % images.length;
-      console.log('New index after wrapping:', newIndex);
 
       // Remove active from all
       images.forEach((img, i) => {
         img.classList.remove('active');
         // Force style check
         const computedStyle = window.getComputedStyle(img);
-        console.log(`Image ${i} after remove - opacity: ${computedStyle.opacity}, zIndex: ${computedStyle.zIndex}, display: ${computedStyle.display}`);
       });
       dots.forEach((dot, i) => {
         dot.classList.remove('active');
@@ -323,27 +312,20 @@ ready(() => {
 
       // Check computed style after adding active
       const activeStyle = window.getComputedStyle(images[currentIndex]);
-      console.log('Active image index:', currentIndex);
-      console.log('Image has active class:', images[currentIndex].classList.contains('active'));
-      console.log(`Active image computed - opacity: ${activeStyle.opacity}, zIndex: ${activeStyle.zIndex}, display: ${activeStyle.display}, transition: ${activeStyle.transition}`);
-      console.log('===================');
     };
 
     const stopAutoplay = () => {
       if (autoplayInterval) {
         clearInterval(autoplayInterval);
         autoplayInterval = null;
-        console.log('Autoplay STOPPED');
       }
     };
 
     const startAutoplay = () => {
       stopAutoplay();
       autoplayInterval = setInterval(() => {
-        console.log('Auto-advancing to next slide...');
         showSlide(currentIndex + 1);
       }, 5000);
-      console.log('Autoplay STARTED (5s interval)');
     };
 
     // Initialize first slide
@@ -352,7 +334,6 @@ ready(() => {
     // Click handler for dots
     dots.forEach((dot, index) => {
       dot.addEventListener('click', (e) => {
-        console.log('Dot clicked:', index);
         e.preventDefault();
         showSlide(index);
         stopAutoplay();
@@ -379,10 +360,8 @@ ready(() => {
 
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
-          console.log('Swiped left - next slide');
           showSlide(currentIndex + 1);
         } else {
-          console.log('Swiped right - previous slide');
           showSlide(currentIndex - 1);
         }
         stopAutoplay();
@@ -630,7 +609,6 @@ ready(() => {
       try {
         localStorage.setItem(POPUP_KEY, JSON.stringify(data));
       } catch (e) {
-        console.log('localStorage not available');
       }
     };
 

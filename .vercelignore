@@ -1,0 +1,8 @@
+source_site/
+package.json
+package-lock.json
+node_modules/
+test-slideshow.html
+.claude/
+.git/
+*.md.bak
