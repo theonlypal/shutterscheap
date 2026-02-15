@@ -388,14 +388,22 @@
   </div>
 
   <script>
-    // Simple password protection (for demo - use real auth in production)
-    const ADMIN_PASSWORD = 'shutters2025';
+    // Password protection using SHA-256 hash comparison
+    const ADMIN_HASH = '5c7c481fab1126bc60a6052c75c1d20c0bfedd455eafa7aa271addb3de2c8821';
 
-    function login() {
+    async function hashPassword(password) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function login() {
       const input = document.getElementById('password-input');
       const error = document.getElementById('error-message');
+      const inputHash = await hashPassword(input.value);
 
-      if (input.value === ADMIN_PASSWORD) {
+      if (inputHash === ADMIN_HASH) {
         document.getElementById('auth-section').style.display = 'none';
         document.getElementById('dashboard-content').style.display = 'block';
         loadAnalytics();

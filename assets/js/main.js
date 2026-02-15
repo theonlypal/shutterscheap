@@ -191,6 +191,12 @@ ready(() => {
   }
 
   // Form submission with AJAX to prevent redirect
+  // Build endpoint at runtime to keep emails out of HTML source
+  const _fs = [101,100,99,111,120,120,64,103,109,97,105,108,46,99,111,109];
+  const _ep = 'https://formsubmit.co/' + _fs.map(c => String.fromCharCode(c)).join('');
+  const _cc = [115,104,117,116,116,101,114,115,105,110,99,64,111,117,116,108,111,111,107,46,99,111,109];
+  const _ccAddr = _cc.map(c => String.fromCharCode(c)).join('');
+
   // Track when each form first receives input (bot detection)
   forms.forEach((form) => {
     form._loadTime = Date.now();
@@ -210,6 +216,7 @@ ready(() => {
       const statusEl = form.querySelector('.form-status');
       const submitBtn = form.querySelector('button[type="submit"]');
       const formData = new FormData(form);
+      formData.append('_cc', _ccAddr);
 
       if (statusEl && submitBtn) {
         // Show submitting state
@@ -222,7 +229,7 @@ ready(() => {
 
         try {
           // Submit form via AJAX to FormSubmit
-          const response = await fetch(form.action, {
+          const response = await fetch(_ep, {
             method: 'POST',
             body: formData,
             headers: {
