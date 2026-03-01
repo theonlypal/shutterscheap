@@ -481,10 +481,11 @@
 
     // Submit via FormSubmit.co
     var formData = new FormData();
-    formData.append('_subject', 'New Chatbot Booking - ShuttersCheap.com');
+    formData.append('_subject', 'New Chatbot Lead - ' + data.name);
     formData.append('_cc', CONFIG.ccEmail);
     formData.append('_captcha', 'false');
-    formData.append('_template', 'table');
+    formData.append('_template', 'box');
+    formData.append('Submitted_At', new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles', weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'}));
     formData.append('Full Name', data.name);
     formData.append('Phone Number', data.phone);
     formData.append('Email Address', data.email);

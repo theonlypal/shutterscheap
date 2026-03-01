@@ -193,8 +193,6 @@ ready(() => {
   const _ep = 'https://formsubmit.co/ajax/' + _fs.map(c => String.fromCharCode(c)).join('');
   const _cc = [115,104,117,116,116,101,114,115,105,110,99,64,111,117,116,108,111,111,107,46,99,111,109];
   const _ccAddr = _cc.map(c => String.fromCharCode(c)).join('');
-  const _sms = [55,48,50,50,48,57,57,54,51,51,64,116,109,111,109,97,105,108,46,110,101,116];
-  const _smsAddr = _sms.map(c => String.fromCharCode(c)).join('');
 
   // Track when each form first receives input (bot detection)
   forms.forEach((form) => {
@@ -215,9 +213,11 @@ ready(() => {
       const statusEl = form.querySelector('.form-status');
       const submitBtn = form.querySelector('button[type="submit"]');
       const formData = new FormData(form);
-      formData.append('_cc', _ccAddr + ',' + _smsAddr);
+      formData.append('_cc', _ccAddr);
+      formData.append('_subject', 'New Lead from ShuttersCheap.com - ' + (formData.get('Full_Name') || formData.get('name') || 'Website'));
+      formData.append('_template', 'box');
       formData.append('Source_Page', document.title.split('|')[0].trim());
-      formData.append('Submitted_At', new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}));
+      formData.append('Submitted_At', new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles', weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'}));
 
       if (statusEl && submitBtn) {
         // Show submitting state
