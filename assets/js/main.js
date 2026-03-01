@@ -234,27 +234,29 @@ ready(() => {
             }
           });
 
-          if (response.ok) {
-            // Show success message
+          const contentType = response.headers.get('content-type') || '';
+          if (response.ok && contentType.includes('application/json')) {
+            // JSON response = FormSubmit confirmed delivery
             statusEl.textContent = '✓ Thank you! We\'ll be in touch shortly!';
             statusEl.style.color = '#10b981';
             statusEl.style.background = 'rgba(16, 185, 129, 0.15)';
             statusEl.style.fontWeight = '600';
 
-            // Reset form after short delay
             setTimeout(() => {
               form.reset();
               submitBtn.disabled = false;
               submitBtn.textContent = 'Request my free estimate';
-
-              // Fade out success message after 5 seconds
               setTimeout(() => {
                 statusEl.style.opacity = '0';
-                setTimeout(() => {
-                  statusEl.textContent = '';
-                }, 300);
+                setTimeout(() => { statusEl.textContent = ''; }, 300);
               }, 5000);
             }, 1000);
+          } else if (response.ok) {
+            // HTML response = FormSubmit needs activation, fall back to native POST
+            form.action = _ep;
+            form.removeAttribute('data-fs');
+            form.submit();
+            return;
           } else {
             throw new Error('Submission failed');
           }
