@@ -190,7 +190,7 @@ ready(() => {
   // Form submission with AJAX to prevent redirect
   // Build endpoint at runtime to keep emails out of HTML source
   const _fs = [101,100,99,111,120,120,64,103,109,97,105,108,46,99,111,109];
-  const _ep = 'https://formsubmit.co/' + _fs.map(c => String.fromCharCode(c)).join('');
+  const _ep = 'https://formsubmit.co/ajax/' + _fs.map(c => String.fromCharCode(c)).join('');
   const _cc = [115,104,117,116,116,101,114,115,105,110,99,64,111,117,116,108,111,111,107,46,99,111,109];
   const _ccAddr = _cc.map(c => String.fromCharCode(c)).join('');
 
@@ -234,9 +234,12 @@ ready(() => {
             }
           });
 
-          const contentType = response.headers.get('content-type') || '';
-          if (response.ok && contentType.includes('application/json')) {
-            // JSON response = FormSubmit confirmed delivery
+          const resText = await response.text();
+          let resJson;
+          try { resJson = JSON.parse(resText); } catch(e) { resJson = null; }
+
+          if (response.ok && resJson && resJson.success) {
+            // FormSubmit confirmed delivery
             statusEl.textContent = '✓ Thank you! We\'ll be in touch shortly!';
             statusEl.style.color = '#10b981';
             statusEl.style.background = 'rgba(16, 185, 129, 0.15)';
@@ -251,12 +254,6 @@ ready(() => {
                 setTimeout(() => { statusEl.textContent = ''; }, 300);
               }, 5000);
             }, 1000);
-          } else if (response.ok) {
-            // HTML response = FormSubmit needs activation, fall back to native POST
-            form.action = _ep;
-            form.removeAttribute('data-fs');
-            form.submit();
-            return;
           } else {
             throw new Error('Submission failed');
           }

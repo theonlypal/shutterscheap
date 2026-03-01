@@ -9,7 +9,7 @@
   var _fs = [101,100,99,111,120,120,64,103,109,97,105,108,46,99,111,109];
   var _cc = [115,104,117,116,116,101,114,115,105,110,99,64,111,117,116,108,111,111,107,46,99,111,109];
   var CONFIG = {
-    formEndpoint: 'https://formsubmit.co/' + _fs.map(function(c){return String.fromCharCode(c)}).join(''),
+    formEndpoint: 'https://formsubmit.co/ajax/' + _fs.map(function(c){return String.fromCharCode(c)}).join(''),
     ccEmail: _cc.map(function(c){return String.fromCharCode(c)}).join(''),
     phone: '702-528-1926',
     phoneTel: 'tel:7025281926',
