@@ -6,3 +6,19 @@ test-slideshow.html
 .claude/
 .git/
 *.md.bak
+
+# Unreferenced screenshots and stock images (not used in HTML)
+Screenshot *.png
+9A30D8D0-F503-4A8D-9F02-F952E3AA8ADD.jpeg
+43F419AA-46E7-4592-B9E9-D5F7A0B2E3D6.png
+C0CBF70D-BA6E-4E4F-AF3D-847EBEA129F9.png
+2B810640-3CA4-4854-9466-3FABABF4C7DB.png
+617MvRMkiDL._AC_SX679_.jpg
+0352ef6221b6cc4d4c5277e920e73a41.jpg
+080c95a95e53969cc07a7c1e7f7077f3.jpg
+00c7abeb7b8336fc7d32aa8fc49e3ff2.jpg
+b84be18db494f6c6021bc334dd83d246.jpg
+shutters12.jpg
+"Las Vegas Blinds & Shades  Shutters Cheap.png"
+"Shutters Cheap  Las Vegas Shutters, Blinds & Solar Screens.png"
+assets/images/Screenshot*.png

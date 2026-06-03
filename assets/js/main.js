@@ -750,4 +750,141 @@ ready(() => {
     });
   }
 
+  // ============================================
+  // PREMIUM PAGE TRANSITIONS
+  // Swipe gestures + forward/back direction tagging
+  // View Transitions API (in style.css) handles the slide+blur animation
+  // ============================================
+  (function setupPageTransitions() {
+    const PAGE_SEQUENCE = [
+      'index.html',
+      'shutters.html',
+      'blinds.html',
+      'roller-shades.html',
+      'solar-screens.html',
+      'gallery.html',
+      'reviews.html',
+      'order-tracking.html'
+    ];
+
+    const getCurrentPage = () => {
+      const file = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+      return file === '' ? 'index.html' : file;
+    };
+
+    const setDirection = (direction) => {
+      document.documentElement.dataset.navDirection = direction;
+    };
+
+    // Tag direction on internal link clicks so View Transitions knows which way to slide
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (!href) return;
+      if (href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+      if (/^https?:\/\//i.test(href) && !href.includes(window.location.hostname)) return;
+
+      const targetFile = (href.split('#')[0].split('?')[0].split('/').pop() || '').toLowerCase();
+      const current = getCurrentPage();
+      const currentIdx = PAGE_SEQUENCE.indexOf(current);
+      const targetIdx = PAGE_SEQUENCE.indexOf(targetFile);
+
+      if (currentIdx !== -1 && targetIdx !== -1 && targetIdx < currentIdx) {
+        setDirection('back');
+      } else {
+        setDirection('forward');
+      }
+    });
+
+    // Back/forward browser buttons slide backward
+    window.addEventListener('popstate', () => setDirection('back'));
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) setDirection('back');
+    });
+
+    // Horizontal swipe gestures navigate between pages in the sequence
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let swipeHint = null;
+    const SWIPE_MIN = 90;
+    const MAX_Y_DRIFT = 70;
+    const MAX_TIME = 700;
+    const EDGE_ZONE = 40; // only initiate from screen edges to avoid conflicts
+
+    const ignoreSelector = [
+      'input', 'textarea', 'select', 'button',
+      '[data-slideshow]', '.hero-slideshow', '.hero-slideshow-image',
+      '.popup-slideshow', '.lightbox', '.chatbot-widget',
+      '.orders-table-wrap', '[style*="overflow-x"]',
+      '.welcome-popup', '.gallery-lightbox'
+    ].join(',');
+
+    const ensureHint = (side) => {
+      if (!swipeHint) {
+        swipeHint = document.createElement('div');
+        swipeHint.className = 'swipe-hint';
+        document.body.appendChild(swipeHint);
+      }
+      swipeHint.className = 'swipe-hint is-visible swipe-hint--' + side;
+    };
+    const clearHint = () => {
+      if (swipeHint) swipeHint.classList.remove('is-visible');
+    };
+
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+      touchStartTime = Date.now();
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length !== 1 || !touchStartTime) return;
+      const t = e.touches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = Math.abs(t.clientY - touchStartY);
+      if (dy > MAX_Y_DRIFT) { clearHint(); return; }
+      if (Math.abs(dx) > 40) {
+        ensureHint(dx < 0 ? 'right' : 'left');
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      clearHint();
+      if (!touchStartTime || e.changedTouches.length !== 1) return;
+
+      const t = e.changedTouches[0];
+      const dx = t.clientX - touchStartX;
+      const dy = Math.abs(t.clientY - touchStartY);
+      const dt = Date.now() - touchStartTime;
+      touchStartTime = 0;
+
+      if (dt > MAX_TIME) return;
+      if (dy > MAX_Y_DRIFT) return;
+      if (Math.abs(dx) < SWIPE_MIN) return;
+
+      // Must start near a screen edge to avoid interfering with horizontal scrollers
+      const viewportW = window.innerWidth;
+      if (dx < 0 && touchStartX < viewportW - EDGE_ZONE) return; // swipe left must start near right edge
+      if (dx > 0 && touchStartX > EDGE_ZONE) return;             // swipe right must start near left edge
+
+      if (e.target && e.target.closest && e.target.closest(ignoreSelector)) return;
+
+      const current = getCurrentPage();
+      const idx = PAGE_SEQUENCE.indexOf(current);
+      if (idx === -1) return;
+
+      if (dx < 0 && idx < PAGE_SEQUENCE.length - 1) {
+        setDirection('forward');
+        window.location.href = PAGE_SEQUENCE[idx + 1];
+      } else if (dx > 0 && idx > 0) {
+        setDirection('back');
+        window.location.href = PAGE_SEQUENCE[idx - 1];
+      }
+    }, { passive: true });
+  })();
+
 });
