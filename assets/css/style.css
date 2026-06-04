@@ -261,8 +261,9 @@ textarea:focus-visible {
 
 .logo-name {
   display: block !important;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.8rem;
+  font-family: 'Bebas Neue', 'Oswald', 'Open Sans', sans-serif;
+  font-size: 2.1rem;
+  letter-spacing: 0.02em;
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
@@ -441,7 +442,7 @@ textarea:focus-visible {
   letter-spacing: 0.02em;
   line-height: 1.15;
   margin-bottom: 1.25rem;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   white-space: nowrap;
   background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
   padding: 0.75rem 2rem;
@@ -666,7 +667,7 @@ textarea:focus-visible {
   line-height: 1.15;
   margin-bottom: 0.5rem;
   text-align: center;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Book in under 30 seconds text */
@@ -2271,8 +2272,9 @@ figcaption {
 
 .footer-logo-name {
   display: block;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.8rem;
+  font-family: 'Bebas Neue', 'Oswald', 'Open Sans', sans-serif;
+  font-size: 2.1rem;
+  letter-spacing: 0.02em;
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
@@ -5633,7 +5635,7 @@ figcaption {
     letter-spacing: 0.02em;
     line-height: 1.15;
     margin-bottom: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
     padding: 0.6rem 1.5rem;
     border-radius: 50px;
@@ -5723,7 +5725,7 @@ figcaption {
     letter-spacing: 0.02em;
     line-height: 1.15;
     margin-bottom: 1rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
     padding: 0.6rem 1.5rem;
     border-radius: 50px;
