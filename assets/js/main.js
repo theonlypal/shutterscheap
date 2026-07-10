@@ -220,6 +220,7 @@ ready(() => {
       formData.append('Submitted_At', new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles', weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'}));
 
       if (statusEl && submitBtn) {
+        const originalBtnText = submitBtn.textContent;
         // Show submitting state
         statusEl.textContent = 'Sending...';
         statusEl.style.color = '#3b82f6';
@@ -252,7 +253,7 @@ ready(() => {
             setTimeout(() => {
               form.reset();
               submitBtn.disabled = false;
-              submitBtn.textContent = 'Request my free estimate';
+              submitBtn.textContent = originalBtnText;
               setTimeout(() => {
                 statusEl.style.opacity = '0';
                 setTimeout(() => { statusEl.textContent = ''; }, 300);
@@ -267,7 +268,7 @@ ready(() => {
           statusEl.style.color = '#ef4444';
           statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Request my free estimate';
+          submitBtn.textContent = originalBtnText;
         }
       }
     });
