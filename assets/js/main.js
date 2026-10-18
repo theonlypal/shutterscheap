@@ -187,12 +187,75 @@ ready(() => {
     }, 6000);
   }
 
+  // ============================================
+  // LEAD CAPTURE HELPERS (also used by chatbot.js)
+  // ============================================
+  // Google Apps Script web app that appends each lead to the Leads sheet (docs/lead-sheet-apps-script.gs).
+  const LEAD_SHEET_URL = '';
+  const AD_CLICK_KEY = 'sc-ad-click';
+  const AD_CLICK_TTL_MS = 90 * 24 * 60 * 60 * 1000; // Google Ads click lookback window
+
+  // Remember the Google Ads click ID from the landing URL so a lead submitted on a later page still carries it.
+  const adClickFromUrl = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const type = ['gclid', 'gbraid', 'wbraid'].find((key) => params.get(key));
+    return type ? { type, id: params.get(type), at: Date.now() } : null;
+  })();
+  if (adClickFromUrl) {
+    try { localStorage.setItem(AD_CLICK_KEY, JSON.stringify(adClickFromUrl)); } catch (e) {}
+  }
+
+  const getAdClick = () => {
+    if (adClickFromUrl) return adClickFromUrl;
+    try {
+      const saved = JSON.parse(localStorage.getItem(AD_CLICK_KEY) || 'null');
+      if (saved && Date.now() - saved.at < AD_CLICK_TTL_MS) return saved;
+    } catch (e) {}
+    return null;
+  };
+
+  const saveLeadToSheet = (lead) => {
+    if (!LEAD_SHEET_URL) return;
+    fetch(LEAD_SHEET_URL, { method: 'POST', mode: 'no-cors', keepalive: true, body: new URLSearchParams(lead) })
+      .catch(() => {});
+  };
+
+  // Records the lead in Google Analytics, then calls done (at most 1s later) so a redirect can follow.
+  const trackLead = (source, delivered, done) => {
+    let finished = false;
+    const finish = () => {
+      if (!finished) {
+        finished = true;
+        if (done) done();
+      }
+    };
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', { lead_source: source, email_delivered: delivered ? 'yes' : 'no', event_callback: finish });
+    }
+    setTimeout(finish, 1000);
+  };
+
+  window.ShuttersLeads = { getAdClick, saveLeadToSheet, trackLead };
+
   // Form submission with AJAX to prevent redirect
   // Build endpoint at runtime to keep emails out of HTML source
   const _fs = [101,100,99,111,120,120,64,103,109,97,105,108,46,99,111,109];
   const _ep = 'https://formsubmit.co/ajax/' + _fs.map(c => String.fromCharCode(c)).join('');
   const _cc = [115,104,117,116,116,101,114,115,105,110,99,64,111,117,116,108,111,111,107,46,99,111,109];
   const _ccAddr = _cc.map(c => String.fromCharCode(c)).join('');
+
+  const pickField = (formData, names) => {
+    for (const name of names) {
+      const value = String(formData.get(name) || '').trim();
+      if (value) return value;
+    }
+    return '';
+  };
+  const NAME_FIELDS = ['Full_Name', 'name'];
+  const PHONE_FIELDS = ['Phone_Number', 'phone'];
+  const EMAIL_FIELDS = ['email', 'Email_Address'];
+  const INTEREST_FIELDS = ['Product_Interest', 'service', 'inquiry_type'];
+  const MAPPED_FIELDS = new Set([...NAME_FIELDS, ...PHONE_FIELDS, ...EMAIL_FIELDS, ...INTEREST_FIELDS]);
 
   // Track when each form first receives input (bot detection)
   forms.forEach((form) => {
@@ -212,64 +275,79 @@ ready(() => {
 
       const statusEl = form.querySelector('.form-status');
       const submitBtn = form.querySelector('button[type="submit"]');
+      if (!statusEl || !submitBtn) return;
+
       const formData = new FormData(form);
+      const sourcePage = document.title.split('|')[0].trim();
+      const adClick = getAdClick();
+      const adClickId = adClick ? adClick.type + ': ' + adClick.id : '';
+      const lead = {
+        source: 'Website form',
+        name: pickField(formData, NAME_FIELDS),
+        phone: pickField(formData, PHONE_FIELDS),
+        email: pickField(formData, EMAIL_FIELDS),
+        interest: pickField(formData, INTEREST_FIELDS),
+        page: sourcePage,
+        fromAd: adClick ? 'Yes' : 'No click ID',
+        adClickId,
+        details: Array.from(formData.entries())
+          .filter(([key, value]) => !key.startsWith('_') && !MAPPED_FIELDS.has(key) && String(value).trim())
+          .map(([key, value]) => key.replace(/_/g, ' ') + ': ' + String(value).trim())
+          .join(' | ')
+      };
+      const isBot = Boolean(formData.get('_honey'));
+
+      // Hitting Reply on the lead email should go to the customer, not FormSubmit.
+      if (lead.email.includes('@')) formData.append('_replyto', lead.email);
       formData.append('_cc', _ccAddr);
-      formData.append('_subject', 'New Lead from ShuttersCheap.com - ' + (formData.get('Full_Name') || formData.get('name') || 'Website'));
+      formData.append('_subject', 'New Lead from ShuttersCheap.com - ' + (lead.name || 'Website'));
       formData.append('_template', 'box');
-      formData.append('Source_Page', document.title.split('|')[0].trim());
+      formData.append('Source_Page', sourcePage);
+      formData.append('Google_Ad_Click', adClick ? 'Yes - ' + adClickId : 'None recorded');
       formData.append('Submitted_At', new Date().toLocaleString('en-US', {timeZone: 'America/Los_Angeles', weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'}));
 
-      if (statusEl && submitBtn) {
-        const originalBtnText = submitBtn.textContent;
-        // Show submitting state
-        statusEl.textContent = 'Sending...';
-        statusEl.style.color = '#3b82f6';
-        statusEl.style.opacity = '1';
-        statusEl.style.background = 'rgba(59, 130, 246, 0.1)';
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+      const originalBtnText = submitBtn.textContent;
+      statusEl.textContent = 'Sending...';
+      statusEl.style.color = '#3b82f6';
+      statusEl.style.opacity = '1';
+      statusEl.style.background = 'rgba(59, 130, 246, 0.1)';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
 
-        try {
-          // Submit form via AJAX to FormSubmit
-          const response = await fetch(_ep, {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'Accept': 'application/json'
-            }
-          });
+      let delivered = false;
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
+        const response = await fetch(_ep, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' },
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+        const resJson = JSON.parse(await response.text());
+        // FormSubmit answers with the string "true"/"false", so a plain truthy check passes rejections.
+        delivered = response.ok && Boolean(resJson) && String(resJson.success) === 'true';
+      } catch (error) {
+        delivered = false;
+      }
 
-          const resText = await response.text();
-          let resJson;
-          try { resJson = JSON.parse(resText); } catch(e) { resJson = null; }
+      // Saved whether or not the email went out, so a lead is never lost.
+      if (!isBot) saveLeadToSheet({ ...lead, emailSent: delivered ? 'yes' : 'no' });
 
-          if (response.ok && resJson && resJson.success) {
-            // FormSubmit confirmed delivery
-            statusEl.textContent = '✓ Thank you! We\'ll be in touch shortly!';
-            statusEl.style.color = '#10b981';
-            statusEl.style.background = 'rgba(16, 185, 129, 0.15)';
-            statusEl.style.fontWeight = '600';
-
-            setTimeout(() => {
-              form.reset();
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalBtnText;
-              setTimeout(() => {
-                statusEl.style.opacity = '0';
-                setTimeout(() => { statusEl.textContent = ''; }, 300);
-              }, 5000);
-            }, 1000);
-          } else {
-            throw new Error('Submission failed');
-          }
-        } catch (error) {
-          // Show error message
-          statusEl.textContent = 'Something went wrong. Please call us at 702-528-1926';
-          statusEl.style.color = '#ef4444';
-          statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalBtnText;
-        }
+      if (delivered) {
+        statusEl.textContent = '✓ Thank you! We\'ll be in touch shortly!';
+        statusEl.style.color = '#10b981';
+        statusEl.style.background = 'rgba(16, 185, 129, 0.15)';
+        statusEl.style.fontWeight = '600';
+        trackLead('website_form', true, () => { window.location.href = '/thank-you.html'; });
+      } else {
+        trackLead('website_form', false);
+        statusEl.textContent = 'Something went wrong. Please call us at 702-528-1926';
+        statusEl.style.color = '#ef4444';
+        statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
       }
     });
   });

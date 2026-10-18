@@ -479,9 +479,15 @@
 
     addBotMessage('Here\'s your request summary:\n' + summary + '\nSending your request\u2026');
 
+    // Shared lead helpers from main.js (ad click ID, Google Sheet backup, analytics)
+    var leads = window.ShuttersLeads;
+    var adClick = leads ? leads.getAdClick() : null;
+    var adClickId = adClick ? adClick.type + ': ' + adClick.id : '';
+
     // Submit via FormSubmit.co
     var formData = new FormData();
     formData.append('_subject', 'New Chatbot Lead - ' + data.name);
+    formData.append('_replyto', data.email);
     formData.append('_cc', CONFIG.ccEmail);
     formData.append('_captcha', 'false');
     formData.append('_template', 'box');
@@ -493,26 +499,63 @@
     formData.append('Product Interest', data.product);
     formData.append('Preferred Timeframe', data.timeframe);
     formData.append('Source', 'Website Chatbot');
+    formData.append('Google Ad Click', adClick ? 'Yes - ' + adClickId : 'None recorded');
+
+    var controller = new AbortController();
+    var timeout = setTimeout(function() { controller.abort(); }, 15000);
 
     fetch(CONFIG.formEndpoint, {
       method: 'POST',
       body: formData,
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Accept': 'application/json' },
+      signal: controller.signal
     })
     .then(function(response) {
-      if (response.ok) {
-        state.mode = 'faq';
-        state.bookingStep = 0;
-        addBotMessage('\u2705 <strong>All set!</strong> We\'ll be in touch within 1 business day to schedule your free in-home consultation.\n\nYou can also call us anytime at <a href="' + CONFIG.phoneTel + '">' + CONFIG.phone + '</a>.\n\nIs there anything else I can help with?', ['Back to Menu', 'Call ' + CONFIG.phone]);
-        trackEvent('chatbot_booking_submit');
-      } else {
-        throw new Error('Form submission failed');
-      }
+      return response.text().then(function(text) {
+        var json = null;
+        try { json = JSON.parse(text); } catch (e) {}
+        // FormSubmit answers with the string "true"/"false", so response.ok alone passes rejections.
+        return response.ok && Boolean(json) && String(json.success) === 'true';
+      });
     })
-    .catch(function() {
+    .catch(function() { return false; })
+    .then(function(delivered) {
+      clearTimeout(timeout);
       state.mode = 'faq';
       state.bookingStep = 0;
-      addBotMessage('Something went wrong with the submission. Please call us directly at <a href="' + CONFIG.phoneTel + '"><strong>' + CONFIG.phone + '</strong></a> and we\'ll get you scheduled right away!', ['Call ' + CONFIG.phone, 'Try Again', 'Back to Menu']);
+
+      // Saved whether or not the email went out, so a lead is never lost.
+      if (leads) {
+        leads.saveLeadToSheet({
+          source: 'Website chatbot',
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          interest: data.product,
+          page: document.title.split('|')[0].trim(),
+          fromAd: adClick ? 'Yes' : 'No click ID',
+          adClickId: adClickId,
+          details: 'Zip Code: ' + data.zip + ' | Preferred Timeframe: ' + data.timeframe,
+          emailSent: delivered ? 'yes' : 'no'
+        });
+      }
+
+      if (delivered) {
+        addBotMessage('\u2705 <strong>All set!</strong> We\'ll be in touch within 1 business day to schedule your free in-home consultation.\n\nYou can also call us anytime at <a href="' + CONFIG.phoneTel + '">' + CONFIG.phone + '</a>.');
+        trackEvent('chatbot_booking_submit');
+        // The thank-you page is what Google Ads counts as a lead, so chat leads go there too.
+        setTimeout(function() {
+          var goToThankYou = function() { window.location.href = '/thank-you.html'; };
+          if (leads) {
+            leads.trackLead('chatbot', true, goToThankYou);
+          } else {
+            goToThankYou();
+          }
+        }, 2500);
+      } else {
+        if (leads) leads.trackLead('chatbot', false);
+        addBotMessage('Something went wrong with the submission. Please call us directly at <a href="' + CONFIG.phoneTel + '"><strong>' + CONFIG.phone + '</strong></a> and we\'ll get you scheduled right away!', ['Call ' + CONFIG.phone, 'Try Again', 'Back to Menu']);
+      }
     });
   }
 
