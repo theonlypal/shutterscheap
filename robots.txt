@@ -1,19 +1,18 @@
 # Robots.txt for ShuttersCheap.com
-# https://shutterscheap.com
+# https://www.shutterscheap.com
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://shutterscheap.com/sitemap.xml
+Sitemap: https://www.shutterscheap.com/sitemap.xml
 
 # LLM-readable content for AI search engines
 # See https://llmstxt.org for specification
-LLMs-Txt: https://shutterscheap.com/llms.txt
-LLMs-Full-Txt: https://shutterscheap.com/llms-full.txt
+LLMs-Txt: https://www.shutterscheap.com/llms.txt
+LLMs-Full-Txt: https://www.shutterscheap.com/llms-full.txt
 
-# Block admin/dashboard pages
-Disallow: /dashboard.html
+# Block the archived old site
 Disallow: /source_site/
 
 # Allow all major search engines

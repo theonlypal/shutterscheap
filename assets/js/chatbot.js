@@ -74,7 +74,7 @@
     },
     installation: {
       keywords: ['install', 'how long', 'timeline', 'process', 'weeks', 'delivery', 'turnaround', 'how does it work'],
-      response: 'Here\'s how it works:\n\n<strong>1.</strong> Book & Measure \u2014 We bring our mobile showroom to you (free!)\n<strong>2.</strong> Design & Approve \u2014 Choose materials with transparent pricing\n<strong>3.</strong> Build \u2014 Custom shutters take 3\u20134 weeks to manufacture\n<strong>4.</strong> Install & Enjoy \u2014 Most homes completed in a single day!\n\nReady to get started?',
+      response: 'Here\'s how it works:\n\n<strong>1.</strong> Book & Measure \u2014 We bring our mobile showroom to you (free!)\n<strong>2.</strong> Design & Approve \u2014 Choose materials with transparent pricing\n<strong>3.</strong> Build \u2014 Custom shutters take about 5\u20136 weeks; blinds and shades about 2\u20133 weeks\n<strong>4.</strong> Install & Enjoy \u2014 Most homes completed in a single day!\n\nReady to get started?',
       quickReplies: ['Get Free Estimate', 'Back to Menu']
     },
     hoa: {
@@ -94,7 +94,7 @@
     },
     contact: {
       keywords: ['phone', 'call', 'contact', 'email', 'hours', 'open', 'text', 'reach'],
-      response: 'Here\'s how to reach us:\n\n\u2022 <strong>Phone/Text:</strong> <a href="' + CONFIG.phoneTel + '">' + CONFIG.phone + '</a>\n\u2022 <strong>Email:</strong> shuttersinc@outlook.com\n\u2022 <strong>Hours:</strong> Mon\u2013Sun, 8 AM \u2013 6 PM\n\u2022 Mobile showroom appointments available!',
+      response: 'Here\'s how to reach us:\n\n\u2022 <strong>Phone/Text:</strong> <a href="' + CONFIG.phoneTel + '">' + CONFIG.phone + '</a>\n\u2022 <strong>Email:</strong> shuttersinc@outlook.com\n\u2022 <strong>Hours:</strong> Mon\u2013Sat, 7 AM \u2013 7 PM (closed Sunday)\n\u2022 Mobile showroom appointments available!',
       quickReplies: ['Call Now', 'Get Free Estimate', 'Back to Menu']
     },
     shuttersVsBlinds: {
@@ -109,7 +109,7 @@
     },
     reviews: {
       keywords: ['review', 'rating', 'reputation', 'trust', 'good', 'stars'],
-      response: 'We\'re proud of our reputation:\n\n\u2022 <strong>4.9 stars</strong> on Google (150+ reviews)\n\u2022 Family-owned since <strong>2003</strong>\n\u2022 Over 20 years serving the Las Vegas valley\n\u2022 <strong>Lowest price guarantee</strong>',
+      response: 'We\'re proud of our reputation:\n\n\u2022 Family-owned since <strong>1975</strong>\n\u2022 Serving the Las Vegas valley since 2004\n\u2022 Read our reviews on <a href="https://www.google.com/maps/search/?api=1&amp;query=Shutters%20Cheap%20Las%20Vegas&amp;query_place_id=ChIJpyfoEh_DyIARl2nECpkG2XY" target="_blank" rel="noopener">Google</a>\n\u2022 <strong>Lowest price guarantee</strong>',
       quickReplies: ['Get Free Estimate', 'Back to Menu']
     }
   };

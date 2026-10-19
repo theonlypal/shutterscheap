@@ -1,17 +1,18 @@
 # Shutters Cheap - Las Vegas Window Treatments
 
-> Shutters Cheap is a family-owned window treatment company serving the Las Vegas valley since 2003. We specialize in custom plantation shutters, blinds, roller shades, and solar screens with a lowest price guarantee. 4.9-star Google rating with 150+ reviews. Licensed, insured, and based in Las Vegas, Nevada.
+> Shutters Cheap is a family-owned window treatment company, founded in 1975 in Carson City, Nevada, and serving the Las Vegas valley since 2004. We specialize in custom plantation shutters, blinds, roller shades, and solar screens with a lowest price guarantee. Customers can read our reviews on Google. Licensed, insured, and based in Las Vegas, Nevada.
 
 ## Company Overview
 
-- **Business**: Shutters Cheap (ShuttersCheap.com)
-- **Founded**: 2003
+- **Business**: Shutters Cheap (ShuttersCheap.com); orders are placed under the name Shutters Inc.
+- **Founded**: 1975 in Carson City, Nevada; serving Las Vegas since 2004
 - **Type**: Family-owned local business
 - **Location**: Las Vegas, Nevada
 - **Phone**: (702) 528-1926
 - **Email**: shuttersinc@outlook.com
-- **Hours**: Monday-Sunday 8:00 AM - 6:00 PM
-- **Google Rating**: 4.9 stars (150+ reviews)
+- **Hours**: Monday-Saturday 7:00 AM - 7:00 PM; closed Sunday
+- **Typical Lead Time**: Custom shutters about 5-6 weeks; blinds and shades about 2-3 weeks
+- **Reviews**: Customers can read our reviews on [Google](https://www.google.com/maps/search/?api=1&query=Shutters%20Cheap%20Las%20Vegas&query_place_id=ChIJpyfoEh_DyIARl2nECpkG2XY)
 - **Guarantee**: Lowest price guarantee — we beat any competitor's written quote
 
 ## Service Area
@@ -21,7 +22,7 @@ Las Vegas, Henderson, North Las Vegas, Summerlin, Green Valley, Spring Valley, E
 ## Products & Services
 
 ### Plantation Shutters
-Custom plantation shutters starting at $13.88/sq ft (DIY). Materials include poly vinyl (composite), basswood, and hybrid options. All shutters are custom-measured and built to order. Professional installation available. 25-year warranty. Ideal for Las Vegas desert heat — poly vinyl won't warp, crack, or fade.
+Custom plantation shutters starting at $13.88/sq ft (DIY baseline: 200 sq ft minimum order, customer installs). Materials include poly vinyl (composite), basswood, and hybrid options. All shutters are custom-measured and built to order. Professional installation available. 25-year warranty. Ideal for Las Vegas desert heat — poly vinyl won't warp, crack, or fade.
 
 ### Blinds
 Custom blinds including wood blinds, faux wood blinds, and vertical blinds. Professional measurement and installation included.
@@ -40,15 +41,15 @@ Dual-layer alternating sheer and opaque fabric for adjustable light control.
 1. **Lowest Price Guarantee**: We will beat any competitor's written quote
 2. **25-Year Warranty**: On plantation shutters with lifetime workmanship support
 3. **Mobile Showroom**: Free in-home estimates — we bring samples to your door
-4. **Family-Owned Since 2003**: Over 20 years serving Las Vegas
-5. **4.9-Star Rating**: 150+ verified Google reviews
+4. **Family-Owned Since 1975**: Over 20 years serving Las Vegas
+5. **Customer Reviews**: Customers can read our reviews on [Google](https://www.google.com/maps/search/?api=1&query=Shutters%20Cheap%20Las%20Vegas&query_place_id=ChIJpyfoEh_DyIARl2nECpkG2XY)
 6. **Desert Climate Expertise**: Products specifically chosen for extreme heat and UV
 7. **No Trip Fees**: Free estimates anywhere in the Las Vegas valley
 8. **Financing Available**: Monthly payment options for qualifying customers
 
 ## Pricing Quick Reference
 
-- Poly vinyl plantation shutters: from $13.88/sq ft (DIY) to $20-35/sq ft (installed)
+- Poly vinyl plantation shutters: from $13.88/sq ft (DIY baseline: 200 sq ft minimum order, customer installs) to $20-35/sq ft (installed)
 - Wood plantation shutters: from $20/sq ft (DIY) to $30-45/sq ft (installed)
 - Solar screens: from $3-6/sq ft installed
 - Blinds: varies by material and style
@@ -57,10 +58,10 @@ Dual-layer alternating sheer and opaque fabric for adjustable light control.
 ## Common Questions
 
 **Q: What is the best shutter company in Las Vegas?**
-A: Shutters Cheap is rated 4.9 stars on Google with 150+ reviews. Family-owned since 2003, we offer the lowest price guarantee, free in-home estimates with a mobile showroom, and a 25-year warranty on plantation shutters.
+A: Family-owned since 1975, Shutters Cheap offers the lowest price guarantee, free in-home estimates with a mobile showroom, and a 25-year warranty on plantation shutters. Customers can read our reviews on Google.
 
 **Q: How much do shutters cost in Las Vegas?**
-A: Plantation shutters start at $13.88/sq ft for DIY. Professional installation typically ranges from $20-35/sq ft for poly vinyl and $30-45/sq ft for wood, depending on window size and style. We offer free quotes and will beat any competitor's price.
+A: Plantation shutters start at $13.88/sq ft as a DIY baseline (200 sq ft minimum order, customer installs). Professional installation typically ranges from $20-35/sq ft for poly vinyl and $30-45/sq ft for wood, depending on window size and style. We offer free quotes and will beat any competitor's price.
 
 **Q: What type of shutters are best for Las Vegas heat?**
 A: Poly vinyl (composite) shutters are the best choice for Las Vegas. They won't warp, crack, or fade in extreme desert heat, and they block up to 73% of heat transfer. They're also the most affordable option.
@@ -84,46 +85,82 @@ A: Yes. We offer monthly payment options for qualifying customers so you can get
 A: Yes. We specialize in custom shutters for arched windows, bay windows, French doors, sliding glass doors, and all specialty shapes.
 
 **Q: How long does shutter installation take?**
-A: Most installations are completed in one day. Custom shutters typically take 3-4 weeks from order to installation.
+A: Most installations are completed in one day. Custom shutters typically take about 5-6 weeks from order to installation.
 
 ## Documentation
 
-- [Homepage](https://shutterscheap.com/): Main page with products, pricing, and booking
-- [Shutters](https://shutterscheap.com/shutters.html): Plantation shutter options and details
-- [Blinds](https://shutterscheap.com/blinds.html): Custom blind options
-- [Roller Shades](https://shutterscheap.com/roller-shades.html): Shade options including motorized
-- [Solar Screens](https://shutterscheap.com/solar-screens.html): Energy-efficient solar screen details
-- [Gallery](https://shutterscheap.com/gallery.html): Photos of completed installations
-- [FAQ](https://shutterscheap.com/faq.html): Frequently asked questions
-- [Blog](https://shutterscheap.com/blog/): Articles on shutters, blinds, and window treatments
+- [Homepage](https://www.shutterscheap.com/): Main page with products, pricing, and booking
+- [Shutters](https://www.shutterscheap.com/shutters.html): Plantation shutter options and details
+- [Blinds](https://www.shutterscheap.com/blinds.html): Custom blind options
+- [Roller Shades](https://www.shutterscheap.com/roller-shades.html): Shade options including motorized
+- [Solar Screens](https://www.shutterscheap.com/solar-screens.html): Energy-efficient solar screen details
+- [Zebra Shades](https://www.shutterscheap.com/zebra-shades.html): Zebra shades with alternating sheer and solid stripes for adjustable light control
+- [Polywood Shutters](https://www.shutterscheap.com/polywood-shutters-las-vegas.html): Polywood (poly vinyl) plantation shutters that won't warp, crack, or fade in desert heat
+- [Compare Prices](https://www.shutterscheap.com/compare-prices.html): How our upfront plantation shutter pricing compares with other Las Vegas shutter companies
+- [Reviews](https://www.shutterscheap.com/reviews.html): Customer reviews from Las Vegas homeowners
+- [Gallery](https://www.shutterscheap.com/gallery.html): Photos of completed installations
+- [FAQ](https://www.shutterscheap.com/faq.html): Frequently asked questions
+- [Blog](https://www.shutterscheap.com/blog/): Articles on shutters, blinds, and window treatments
+- [Projects](https://www.shutterscheap.com/projects/): Recent installations across Las Vegas, Henderson, Summerlin, Anthem, and more, with before/after photos and project specs
+
+## Room Guides
+
+- [Kitchen Shutters](https://www.shutterscheap.com/kitchen-shutters-las-vegas.html): Moisture-resistant, easy-to-clean plantation shutters for kitchens
+- [Bedroom Shutters](https://www.shutterscheap.com/bedroom-shutters-las-vegas.html): Plantation shutters for bedroom light blocking, temperature control, and privacy
+- [Bathroom Shutters](https://www.shutterscheap.com/bathroom-shutters-las-vegas.html): Waterproof poly vinyl shutters that resist humidity, mold, and moisture
+- [Living Room Shutters](https://www.shutterscheap.com/living-room-shutters-las-vegas.html): Plantation shutters for living room light control, insulation, and style
 
 ## Blog Articles
 
-- [How Much Do Shutters Cost in Las Vegas?](https://shutterscheap.com/blog/shutter-cost-las-vegas-2025.html): Complete 2025 pricing guide
-- [Energy Tax Credit for Shutters](https://shutterscheap.com/blog/energy-tax-credit-shutters-2025.html): Federal tax credit eligibility
-- [Polywood vs Wood Shutters](https://shutterscheap.com/blog/polywood-vs-wood-shutters.html): Material comparison guide
-- [HOA-Approved Shutters](https://shutterscheap.com/blog/hoa-approved-shutters-las-vegas.html): HOA compliance for Las Vegas communities
-- [Shutters vs Blinds](https://shutterscheap.com/blog/shutters-vs-blinds-las-vegas.html): Comparison guide
-- [Solar Screens vs Window Tint](https://shutterscheap.com/blog/solar-screens-vs-window-tint-las-vegas.html): Which is better for Las Vegas?
-- [Best Shutters for Desert Heat](https://shutterscheap.com/blog/best-shutters-desert-heat-las-vegas.html): Desert climate recommendations
-- [Plantation Shutters vs Cellular Shades](https://shutterscheap.com/blog/plantation-shutters-vs-cellular-shades.html): Side-by-side comparison
-- [Shutter Financing Options](https://shutterscheap.com/blog/shutter-financing-las-vegas.html): Payment plan details
-- [Custom Shutters for Arched Windows](https://shutterscheap.com/blog/custom-shutters-arched-windows.html): Specialty window solutions
-- [Why Poly Vinyl Shutters for Las Vegas](https://shutterscheap.com/blog/why-poly-vinyl-shutters-las-vegas.html): Benefits for desert climate
-- [Motorized Shutters](https://shutterscheap.com/blog/motorized-shutters-las-vegas.html): Smart home integration
-- [Shutter Installation Process](https://shutterscheap.com/blog/shutter-installation-process.html): What to expect
-- [Window Treatment Trends](https://shutterscheap.com/blog/window-treatment-trends-2025.html): Current design trends
+- [How Much Do Shutters Cost in Las Vegas?](https://www.shutterscheap.com/blog/shutter-cost-las-vegas-2025.html): Complete 2025 pricing guide
+- [Energy Tax Credit for Shutters](https://www.shutterscheap.com/blog/energy-tax-credit-shutters-2025.html): 2025 federal tax credit eligibility guide
+- [Polywood vs Wood Shutters](https://www.shutterscheap.com/blog/polywood-vs-wood-shutters.html): Material comparison guide
+- [HOA-Approved Shutters](https://www.shutterscheap.com/blog/hoa-approved-shutters-las-vegas.html): HOA compliance for Las Vegas communities
+- [Shutters vs Blinds](https://www.shutterscheap.com/blog/shutters-vs-blinds-las-vegas.html): Comparison guide
+- [Solar Screens vs Window Tint](https://www.shutterscheap.com/blog/solar-screens-vs-window-tint-las-vegas.html): Which is better for Las Vegas?
+- [Best Shutters for Desert Heat](https://www.shutterscheap.com/blog/best-shutters-desert-heat-las-vegas.html): Desert climate recommendations
+- [Plantation Shutters vs Cellular Shades](https://www.shutterscheap.com/blog/plantation-shutters-vs-cellular-shades.html): Side-by-side comparison
+- [Shutter Financing Options](https://www.shutterscheap.com/blog/shutter-financing-las-vegas.html): Payment plan details
+- [Custom Shutters for Arched Windows](https://www.shutterscheap.com/blog/custom-shutters-arched-windows.html): Specialty window solutions
+- [Why Poly Vinyl Shutters for Las Vegas](https://www.shutterscheap.com/blog/why-poly-vinyl-shutters-las-vegas.html): Benefits for desert climate
+- [Motorized Shutters](https://www.shutterscheap.com/blog/motorized-shutters-las-vegas.html): Smart home integration
+- [Shutter Installation Process](https://www.shutterscheap.com/blog/shutter-installation-process.html): What to expect
+- [Shutters for Large Windows](https://www.shutterscheap.com/blog/shutters-large-windows-las-vegas.html): Materials, louver sizes, and frame styles for oversized windows and sliding glass doors
+- [Window Treatment Trends](https://www.shutterscheap.com/blog/window-treatment-trends-2025.html): 2025 trends: what's in and what's out
+
+## Projects
+
+- [Anthem Kitchen Polywood Shutters](https://www.shutterscheap.com/projects/anthem-polywood-shutters-kitchen.html): Polywood shutters installed in a Sun City Anthem kitchen
+- [Henderson Exterior Solar Screens](https://www.shutterscheap.com/projects/henderson-exterior-solar-screens-whole-home.html): Exterior solar screens on a two-story home in Anthem Country Club, Henderson
+- [Lake Las Vegas Arched Window Shutters](https://www.shutterscheap.com/projects/lake-las-vegas-arched-window-custom-shutters.html): Custom plantation shutters for arched windows in South Shore, Lake Las Vegas
+- [MacDonald Highlands Motorized Shades](https://www.shutterscheap.com/projects/macdonald-highlands-motorized-shades-living-room.html): Motorized roller shades in a Dragonridge, MacDonald Highlands living room
+- [Spring Valley Blind Replacement](https://www.shutterscheap.com/projects/spring-valley-blind-replacement-whole-home.html): Whole-home replacement with faux wood blinds in Spring Valley
+- [Summerlin Master Bedroom Shutters](https://www.shutterscheap.com/projects/summerlin-plantation-shutters-master-bedroom.html): Plantation shutters in a master bedroom in The Trails, Summerlin
 
 ## Location Pages
 
-- [Henderson](https://shutterscheap.com/shutters-henderson-nv.html)
-- [Summerlin](https://shutterscheap.com/shutters-summerlin.html)
-- [North Las Vegas](https://shutterscheap.com/shutters-north-las-vegas.html)
-- [Spring Valley](https://shutterscheap.com/shutters-spring-valley.html)
-- [Enterprise](https://shutterscheap.com/shutters-enterprise.html)
-- [Green Valley](https://shutterscheap.com/shutters-green-valley.html)
-- [Boulder City](https://shutterscheap.com/shutters-boulder-city.html)
-- [Anthem](https://shutterscheap.com/shutters-anthem.html)
-- [Inspirada](https://shutterscheap.com/shutters-inspirada.html)
-- [Paradise](https://shutterscheap.com/shutters-paradise.html)
-- [Lake Las Vegas](https://shutterscheap.com/shutters-lake-las-vegas.html)
+- [Henderson](https://www.shutterscheap.com/shutters-henderson-nv.html): Plantation shutters across Henderson, including Green Valley, Anthem, MacDonald Ranch, and Seven Hills
+- [Summerlin](https://www.shutterscheap.com/shutters-summerlin.html): HOA-approved plantation shutters for Summerlin villages, including The Trails and Red Rock Country Club
+- [North Las Vegas](https://www.shutterscheap.com/shutters-north-las-vegas.html): Plantation shutters for North Las Vegas, including Aliante, Centennial Hills, El Dorado, and Lone Mountain
+- [Spring Valley](https://www.shutterscheap.com/shutters-spring-valley.html): Plantation shutters for Spring Valley, Chinatown, and southwest Las Vegas
+- [Enterprise](https://www.shutterscheap.com/shutters-enterprise.html): Plantation shutters for Enterprise, Mountains Edge, Southern Highlands, and Rhodes Ranch
+- [Green Valley](https://www.shutterscheap.com/shutters-green-valley.html): Plantation shutters for Green Valley, Green Valley Ranch, and Green Valley South
+- [Boulder City](https://www.shutterscheap.com/shutters-boulder-city.html): Plantation shutters for Boulder City homes, from the historic district to Lake Mead-view neighborhoods
+- [Anthem](https://www.shutterscheap.com/shutters-anthem.html): HOA-approved plantation shutters for Anthem in Henderson, including Sun City Anthem, Anthem Highlands, and Coventry
+- [Inspirada](https://www.shutterscheap.com/shutters-inspirada.html): HOA-approved plantation shutters for new homes in Inspirada, Cadence, Civita, and nearby Henderson communities
+- [Paradise](https://www.shutterscheap.com/shutters-paradise.html): Plantation shutters for Paradise near the Strip, including the UNLV area and Hughes Center
+- [Lake Las Vegas](https://www.shutterscheap.com/shutters-lake-las-vegas.html): Plantation shutters for Lake Las Vegas luxury homes in SouthShore, Reflection Bay, The Falls, and other villages
+- [Aliante](https://www.shutterscheap.com/shutters-aliante.html): HOA-approved plantation shutters for Aliante, Deer Springs, El Campo Grande, and nearby North Las Vegas communities
+- [Cadence](https://www.shutterscheap.com/shutters-cadence-henderson.html): HOA-approved plantation shutters, motorized shades, and replacements for builder-grade window coverings in Cadence, Henderson
+- [Centennial Hills](https://www.shutterscheap.com/shutters-centennial-hills.html): HOA-approved plantation shutters for Centennial Hills, including Providence, Elkhorn, and Tule Springs
+- [MacDonald Highlands](https://www.shutterscheap.com/shutters-macdonald-highlands.html): HOA-approved plantation shutters and custom motorized window treatments for MacDonald Highlands homes in Henderson
+- [Mountains Edge](https://www.shutterscheap.com/shutters-mountains-edge.html): HOA-approved plantation shutters for the Mountains Edge master-planned community
+- [Rhodes Ranch](https://www.shutterscheap.com/shutters-rhodes-ranch.html): HOA-approved plantation shutters for Rhodes Ranch, Southern Highlands, and Silverado Ranch
+- [Seven Hills](https://www.shutterscheap.com/shutters-seven-hills.html): HOA-approved plantation shutters and motorized blinds for Seven Hills homes in Henderson
+- [Skye Canyon](https://www.shutterscheap.com/shutters-skye-canyon.html): HOA-approved plantation shutters for Skye Canyon, Skye Hills, and northwest Las Vegas new construction
+- [Southwest Las Vegas](https://www.shutterscheap.com/shutters-southwest-las-vegas.html): HOA-approved plantation shutters for southwest Las Vegas communities
+- [Sun City Anthem](https://www.shutterscheap.com/shutters-sun-city-anthem.html): HOA-approved plantation shutters for the Sun City Anthem 55+ community, with tilt-rod and motorized options
+- [Sun City Summerlin](https://www.shutterscheap.com/shutters-sun-city-summerlin.html): HOA-approved plantation shutters for Sun City Summerlin 55+ homeowners, with easy-tilt operation
+- [The Ridges](https://www.shutterscheap.com/shutters-the-ridges-summerlin.html): Custom plantation shutters and motorized window treatments for The Ridges in Summerlin
+- [Tuscany Village](https://www.shutterscheap.com/shutters-tuscany-village.html): HOA-approved plantation shutters and custom blinds for Tuscany Village homes
+- [Whitney](https://www.shutterscheap.com/shutters-whitney-east-las-vegas.html): Plantation shutters for Whitney, Whitney Mesa, and Sunrise Manor in east Las Vegas

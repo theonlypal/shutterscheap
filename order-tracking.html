@@ -12,6 +12,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
@@ -553,7 +554,7 @@
   </style>
 <!-- BreadcrumbList Schema -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://shutterscheap.com/"},{"@type":"ListItem","position":2,"name":"Order Tracking","item":"https://shutterscheap.com/order-tracking.html"}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.shutterscheap.com/"},{"@type":"ListItem","position":2,"name":"Order Tracking","item":"https://www.shutterscheap.com/order-tracking.html"}]}
 </script>
 </head>
 <body>
@@ -619,7 +620,7 @@
       <div class="container">
         <div class="lookup-card">
           <h2>Look up your order</h2>
-          <p>Search by your order number or customer name to check your order status.</p>
+          <p>Search by your order number or customer name to check your order status. For privacy, names show as first name and last initial.</p>
           <form id="tracking-form" onsubmit="return false;">
             <div class="lookup-form">
               <div class="field">
@@ -678,14 +679,14 @@
           <p>Every order follows a clear process from start to finish. Here's what to expect after placing your order:</p>
           <ul class="checklist">
             <li><strong>Order Confirmation:</strong> You'll receive confirmation within 24 hours of placing your order, including a detailed summary of your selections.</li>
-            <li><strong>Manufacturing:</strong> Custom shutters and blinds are precision-made to your exact specifications. Manufacturing typically takes 2-4 weeks depending on product type.</li>
+            <li><strong>Manufacturing:</strong> Custom shutters and blinds are precision-made to your exact specifications. Manufacturing typically takes 5-6 weeks for shutters and 2-3 weeks for blinds and shades.</li>
             <li><strong>Quality Check:</strong> Every product is inspected before shipping to ensure it meets our quality standards.</li>
             <li><strong>Shipping Notification:</strong> You'll be notified when your order ships from the manufacturer to our facility.</li>
             <li><strong>Installation Scheduling:</strong> Once your order arrives, we'll contact you to schedule a convenient installation date.</li>
             <li><strong>Professional Installation:</strong> Our experienced installers complete the job efficiently and leave your home clean.</li>
           </ul>
           <div class="badge-row">
-            <span class="badge">2-4 week manufacturing</span>
+            <span class="badge">2-6 week manufacturing</span>
             <span class="badge">Quality inspected</span>
             <span class="badge">Professional install</span>
           </div>
@@ -779,7 +780,7 @@
             <span class="logo-subtitle">"Not Cheap Shutters"</span>
           </div>
         </a>
-        <p>Premium shutters, blinds, and solar screens with a lowest-price guarantee since 2003.</p>
+        <p>Premium shutters, blinds, and solar screens with a lowest-price guarantee. Family-owned since 1975.</p>
       </div>
       <div>
         <p class="label">Visit</p>
@@ -803,7 +804,6 @@
     </div>
     <div class="container footer-meta">
       <p>&copy; <span id="year"></span> Shutters Cheap. All rights reserved.</p>
-      <p><a href="dashboard.html" title="Admin Dashboard" style="opacity: 0.3;">&bull;</a></p>
     </div>
   </footer>
 
@@ -868,58 +868,58 @@
 
     /* ── Real Orders ── */
     const ORDERS = [
-      { id: '342049', customer: 'LINH BUI', orderDate: 'Apr 06, 2026', estShip: 'May 18, 2026', status: 'IN PRODUCTION' },
-      { id: '342211', customer: 'RICHARD VELAZQUEZ', orderDate: 'Apr 13, 2026', estShip: 'May 25, 2026', status: 'IN PRODUCTION' },
+      { id: '342049', customer: 'LINH B.', orderDate: 'Apr 06, 2026', estShip: 'May 18, 2026', status: 'IN PRODUCTION' },
+      { id: '342211', customer: 'RICHARD V.', orderDate: 'Apr 13, 2026', estShip: 'May 25, 2026', status: 'IN PRODUCTION' },
       { id: '342253', customer: 'STEFANIE &amp; ZACK', orderDate: 'Apr 15, 2026', estShip: 'Jun 01, 2026', status: 'IN PRODUCTION' },
-      { id: '342330', customer: 'DEBORAH WOLSLEY', orderDate: 'Apr 17, 2026', estShip: 'Jun 01, 2026', status: 'IN PRODUCTION' },
+      { id: '342330', customer: 'DEBORAH W.', orderDate: 'Apr 17, 2026', estShip: 'Jun 01, 2026', status: 'IN PRODUCTION' },
       { id: '342329', customer: 'WENDY', orderDate: 'Apr 17, 2026', estShip: 'Jun 01, 2026', status: 'IN PRODUCTION' },
-      { id: '342328', customer: 'UDANE HEWA', orderDate: 'Apr 17, 2026', estShip: 'Jun 01, 2026', status: 'IN PRODUCTION' },
-      { id: '342394', customer: 'BALA ZGHAIB', orderDate: 'Apr 21, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342419', customer: 'AARON HENNAGAN', orderDate: 'Apr 21, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342416', customer: 'OCTAVIO R LIMON', orderDate: 'Apr 21, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342328', customer: 'UDANE H.', orderDate: 'Apr 17, 2026', estShip: 'Jun 01, 2026', status: 'IN PRODUCTION' },
+      { id: '342394', customer: 'BALA Z.', orderDate: 'Apr 21, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342419', customer: 'AARON H.', orderDate: 'Apr 21, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342416', customer: 'OCTAVIO L.', orderDate: 'Apr 21, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
       { id: '342472', customer: 'FRANZ', orderDate: 'Apr 23, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342504', customer: 'CHRISTINE GUERRERO', orderDate: 'Apr 24, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342473', customer: 'ROBBIE CHERRIE', orderDate: 'Apr 23, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342526', customer: 'CRIS PRESSMAN', orderDate: 'Apr 27, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342523', customer: 'AMBER DIXON', orderDate: 'Apr 27, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342555', customer: 'BONNIE PIEROVICH', orderDate: 'Apr 27, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
-      { id: '342576', customer: 'ROBERT FOUNTAINE', orderDate: 'Apr 28, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
-      { id: '342641', customer: 'ROMAN HAGOS', orderDate: 'Apr 30, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
-      { id: '342597', customer: 'RICKY LARA', orderDate: 'Apr 29, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
-      { id: '342667', customer: 'ABDUL OSMAN-ROLLER', orderDate: 'May 01, 2026', estShip: 'May 12, 2026', status: 'IN PRODUCTION' },
-      { id: '342726', customer: 'TUAN NGUYEN', orderDate: 'May 04, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
-      { id: '342728', customer: 'MARTIN CASTILLE', orderDate: 'May 04, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
+      { id: '342504', customer: 'CHRISTINE G.', orderDate: 'Apr 24, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342473', customer: 'ROBBIE C.', orderDate: 'Apr 23, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342526', customer: 'CRIS P.', orderDate: 'Apr 27, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342523', customer: 'AMBER D.', orderDate: 'Apr 27, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342555', customer: 'BONNIE P.', orderDate: 'Apr 27, 2026', estShip: 'Jun 08, 2026', status: 'IN PRODUCTION' },
+      { id: '342576', customer: 'ROBERT F.', orderDate: 'Apr 28, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
+      { id: '342641', customer: 'ROMAN H.', orderDate: 'Apr 30, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
+      { id: '342597', customer: 'RICKY L.', orderDate: 'Apr 29, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
+      { id: '342667', customer: 'ABDUL O.', orderDate: 'May 01, 2026', estShip: 'May 12, 2026', status: 'IN PRODUCTION' },
+      { id: '342726', customer: 'TUAN N.', orderDate: 'May 04, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
+      { id: '342728', customer: 'MARTIN C.', orderDate: 'May 04, 2026', estShip: 'Jun 15, 2026', status: 'IN PRODUCTION' },
       { id: '342849', customer: 'ROBERT', orderDate: 'May 11, 2026', estShip: 'Jun 22, 2026', status: 'IN PRODUCTION' },
-      { id: '342851', customer: 'ELIZABETH BOZOIAN', orderDate: 'May 11, 2026', estShip: 'Jun 22, 2026', status: 'IN PRODUCTION' },
-      { id: '342853', customer: 'THERESA NELSON', orderDate: 'May 11, 2026', estShip: 'Jun 22, 2026', status: 'IN PRODUCTION' },
-      { id: '344219', customer: 'KENT &amp; CYN BREWSTER', orderDate: 'Jul 06, 2026', estShip: 'Aug 17, 2026', status: 'IN PRODUCTION' },
-      { id: '344244', customer: 'STEVE HANA', orderDate: 'Jul 06, 2026', estShip: 'Aug 17, 2026', status: 'IN PRODUCTION' },
-      { id: '344267', customer: 'JERRY KOSINKI', orderDate: 'Jul 07, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
-      { id: '344274', customer: 'CARRIE RAMIREZ', orderDate: 'Jul 07, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
-      { id: '344275', customer: 'JUDITH WRIGHT', orderDate: 'Jul 07, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
-      { id: '344303', customer: 'MIKE VALENTE', orderDate: 'Jul 08, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
-      { id: '344312', customer: 'VERONICA PAPIN', orderDate: 'Jul 09, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
-      { id: '344541', customer: 'HERMILO FRIAS', orderDate: 'Jul 17, 2026', estShip: 'Aug 31, 2026', status: 'IN PRODUCTION' },
-      { id: '344803', customer: 'JOHN BRANTLEY', orderDate: 'Jul 29, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
-      { id: '344879', customer: 'DOMINIC CERIELLO', orderDate: 'Aug 01, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
-      { id: '344910', customer: 'FILICITA BRYANT', orderDate: 'Aug 03, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
+      { id: '342851', customer: 'ELIZABETH B.', orderDate: 'May 11, 2026', estShip: 'Jun 22, 2026', status: 'IN PRODUCTION' },
+      { id: '342853', customer: 'THERESA N.', orderDate: 'May 11, 2026', estShip: 'Jun 22, 2026', status: 'IN PRODUCTION' },
+      { id: '344219', customer: 'KENT &amp; CYN B.', orderDate: 'Jul 06, 2026', estShip: 'Aug 17, 2026', status: 'IN PRODUCTION' },
+      { id: '344244', customer: 'STEVE H.', orderDate: 'Jul 06, 2026', estShip: 'Aug 17, 2026', status: 'IN PRODUCTION' },
+      { id: '344267', customer: 'JERRY K.', orderDate: 'Jul 07, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
+      { id: '344274', customer: 'CARRIE R.', orderDate: 'Jul 07, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
+      { id: '344275', customer: 'JUDITH W.', orderDate: 'Jul 07, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
+      { id: '344303', customer: 'MIKE V.', orderDate: 'Jul 08, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
+      { id: '344312', customer: 'VERONICA P.', orderDate: 'Jul 09, 2026', estShip: 'Aug 24, 2026', status: 'IN PRODUCTION' },
+      { id: '344541', customer: 'HERMILO F.', orderDate: 'Jul 17, 2026', estShip: 'Aug 31, 2026', status: 'IN PRODUCTION' },
+      { id: '344803', customer: 'JOHN B.', orderDate: 'Jul 29, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
+      { id: '344879', customer: 'DOMINIC C.', orderDate: 'Aug 01, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
+      { id: '344910', customer: 'FILICITA B.', orderDate: 'Aug 03, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
       { id: '344911', customer: 'CANDIE &amp; JOSEPH', orderDate: 'Aug 03, 2026', estShip: 'Sep 14, 2026', status: 'IN PRODUCTION' },
-      { id: '345768', customer: 'ROBERT LEE', orderDate: 'Sep 08, 2026', estShip: 'Oct 23, 2026', status: 'IN PRODUCTION' },
-      { id: '345770', customer: 'EVA PROPERTY', orderDate: 'Sep 08, 2026', estShip: 'Oct 23, 2026', status: 'IN PRODUCTION' },
+      { id: '345768', customer: 'ROBERT L.', orderDate: 'Sep 08, 2026', estShip: 'Oct 23, 2026', status: 'IN PRODUCTION' },
+      { id: '345770', customer: 'EVA P.', orderDate: 'Sep 08, 2026', estShip: 'Oct 23, 2026', status: 'IN PRODUCTION' },
       { id: '345954', customer: 'LENNY', orderDate: 'Sep 15, 2026', estShip: 'Oct 30, 2026', status: 'IN PRODUCTION' },
       { id: '345957', customer: 'JIM &amp; LINDA', orderDate: 'Sep 15, 2026', estShip: 'Oct 30, 2026', status: 'IN PRODUCTION' },
       { id: '346063', customer: 'KIM &amp; RICHARD', orderDate: 'Sep 19, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
-      { id: '346105', customer: 'JUDITH URIGHT', orderDate: 'Sep 21, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
-      { id: '346107', customer: 'JAMES FOSTER', orderDate: 'Sep 21, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
+      { id: '346105', customer: 'JUDITH U.', orderDate: 'Sep 21, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
+      { id: '346107', customer: 'JAMES F.', orderDate: 'Sep 21, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
       { id: '346110', customer: 'JANELLE', orderDate: 'Sep 21, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
-      { id: '346150', customer: 'LOAN TRAN', orderDate: 'Sep 22, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
-      { id: '346259', customer: 'BREE BARLETT', orderDate: 'Sep 26, 2026', estShip: 'Nov 13, 2026', status: 'IN PRODUCTION' },
-      { id: '346260', customer: 'MIKE MCCARTHY', orderDate: 'Sep 26, 2026', estShip: 'Nov 13, 2026', status: 'IN PRODUCTION' },
+      { id: '346150', customer: 'LOAN T.', orderDate: 'Sep 22, 2026', estShip: 'Nov 06, 2026', status: 'IN PRODUCTION' },
+      { id: '346259', customer: 'BREE B.', orderDate: 'Sep 26, 2026', estShip: 'Nov 13, 2026', status: 'IN PRODUCTION' },
+      { id: '346260', customer: 'MIKE M.', orderDate: 'Sep 26, 2026', estShip: 'Nov 13, 2026', status: 'IN PRODUCTION' },
       { id: '346299', customer: 'REGIE &amp; TREXIE', orderDate: 'Sep 28, 2026', estShip: 'Nov 13, 2026', status: 'IN PRODUCTION' },
-      { id: '346484', customer: 'PAUL NEUMILLER', orderDate: 'Oct 06, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' },
-      { id: '346486', customer: 'PAULETTE MARQUIS', orderDate: 'Oct 06, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' },
+      { id: '346484', customer: 'PAUL N.', orderDate: 'Oct 06, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' },
+      { id: '346486', customer: 'PAULETTE M.', orderDate: 'Oct 06, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' },
       { id: '346496', customer: 'BRENDA &amp; JASON', orderDate: 'Oct 06, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' },
-      { id: '346591', customer: 'SEAN RHEW', orderDate: 'Oct 09, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' }
+      { id: '346591', customer: 'SEAN R.', orderDate: 'Oct 09, 2026', estShip: 'Nov 20, 2026', status: 'IN PRODUCTION' }
     ];
 
     /* ── Helpers ── */
@@ -1044,6 +1044,23 @@
       }, 100);
     }
 
+    /* Names are stored as first name + last initial ("JOHN B."), so a full-name search
+       matches on the first name plus the first letter of the last name. */
+    function nameWords(text) {
+      return text.replace(/&amp;/g, '&').toUpperCase().replace(/[^A-Z0-9]+/g, ' ')
+        .split(' ').filter(function(w) { return w && w !== 'AND'; });
+    }
+
+    function nameMatches(stored, query) {
+      if (!stored.length || !query.length) return false;
+      var joinedQuery = query.join('');
+      if (joinedQuery.length >= 2 && stored.join('').indexOf(joinedQuery) !== -1) return true;
+      var initial = stored[stored.length - 1];
+      if (initial.length !== 1 || query.length < 2) return false;
+      var lastWord = query[query.length - 1];
+      return lastWord.charAt(0) === initial && stored.slice(0, -1).indexOf(query[0]) !== -1;
+    }
+
     function doLookup() {
       var input = document.getElementById('order-input');
       var status = document.getElementById('lookup-status');
@@ -1064,15 +1081,15 @@
         status.style.display = 'none';
 
         var normalizedQuery = query.replace(/[\s\-\(\)\.#]/g, '').toUpperCase();
+        var queryWords = nameWords(query);
 
         var results = ORDERS.filter(function(order) {
           var normalizedId = order.id.toUpperCase();
-          var normalizedName = order.customer.replace(/&amp;/g, '&').toUpperCase();
 
           return normalizedId === normalizedQuery ||
                  normalizedId.indexOf(normalizedQuery) !== -1 ||
                  normalizedQuery.indexOf(normalizedId) !== -1 ||
-                 normalizedName.indexOf(normalizedQuery) !== -1;
+                 nameMatches(nameWords(order.customer), queryWords);
         });
 
         showResults(results, query);
